@@ -15,10 +15,10 @@ interface LanguageObjectInterface
     /**
      * @return string
      */
-    public function getName();
+    static public function getName();
 
     /**
      * @return string
      */
-    public function getCode();
+    static public function getCode();
 }
