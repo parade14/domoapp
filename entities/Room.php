@@ -28,7 +28,7 @@ class Room
     /**
      * @var int
      */
-    protected $accomodationId;
+    protected $accommodationId;
 
 
     /**
@@ -88,18 +88,18 @@ class Room
     /**
      * @return int
      */
-    public function getAccomodationId()
+    public function getAccommodationId()
     {
-        return $this->accomodationId;
+        return $this->accommodationId;
     }
 
     /**
-     * @param int $accomodationId
+     * @param int $accommodationId
      * @return Room
      */
-    public function setAccomodationId($accomodationId)
+    public function setAccommodationId($accommodationId)
     {
-        $this->accomodationId = $accomodationId;
+        $this->accommodationId = $accommodationId;
         return $this;
     }
 
