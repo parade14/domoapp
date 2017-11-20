@@ -6,7 +6,7 @@
  * Time: 14:04
  */
 
-namespace domoapp\Services\HttpFoundation;
+namespace \domoapp\Services\HttpFoundation;
 
 
 class AccessDeniedException extends \RuntimeException
