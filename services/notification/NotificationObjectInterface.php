@@ -25,4 +25,22 @@ interface NotificationObjectInterface
      * @return DateTime
      */
     public function getDateTime();
+
+    /**
+     * @param $type string
+     * @return $this
+     */
+    public function setType($type);
+
+    /**
+     * @param $message string
+     * @return $this
+     */
+    public function setMessage($message);
+
+    /**
+     * @param $dateTime DateTime
+     * @return $this
+     */
+    public function setDateTime($dateTime);
 }

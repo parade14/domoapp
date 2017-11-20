@@ -9,7 +9,9 @@
 namespace domoapp\Services\Language;
 
 
-interface LanguageServiceInterface
+use domoapp\services\handler\ServiceInterface;
+
+interface LanguageServiceInterface extends ServiceInterface
 {
     /**
      * @param string $text
