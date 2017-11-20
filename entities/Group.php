@@ -52,7 +52,7 @@ class Group
      * @param int $gestionnaireId
      * @return Group
      */
-    public function setId($gestionnaireId)
+    public function setGestionnaireId($gestionnaireId)
     {
         $this->gestionnaireId = $gestionnaireId;
         return $this;
