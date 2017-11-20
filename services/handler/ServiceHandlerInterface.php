@@ -24,5 +24,9 @@ interface ServiceHandlerInterface extends ServiceInterface
      */
     public function getService($serviceName);
 
-
+    /**
+     * @param $serviceName string
+     * @return boolean
+     */
+    public function hasService($serviceName);
 }
