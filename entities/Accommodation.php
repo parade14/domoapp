@@ -7,7 +7,7 @@
 namespace domoapp\Entities;
 
 
-class Accomodation
+class Accommodation
 {
 
     /**
@@ -62,7 +62,7 @@ class Accomodation
 
     /**
      * @param int $id
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setId($id)
     {
@@ -82,7 +82,7 @@ class Accomodation
 
     /**
      * @param string $street
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setStreet($street)
     {
@@ -100,7 +100,7 @@ class Accomodation
 
     /**
      * @param int $streetNumber
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setStreetNumber($streetNumber)
     {
@@ -118,7 +118,7 @@ class Accomodation
 
     /**
      * @param string $postalCode
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setPostalCode($postalCode)
     {
@@ -136,7 +136,7 @@ class Accomodation
 
     /**
      * @param string $city
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setCity($city)
     {
@@ -155,7 +155,7 @@ class Accomodation
 
     /**
      * @param string $area
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setArea($area)
     {
@@ -173,7 +173,7 @@ class Accomodation
 
     /**
      * @param int $inhabitantNumber
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setInhabitantNumber($inhabitantNumber)
     {
@@ -191,7 +191,7 @@ class Accomodation
 
     /**
      * @param int $ownerId
-     * @return Accomodation
+     * @return Accommodation
      */
     public function setOwnerId($ownerId)
     {
