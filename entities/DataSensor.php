@@ -21,7 +21,7 @@ class DataSensor
     protected $sensorId;
 
     /**
-     * @var date
+     * @var \DateTime
      */
     protected $date;
 
@@ -63,7 +63,7 @@ class DataSensor
     }
 
     /**
-     * @return date
+     * @return \DateTime
      */
     public function getDate()
     {
