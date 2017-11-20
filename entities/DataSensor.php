@@ -71,10 +71,10 @@ class DataSensor
     }
 
     /**
-     * @param int $date
+     * @param \DateTime $date
      * @return DataSensor
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date)
     {
         $this->date = $date;
         return $this;
