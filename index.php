@@ -7,7 +7,7 @@
  */
 
 require('utilities/autoload.php');
-
+//test autoload
 $user = new \domoapp\Entities\User();
 $user->setEmail("machin");
 print_r($user);
