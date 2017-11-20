@@ -21,7 +21,7 @@ class Order
     protected $userId;
 
     /**
-     * @var date
+     * @var \DateTime
      */
     protected $date;
 
@@ -63,7 +63,7 @@ class Order
     }
 
     /**
-     * @return date
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -71,10 +71,10 @@ class Order
     }
 
     /**
-     * @param int $date
+     * @param \DateTime $date
      * @return Order
      */
-    public function setDate($date)
+    public function setDate(\DateTime $date)
     {
         $this->date = $date;
         return $this;
