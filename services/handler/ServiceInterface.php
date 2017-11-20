@@ -10,5 +10,8 @@ namespace domoapp\services\handler;
 
 interface ServiceInterface
 {
+    /**
+     * @return string
+     */
     public function getServiceName();
 }
