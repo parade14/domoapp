@@ -6,7 +6,7 @@
  * Time: 09:26
  */
 
-namespace domoapp\services\handler;
+namespace domoapp\services\ServiceHandler;
 
 
 abstract class ServiceHandler implements ServiceHandlerInterface

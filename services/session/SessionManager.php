@@ -9,7 +9,7 @@
 namespace domoapp\Services\Session;
 
 
-class SessionManager
+abstract class SessionManager implements SessionManagerInterface
 {
 
 }
