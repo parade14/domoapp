@@ -6,7 +6,7 @@
  * Time: 09:16
  */
 
-namespace damoapp\Services\Notification;
+namespace domoapp\Services\Notification;
 use DateTime;
 
 class NotificationObject implements NotificationObjectInterface
