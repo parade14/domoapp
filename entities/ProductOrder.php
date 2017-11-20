@@ -72,7 +72,7 @@ class ProductOrder
 
     /**
      * @param int $quantity
-     * @return Product
+     * @return ProductOrder
      */
     public function setQuantity($quantity)
     {
