@@ -6,7 +6,7 @@
  * Time: 15:12
  */
 
-namespace damoapp\Services\Language;
+namespace domoapp\Services\Language;
 
 
 class EnglishLanguage extends LanguageAbstract

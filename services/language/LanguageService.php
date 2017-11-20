@@ -6,7 +6,7 @@
  * Time: 14:24
  */
 
-namespace damoapp\Services\Language;
+namespace domoapp\Services\Language;
 
 
 abstract class LanguageService implements \domoapp\Services\Language\LanguageServiceInterface

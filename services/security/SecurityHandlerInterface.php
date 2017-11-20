@@ -6,6 +6,8 @@
  * Time: 09:39
  */
 
+namespace domoapp\services\security;
+
 interface SecurityHandlerInterface
 {
 
