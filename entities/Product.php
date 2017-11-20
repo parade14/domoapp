@@ -71,12 +71,12 @@ class Product
     }
 
     /**
-     * @param string $descripttion
+     * @param string $description
      * @return Product
      */
     public function setDescription($description)
     {
-        $this->type = $description;
+        $this->description = $description;
         return $this;
     }
   
