@@ -9,7 +9,37 @@
 namespace domoapp\services\ServiceHandler;
 
 
-abstract class ServiceHandler implements ServiceHandlerInterface
+class ServiceHandler implements ServiceHandlerInterface
 {
+    /**
+     * @var array
+     */
+    protected $servicesCollection = array();
+
+
+
+
+    public function addService(ServiceInterface $service)
+    {
+        array_key_exists($service->getServiceName(), $this->servicesCollection) ? :
+            $this->servicesCollection[$service->getServiceName()] = $service;
+        return $this;
+    }
+
+    public function getService($serviceName)
+    {
+        return array_key_exists($serviceName, $this->servicesCollection) ? $this->servicesCollection[$serviceName] : new \LogicException("unknow sevice $serviceName");
+    }
+
+    public function hasService($serviceName)
+    {
+        return array_key_exists($serviceName, $this->servicesCollection) ? true : false ;
+
+    }
+
+    public function getServiceName()
+    {
+       return self::class;
+    }
 
 }
