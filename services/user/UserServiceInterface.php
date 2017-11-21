@@ -10,7 +10,7 @@ namespace domoapp\Services\User;
 use domoapp\services\handler\ServiceInterface;
 use domoapp\entity\User;
 
-interface UserServiceInterface extends ServiceInterface
+interface UserServiceInterface extends \domoapp\services\ServiceHandler\ServiceInterface
 {
     /**
      * Add an user in database
