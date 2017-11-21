@@ -31,12 +31,14 @@ interface UserServiceInterface extends ServiceInterface
      */
     public function updateUser(UserInterface $user);
 
+
     /**
-     * Search one user by the id
-     * @param string $idUser
-     * @return UserInterface|\LogicException
+     * Search user(s) by the field in parameter
+     * @param string $field email|id|name
+     * @param string $value
+     * @return array of UserInterface|\LogicException
      */
-    public function getUserById($idUser);
+    public function getUserBy($field, $value);
 
 
 
