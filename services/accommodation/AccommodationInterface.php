@@ -17,7 +17,7 @@ interface AccommodationInterface
 
     /**
      * @param int $id
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setId($id);
 
@@ -29,7 +29,7 @@ interface AccommodationInterface
 
     /**
      * @param string $street
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setStreet($street);
 
@@ -40,7 +40,7 @@ interface AccommodationInterface
 
     /**
      * @param int $streetNumber
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setStreetNumber($streetNumber);
 
@@ -51,7 +51,7 @@ interface AccommodationInterface
 
     /**
      * @param string $postalCode
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setPostalCode($postalCode);
 
@@ -62,7 +62,7 @@ interface AccommodationInterface
 
     /**
      * @param string $city
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setCity($city);
 
@@ -74,7 +74,7 @@ interface AccommodationInterface
 
     /**
      * @param string $area
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setArea($area);
 
@@ -85,7 +85,7 @@ interface AccommodationInterface
 
     /**
      * @param int $inhabitantNumber
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setInhabitantNumber($inhabitantNumber);
 
@@ -96,7 +96,7 @@ interface AccommodationInterface
 
     /**
      * @param int $ownerId
-     * @return Accommodation
+     * @return AccommodationInterface
      */
     public function setOwnerId($ownerId);
   
