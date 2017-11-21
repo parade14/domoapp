@@ -8,7 +8,6 @@
 
 namespace domoapp\services\security;
 
-
 use domoapp\services\HttpFoundation\AccessDeniedException;
 
 class AccessGranter implements AccessGranterInterface
