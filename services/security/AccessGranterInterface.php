@@ -14,9 +14,10 @@ interface AccessGranterInterface
 {
     /**
      * @param $role string
+     * @param $object object
      * @return AccessDeniedException|true
      */
-    public function isGranted($role);
+    public function isGranted($role, $object);
 
 
 }

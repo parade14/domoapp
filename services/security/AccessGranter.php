@@ -9,18 +9,39 @@
 namespace domoapp\services\security;
 
 use domoapp\services\HttpFoundation\AccessDeniedException;
+use domoapp\Services\Session\SessionManagerInterface;
 
 class AccessGranter implements AccessGranterInterface
 {
-    public function __construct()
-    {
 
+    /**
+     * @var SessionManagerInterface
+     */
+    protected $sessionManager;
+
+    /**
+     * @var RolesManagerInterface
+     */
+    protected $rolesManager;
+
+    public function __construct(SessionManagerInterface $sessionManager, RolesManagerInterface $rolesManager)
+    {
+        $this->sessionManager = $sessionManager;
+        $this->rolesManager = $rolesManager;
     }
 
 
-    public function isGranted($role)
+
+    public function isGranted($role, $object = null)
     {
-        // TODO: Implement isGranted() method.
+        switch($object){
+            case null:
+                return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getProfileType())) ? true : new AccessDeniedException();
+            break;
+
+            //TODO : implements others cases
+        }
+
     }
 
 }

@@ -9,7 +9,10 @@
 namespace domoapp\Services\Session;
 
 
-use domoapp\services\handler\ServiceInterface;
+
+
+use domoapp\services\ServiceHandler\ServiceInterface;
+use domoapp\services\user\UserInterface;
 
 interface SessionManagerInterface extends ServiceInterface
 {
@@ -26,5 +29,9 @@ interface SessionManagerInterface extends ServiceInterface
      */
     public function add($name, $value);
 
+    /**
+     * @return UserInterface
+     */
+    public function getCurrentUser();
 
 }
