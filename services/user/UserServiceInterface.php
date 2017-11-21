@@ -6,39 +6,37 @@
 
 namespace domoapp\Services\User;
 
+use domoapp\services\ServiceHandler\ServiceInterface;
 
-use domoapp\services\handler\ServiceInterface;
-use domoapp\entity\User;
-
-interface UserServiceInterface extends \domoapp\services\ServiceHandler\ServiceInterface
+interface UserServiceInterface extends ServiceInterface
 {
     /**
      * Add an user in database
-     * @param User $user
-     * @return boolean
+     * @param UserInterface $user
+     * @return boolean|\LogicException
      */
-    public function createUser(User $user);
+    public function createUser(UserInterface $user);
 
     /**
      * Delete an user in database
      * @param string $idUser
-     * @return boolean
+     * @return boolean|\LogicException
      */
     public function deleteUser($idUser);
 
     /**
      * Update an user in database with the new value
-     * @param string $idUser
-     * @return boolean
+     * @param UserInterface $user
+     * @return boolean|\LogicException
      */
-    public function updateUser($idUser);
+    public function updateUser(UserInterface $user);
 
     /**
-     * Return the user with the id in parameter
+     * Search one user by the id
      * @param string $idUser
-     * @return User
+     * @return UserInterface|\LogicException
      */
-    public function getUser($idUser);
+    public function getUserById($idUser);
 
 
 
