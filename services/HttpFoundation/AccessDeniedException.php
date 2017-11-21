@@ -6,7 +6,7 @@
  * Time: 14:04
  */
 
-namespace \domoapp\Services\HttpFoundation;
+namespace domoapp\services\HttpFoundation;
 
 
 class AccessDeniedException extends \RuntimeException
@@ -26,7 +26,7 @@ class AccessDeniedException extends \RuntimeException
      * @param string $message
      * @param \Exception|null $previous
      */
-    public function __construct(string $message = 'Access Denied.', \Exception $previous = null)
+    public function __construct($message = 'Access Denied.', \Exception $previous = null)
     {
         parent::__construct($message, 403, $previous);
     }

@@ -11,4 +11,6 @@ require('utilities/autoload.php');
 $user = new \domoapp\Entities\User();
 $user->setEmail("machin");
 print_r($user);
-echo"hello";
+
+
+throw new \domoapp\services\HttpFoundation\AccessDeniedException("test");

@@ -8,7 +8,7 @@
 
 namespace domoapp\services\security;
 
-use domoapp\Services\HttpFoundation\AccessDeniedException;
+use domoapp\services\HttpFoundation\AccessDeniedException;
 
 interface AccessGranterInterface
 {
