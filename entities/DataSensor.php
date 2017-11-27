@@ -21,6 +21,11 @@ class DataSensor
     protected $sensorId;
 
     /**
+     * @var double
+     */
+    protected $value;
+
+    /**
      * @var \DateTime
      */
     protected $date;
@@ -59,6 +64,24 @@ class DataSensor
     public function setSensorId($sensorId)
     {
         $this->sensorId = $sensorId;
+        return $this;
+    }
+
+    /**
+     * @return double
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param double $value
+     * @return DataSensor
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
         return $this;
     }
 
