@@ -42,6 +42,16 @@ interface DataSensorInterface
      * @return DataSensor
      */
     public function setDate(\DateTime $date);
-  
+
+    /**
+     * @return double
+     */
+    public function getValue();
+
+    /**
+     * @param double $value
+     * @return DataSensor
+     */
+    public function setValue($value);
 
 }
