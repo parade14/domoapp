@@ -7,13 +7,14 @@
 namespace domoapp\Services\Accommodation;
 
 
-use domoapp\services\handler\ServiceInterface;
+
+use domoapp\services\ServiceHandler\ServiceInterface;
 
 interface AccommodationServiceInterface extends ServiceInterface
 {
     /**
      * Add an accomodation in database
-     * @param User $user
+     * @param $accommodation AccommodationInterface
      * @return boolean|\LogicException
      */
     public function createAccommodation(AccommodationInterface $accommodation);
@@ -35,7 +36,7 @@ interface AccommodationServiceInterface extends ServiceInterface
     /**
      * Search accommodation by id
      * @param string $idAccommodation
-     * @return Accommodation|\LogicException
+     * @return AccommodationInterface|\LogicException
      */
     public function getAccommodationById($idAccommodation);
 
