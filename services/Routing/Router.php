@@ -16,8 +16,6 @@ class Router implements RouterInterface
      */
     private $routes;
 
-    private $router;
-
     public function getServiceName()
     {
         return self::class;
