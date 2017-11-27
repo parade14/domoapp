@@ -12,8 +12,14 @@ interface DatabaseServiceInterface
     /**
      * try to connect to a database.
      * @param DataBaseObjectInterface $database
-     * @return void  
+     * @return PDO $conn  
      */
     public function connect($database);
 
+    /**
+     * unconnect to a database.
+     * @param PDO $conn
+     * @return void  
+     */
+    public function unconnect($conn);
 }

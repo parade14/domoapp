@@ -13,10 +13,11 @@ class DatabaseService implements DatabaseServiceInterface
     /**
      * try to connect to a database.
      * @param DataBaseObjectInterface $database
-     * @return void  
+     * @return PDO $conn  
      */
     public function connect($database) {
 
+    	$conn = null; 
     	$serverName = $database->getServerName();
     	$userName = $database->getUserName();
     	$password = $database->getPassword();
@@ -29,6 +30,17 @@ class DatabaseService implements DatabaseServiceInterface
     	} catch (PDOException $e) {
     		echo $e->getMessage();
     	}
+
+    	return $conn;
+    }
+
+    /**
+     * unconnect to a database.
+     * @param PDO $conn
+     * @return void  
+     */
+    public function unconnect($conn){
+    	$conn=null;
     }
 
 }
