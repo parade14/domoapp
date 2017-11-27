@@ -6,7 +6,7 @@
  * Time: 09:03
  */
 
-namespace domoapp\services\user;
+namespace Services\User;
 
 
 

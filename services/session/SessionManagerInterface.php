@@ -6,13 +6,13 @@
  * Time: 13:51
  */
 
-namespace domoapp\Services\Session;
+namespace Services\Session;
 
 
 
 
-use domoapp\services\ServiceHandler\ServiceInterface;
-use domoapp\services\user\UserInterface;
+use Services\ServiceHandler\ServiceInterface;
+use Services\User\UserInterface;
 
 interface SessionManagerInterface extends ServiceInterface
 {

@@ -4,11 +4,11 @@
  * Date: 21/11/2017
  */
 
-namespace domoapp\Services\Accommodation;
+namespace Services\Accommodation;
 
 
 
-use domoapp\services\ServiceHandler\ServiceInterface;
+use Services\ServiceHandler\ServiceInterface;
 
 interface AccommodationServiceInterface extends ServiceInterface
 {

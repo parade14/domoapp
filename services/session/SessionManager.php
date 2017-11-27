@@ -6,7 +6,7 @@
  * Time: 09:48
  */
 
-namespace domoapp\Services\Session;
+namespace Services\Session;
 
 
 abstract class SessionManager implements SessionManagerInterface

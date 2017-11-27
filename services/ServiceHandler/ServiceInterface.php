@@ -6,7 +6,7 @@
  * Time: 09:22
  */
 
-namespace domoapp\services\ServiceHandler;
+namespace Services\ServiceHandler;
 
 interface ServiceInterface
 {

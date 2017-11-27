@@ -6,7 +6,7 @@
  * Time: 15:03
  */
 
-namespace domoapp\Services\Language;
+namespace Services\Language;
 
 
 abstract class LanguageAbstract implements LanguageObjectInterface

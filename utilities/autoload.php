@@ -8,7 +8,7 @@
 
 function __autoload($className)
 {
-    $folder = "../";
+    $folder = "./";
     $className = ltrim($className, '\\');
     $fileName  = '';
     $namespace = '';

@@ -6,10 +6,11 @@
  * Time: 09:51
  */
 
-namespace domoapp\services\security;
+namespace Services\Security;
 
 
-use domoapp\services\ServiceHandler\ServiceInterface;
+
+use Services\ServiceHandler\ServiceInterface;
 
 interface RolesManagerInterface extends ServiceInterface
 {

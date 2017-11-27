@@ -6,7 +6,7 @@
  * Time: 09:44
  */
 
-namespace domoapp\Entities;
+namespace Entities;
 
 
 class Message

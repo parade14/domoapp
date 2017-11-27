@@ -4,7 +4,7 @@
  * Date: 20/11/2017
  */
 
-namespace domoapp\Entities;
+namespace Entities;
 
 
 class Sensor

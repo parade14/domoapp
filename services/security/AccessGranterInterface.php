@@ -6,9 +6,10 @@
  * Time: 09:39
  */
 
-namespace domoapp\services\security;
+namespace Services\Security;
 
-use domoapp\services\HttpFoundation\AccessDeniedException;
+
+use Services\HttpFoundation\AccessDeniedException;
 
 interface AccessGranterInterface
 {

@@ -6,7 +6,7 @@
  * Time: 15:28
  */
 
-namespace domoapp\Services\Notification;
+namespace Services\Notification;
 use \DateTime;
 
 interface NotificationObjectInterface

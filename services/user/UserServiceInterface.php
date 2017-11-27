@@ -4,9 +4,10 @@
  * Date: 20/11/2017
  */
 
-namespace domoapp\Services\User;
+namespace Services\User;
 
-use domoapp\services\ServiceHandler\ServiceInterface;
+
+use Services\ServiceHandler\ServiceInterface;
 
 interface UserServiceInterface extends ServiceInterface
 {

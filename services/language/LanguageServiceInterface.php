@@ -6,10 +6,11 @@
  * Time: 14:22
  */
 
-namespace domoapp\Services\Language;
+namespace Services\Language;
 
 
-use domoapp\services\handler\ServiceInterface;
+
+use Services\ServiceHandler\ServiceInterface;
 
 interface LanguageServiceInterface extends ServiceInterface
 {

@@ -4,7 +4,7 @@
  * Date: 17/11/2017
  */
 
-namespace domoapp\Services\database;
+namespace Services\Database;
 
 
 interface DatabaseServiceInterface

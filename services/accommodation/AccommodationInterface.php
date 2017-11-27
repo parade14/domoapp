@@ -4,7 +4,7 @@
  * Date: 21/11/2017
  */
 
-namespace domoapp\services\accommodation;
+namespace Services\Accommodation;
 
 
 interface AccommodationInterface

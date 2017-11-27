@@ -6,10 +6,10 @@
  * Time: 14:24
  */
 
-namespace domoapp\Services\Language;
+namespace Services\Language;
 
 
-abstract class LanguageService implements \domoapp\Services\Language\LanguageServiceInterface
+abstract class LanguageService implements LanguageServiceInterface
 {
  //TODO : implements this class
 }

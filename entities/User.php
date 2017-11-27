@@ -6,7 +6,7 @@
  * Time: 09:38
  */
 
-namespace domoapp\Entities;
+namespace Entities;
 
 
 class User

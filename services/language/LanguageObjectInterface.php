@@ -6,7 +6,7 @@
  * Time: 14:46
  */
 
-namespace domoapp\Services\Language;
+namespace Services\Language;
 
 
 interface LanguageObjectInterface

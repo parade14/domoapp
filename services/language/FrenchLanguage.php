@@ -6,7 +6,7 @@
  * Time: 15:06
  */
 
-namespace domoapp\Services\Language;
+namespace Services\Language;
 
 
 class FrenchLanguage extends LanguageAbstract
