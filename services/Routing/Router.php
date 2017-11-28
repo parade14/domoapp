@@ -9,7 +9,7 @@
 namespace services\Routing;
 
 
-use services\kernel\ControllerInterface;
+use services\controller\ControllerInterface;
 
 class Router implements RouterInterface
 {

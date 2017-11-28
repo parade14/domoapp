@@ -9,7 +9,7 @@
 namespace services\Routing;
 
 
-use services\kernel\ControllerInterface;
+use services\controller\ControllerInterface;
 use Services\ServiceHandler\ServiceInterface;
 
 interface RouterInterface extends ServiceInterface

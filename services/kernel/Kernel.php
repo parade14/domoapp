@@ -7,7 +7,7 @@
  */
 
 namespace services\kernel;
-
+use services\controller\ControllerInterface as ControllerInterface;
 
 final class Kernel
 {
