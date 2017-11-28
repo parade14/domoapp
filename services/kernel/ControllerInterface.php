@@ -9,7 +9,13 @@
 namespace services\kernel;
 
 
+use services\Routing\Route;
+use services\Routing\RouteCollection;
+
 interface ControllerInterface
 {
-
+    /**
+     * @return RouteCollection|Route
+     */
+    public function getRoutes();
 }

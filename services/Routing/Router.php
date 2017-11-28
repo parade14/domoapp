@@ -9,12 +9,23 @@
 namespace services\Routing;
 
 
+use services\kernel\ControllerInterface;
+
 class Router implements RouterInterface
 {
     /**
      * @var RouteCollection
      */
     private $routes;
+
+    /**
+     * Router constructor.
+     */
+    public function __construct()
+    {
+        $this->routes = new RouteCollection();
+    }
+
 
     public function getServiceName()
     {
@@ -30,5 +41,13 @@ class Router implements RouterInterface
     {
         // TODO: Implement redirect() method.
     }
+
+    public function initialise($controllersArray)
+    {
+        foreach($controllersArray as $controller){
+            $this->routes->addRoute($controller->getRoutes());
+        }
+    }
+
 
 }

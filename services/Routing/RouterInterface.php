@@ -9,6 +9,7 @@
 namespace services\Routing;
 
 
+use services\kernel\ControllerInterface;
 use Services\ServiceHandler\ServiceInterface;
 
 interface RouterInterface extends ServiceInterface
@@ -24,4 +25,10 @@ interface RouterInterface extends ServiceInterface
      * @return true|\LogicException
      */
     public function redirect($route);
+
+    /**
+     * @param $controllersArray ControllerInterface[]
+     * @return true|\LogicException
+     */
+    public function initialise($controllersArray);
 }
