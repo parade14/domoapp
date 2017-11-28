@@ -12,9 +12,22 @@ namespace services\kernel;
 final class Kernel
 {
     /**
-     * @param $class array|string
+     * @var ControllerInterface[]
      */
-    private function addController($class){
+    private $controllers = array();
 
+
+    /**
+     * @param $class array|string|ControllerInterface
+     */
+    public function addController($class){
+        if($class instanceof ControllerInterface and !in_array(get_class($class),$this->controllers)) $this->controllers[get_class($class)] = $class;
+        elseif(is_array($class)) foreach($class as $classes) $this->addController($classes);
+        elseif(is_string($class)) $this->addController(new $class());
+        elseif($class instanceof ControllerInterface and in_array(get_class($class),$this->controllers)) throw new \LogicException(sprintf("Class %s already enregistred in controllers", get_class($class)));
+        else throw new \LogicException(sprintf("Parameter %s is not a valid type for Kernel::addController", $class));
     }
+
+
+
 }
