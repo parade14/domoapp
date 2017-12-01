@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Titre</title>
+    </head>
+
+    <body>
+
+        <div id="infoLogement">Appartement 15 rue des Guccigang</div>
+        
+        <div id="conteneur">
+
+            <div id="choix">
+
+                <ul>
+                    <!-- TODO : charger dynamiquement la liste  avec une boucle -->
+                    <li class="active"><a href="">Cuisine</a></li>
+                    <li><a href="capteurs2.html">Salon</a></li>
+                    <li><a href="">Salle à manger</a></li>
+                    <li><a href="">Chambre 1</a></li>
+                    <li><a href="">Chambre 2</a></li>
+                    <li><a href="">Salle de bain</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div id="capteurs">
+
+                <!-- TODO : charger dynamiquement les blocs des capteurs  avec une boucle -->
+
+                <div class="blocCapteur">
+                    <div class="nomCapteur">Lampe</div> 
+                    <img src="img/lampe.png">
+                    <br>
+                    <input type= "radio" name="onofflampe" value="on">ON
+                    <input type= "radio" name="onofflampe" value="on">OFF
+                </div>
+
+
+                <div class="blocCapteur"> 
+                    <div class="nomCapteur">Humidité</div>
+                    <img src="img/humidite.png">
+                    <div class="valeur">25%</div>
+                </div>
+
+                <div class="blocCapteur">
+                    <div class="nomCapteur">Température</div>
+                    <img src="img/thermo.png">
+                    <div class="valeur">21°C</div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    
+
+    </body>
+
+</html>
