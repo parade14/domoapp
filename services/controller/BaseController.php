@@ -14,5 +14,7 @@ use services\controller\ControllerInterface;
 
 abstract class BaseController implements ControllerInterface
 {
+    public function getRoutes(){}
+
 
 }

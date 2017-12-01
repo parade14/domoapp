@@ -9,7 +9,9 @@
 namespace app\HelloWorld;
 
 
-class IndexController
+use services\controller\BaseController;
+
+class IndexController extends BaseController
 {
 
 }
