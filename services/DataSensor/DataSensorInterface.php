@@ -9,7 +9,7 @@ namespace Services\DataSensor;
 
 interface DataSensorInterface
 {
-
+ 
     /**
      * @return int
      */
