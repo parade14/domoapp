@@ -77,12 +77,32 @@ class DataSensorService implements DataSensorServiceInterface
      * @return array of DataSensorInterface||\LogicException
      */
     public function getValuesBetween($startDate, $endDate, $sensorId) {
-        //TODO
+
+        $conn = $this->serviceConnect->connect($this->databaseObject);
+
+        $resultats=$connexion->query("SELECT * FROM DATASENSOR WHERE sensor_id='".$sensorId."' AND '".$startDate."' <= date <= '".$endDate."'");
+
+        $resultats->setFetchMode(PDO::FETCH_ASSOC);
+
+        $datas = $resultats->fetchAll();
+
+        $return = array();
+
+        foreach ($datas as $data) {
+
+            $dataSensor = new DataSensorInterface();
+            $dataSensor->setId($data['id']);
+            $dataSensor->setSensorId($data['sensor_id']);
+            $dataSensor->setDate($data['date']);
+            $dataSensor->setValue($data['value']);
+
+            array_push($return, $dataSensor);
+        }
+
+        $resultats->closeCursor();
+
+        return $return;
 
     }
-
-
-
-
 
 }
