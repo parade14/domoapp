@@ -56,10 +56,10 @@ class DataSensorService implements DataSensorServiceInterface
 
         $dataSensor = new DataSensorInterface();
 
-        $dataSensor->setId($dataSensor['id']);
-        $dataSensor->setSensorId($dataSensor['sensor_id']);
-        $dataSensor->setDate($dataSensor['date']);
-        $dataSensor->setValue($dataSensor['value']);
+        $dataSensor->setId($data['id']);
+        $dataSensor->setSensorId($data['sensor_id']);
+        $dataSensor->setDate($data['date']);
+        $dataSensor->setValue($data['value']);
 
 
         $resultats->closeCursor();
