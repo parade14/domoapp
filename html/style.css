@@ -1,0 +1,66 @@
+body {
+}
+#conteneur {
+	display: inline-flex;
+}
+
+
+div {
+	border : 1px solid grey;
+	padding : 5px;
+}
+
+#infoLogement {
+    left: 0;
+    top: 0;
+}
+
+#choixPiece {
+	float : left;
+	width: 25%;
+}
+
+#capteurs {
+	margin-left : 15%;
+	display: inline-flex;
+}
+
+img {
+	width: 25%;
+	min-width: 100px;
+	min-height: 100px;
+	padding : 5px;
+}
+
+.blocCapteur {
+	width: 25%;
+	margin : 10px;
+	text-align: center;
+}
+
+#choix a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 4px;
+}
+
+#choix a:hover{
+    background : grey;
+}
+
+li {
+	list-style: none;
+}
+
+#choix li.active {
+    background-color: grey;
+}
+
+form label {
+	width: 25%;
+}
+
+
+
+
