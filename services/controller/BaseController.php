@@ -16,5 +16,8 @@ abstract class BaseController implements ControllerInterface
 {
     public function getRoutes(){}
 
+    public function getService(){}
+
+
 
 }

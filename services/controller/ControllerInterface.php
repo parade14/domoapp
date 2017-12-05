@@ -11,6 +11,7 @@ namespace services\controller;
 
 use services\Routing\Route;
 use services\Routing\RouteCollection;
+use Services\ServiceHandler\ServiceInterface;
 
 interface ControllerInterface
 {
@@ -18,4 +19,10 @@ interface ControllerInterface
      * @return RouteCollection|Route
      */
     public function getRoutes();
+
+    /**
+     * @throws \LogicException
+     * @return ServiceInterface
+     */
+    public function getService();
 }
