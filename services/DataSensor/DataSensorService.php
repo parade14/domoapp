@@ -43,6 +43,7 @@ class DataSensorService implements DataSensorServiceInterface
      * get the most recent value of a sensor
      * @param string $sensorId
      * @return DataSensorInterface|\LogicException
+     * @todo:: Corriger les erreurs
      */
     public function getLastValue($sensorId) {
 
@@ -75,6 +76,7 @@ class DataSensorService implements DataSensorServiceInterface
      * @param \DateTime $startDate 
      * @param \DateTime $endDate 
      * @return array of DataSensorInterface||\LogicException
+     * @todo:: Corriger les erreurs
      */
     public function getValuesBetween($startDate, $endDate, $sensorId) {
 

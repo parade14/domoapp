@@ -7,7 +7,7 @@
 namespace Services\room;
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface RoomServiceInterface extends ServiceInterface
 {

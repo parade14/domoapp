@@ -8,7 +8,7 @@ namespace Services\Accommodation;
 
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface AccommodationServiceInterface extends ServiceInterface
 {

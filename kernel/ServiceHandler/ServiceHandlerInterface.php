@@ -6,7 +6,7 @@
  * Time: 09:28
  */
 
-namespace Services\ServiceHandler;
+namespace Kernel\ServiceHandler;
 
 
 interface ServiceHandlerInterface extends ServiceInterface
@@ -23,7 +23,7 @@ interface ServiceHandlerInterface extends ServiceInterface
      * @return ServiceInterface
      * @throws \LogicException
      */
-    public function getService($serviceName);
+    public function get($serviceName);
 
     /**
      * @param $serviceName string

@@ -7,7 +7,7 @@
 namespace Services\DataSensor;
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface DataSensorServiceInterface extends ServiceInterface
 {
