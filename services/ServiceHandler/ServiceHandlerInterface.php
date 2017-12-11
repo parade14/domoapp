@@ -21,6 +21,7 @@ interface ServiceHandlerInterface extends ServiceInterface
     /**
      * @param $serviceName string
      * @return ServiceInterface
+     * @throws \LogicException
      */
     public function getService($serviceName);
 
