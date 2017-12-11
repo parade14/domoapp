@@ -9,7 +9,9 @@
 namespace Services\Security;
 
 
-interface FirewallInterface
+use Kernel\ServiceHandler\ServiceInterface;
+
+interface FirewallInterface extends ServiceInterface
 {
 
 }

@@ -6,12 +6,9 @@
  * Time: 09:22
  */
 
-namespace Services\ServiceHandler;
+namespace Kernel\ServiceHandler;
 
 interface ServiceInterface
 {
-    /**
-     * @return string
-     */
-    public function getServiceName();
+
 }

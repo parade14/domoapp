@@ -7,7 +7,7 @@
 namespace Services\User;
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface UserServiceInterface extends ServiceInterface
 {

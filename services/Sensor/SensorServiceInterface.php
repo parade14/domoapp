@@ -7,7 +7,7 @@
 namespace Services\Sensor;
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface SensorServiceInterface extends ServiceInterface
 {
