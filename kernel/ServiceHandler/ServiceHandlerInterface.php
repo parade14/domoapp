@@ -13,10 +13,10 @@ interface ServiceHandlerInterface extends ServiceInterface
 {
 
     /**
-     * @param $service ServiceInterface
+     * @param $service
      * @return ServiceHandlerInterface
      */
-    public function addService(ServiceInterface $service);
+    public function addService($service);
 
     /**
      * @param $serviceName string

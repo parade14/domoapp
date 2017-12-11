@@ -10,10 +10,7 @@ namespace services\kernel;
 
 final class Kernel
 {
-    /**
-     * @var ControllerInterface[]
-     */
-    private $controllers = array();
+    public function init(){}
 
 
 

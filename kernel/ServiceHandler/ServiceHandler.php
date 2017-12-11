@@ -14,7 +14,11 @@ final class ServiceHandler implements ServiceHandlerInterface
     /**
      * @var array
      */
-    protected $servicesReferenced = array();
+    protected $servicesReferencedByName = array();
+    /**
+     * @var array
+     */
+    protected $servicesReferencedByClass = array();
     /**
      * @var array
      */
@@ -28,20 +32,28 @@ final class ServiceHandler implements ServiceHandlerInterface
 
 
 
-    public function addService(ServiceInterface $service)
+    public function addService($var, $key="")
     {
-        array_key_exists($service->getServiceName(), $this->servicesReferenced) ? :
-            $this->servicesReferenced[$service->getServiceName()] = $service;
-        return $this;
+        if(is_array($var)) foreach($var as $key=>$value) $this->addService($value, $key);
+
+        else{
+            //TODO : to be continued ...
+        }
     }
 
+    /**
+     * @param string $serviceName
+     * @return ServiceInterface|mixed
+     * @throws \Exception
+     */
     public function get($serviceName)
     {
         if(array_key_exists($serviceName, $this->loaded)) return $this->loaded[$serviceName];
         elseif(array_key_exists($serviceName, $this->loading)) throw new \LogicException("Circular references for service $serviceName");
-        elseif(array_key_exists($serviceName, $this->servicesReferenced)){
-
+        elseif(array_key_exists($serviceName, $this->servicesReferencedByName)){
+            return $this->resolve($this->servicesReferencedByName[$serviceName]);
         }
+        else throw new \LogicException("Unknow service $serviceName");
 
 
 
@@ -51,7 +63,7 @@ final class ServiceHandler implements ServiceHandlerInterface
 
     public function hasService($serviceName)
     {
-        return array_key_exists($serviceName, $this->servicesReferenced) ? true : false ;
+        return array_key_exists($serviceName, $this->servicesReferencedByName) ? true : false ;
 
     }
 
@@ -77,7 +89,7 @@ final class ServiceHandler implements ServiceHandlerInterface
                 $constructor_parameters = [];
                 foreach($parameters as $parameter){
                     if( $parameter->getClass() ){
-                        $constructor_parameters[] = $this->get($parameter->getClass()->getName());
+                        $constructor_parameters[] = $this->get($this->servicesReferencedByClass[$parameter->getClass()->getName()]);
                     } else {
                         $constructor_parameters[] = $parameter->getDefaultValue();
                     }
