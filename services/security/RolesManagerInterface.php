@@ -10,7 +10,7 @@ namespace Services\Security;
 
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface RolesManagerInterface extends ServiceInterface
 {

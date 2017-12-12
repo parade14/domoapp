@@ -10,7 +10,7 @@ namespace Services\Language;
 
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 
 interface LanguageServiceInterface extends ServiceInterface
 {

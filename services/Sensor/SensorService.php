@@ -9,11 +9,13 @@ namespace Services\Sensor;
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
 
+
 class SensorService implements SensorServiceInterface
 {
 
 
     /**
+     * TODO: what ?
      * The database connection
      * @var DatabaseServiceInterface
      */
@@ -29,25 +31,23 @@ class SensorService implements SensorServiceInterface
     /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
-     * @var $databaseObject DatabaseObjectInterface
+     * @var $databaseObject DatabaseObjectInterface*
+     * @TODO: typer les paramètres du constructeur
      */
-    public function __construct($serviceConnect, $databaseObject) {
+    public function __construct(DatabaseServiceInterface $serviceConnect,DatabaseObjectInterface $databaseObject) {
         $this->serviceConnect = $serviceConnect;
         $this->databaseObject = $databaseObject;
     }
 
-     /**
-     * create a sensor 
-     * @param string $type
-     * @param string $name
-     * @param int $room_id
-     * @return SensorInterface|\LogicException
+
+    /**
+     * @inheritdoc
      */
     public function createSensor($type, $name, $room_id) {
 
         $conn = $this->serviceConnect->connect($this->databaseObject);
 
-        $sql = "INSERT INTO sensor(type, name, room_id) VALUES ('".$type."', '".$name."','".$room_id."')";
+        $sql = "INSERT INTO sensor(type, name, room_id) VALUES ('$type', '$name','$room_id')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
@@ -61,6 +61,8 @@ class SensorService implements SensorServiceInterface
 
         $conn = $this->serviceConnect->connect($this->databaseObject);
 
+        //TODO:: try catch exception($e)
+        //TODO:: pas besoin de concaténation lors de l'utilsiation des "" en php.
         $sql = "DELETE FROM sensor WHERE id='".$idSensor."')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -94,7 +96,7 @@ class SensorService implements SensorServiceInterface
      * @return array of SensorInterface|\LogicException
      */
     public function getSensorBy($field, $value){
-        //TODO
+        //TODO:: ??
     }
 
 
