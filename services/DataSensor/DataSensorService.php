@@ -31,7 +31,7 @@ class DataSensorService implements DataSensorServiceInterface
      * @var $serviceConnect DatabaseServiceInterface
      * @var $databaseObject DatabaseObjectInterface
      */
-    public function __construct($serviceConnect, $databaseObject) {
+    public function __construct(DatabaseServiceInterface $serviceConnect, DatabaseObjectInterface $databaseObject) {
         $this->serviceConnect = $serviceConnect;
         $this->databaseObject = $databaseObject;
     }
@@ -43,28 +43,24 @@ class DataSensorService implements DataSensorServiceInterface
      * get the most recent value of a sensor
      * @param string $sensorId
      * @return DataSensorInterface|\LogicException
-     * @todo:: Corriger les erreurs
      */
     public function getLastValue($sensorId) {
 
-        $conn = $this->serviceConnect->connect($this->databaseObject);
+        try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
 
-        $resultats=$connexion->query("SELECT * FROM DATASENSOR WHERE sensor_id='".$sensorId."' AND date = (SELECT MAX(date) FROM DATASENSOR WHERE sensor_id='".$sensorId."') ");
-
-        $resultats->setFetchMode(PDO::FETCH_ASSOC);
-
-        $data = $resultats->fetch();
-
-        $dataSensor = new DataSensorInterface();
-
-        $dataSensor->setId($data['id']);
-        $dataSensor->setSensorId($data['sensor_id']);
-        $dataSensor->setDate($data['date']);
-        $dataSensor->setValue($data['value']);
-
-
-        $resultats->closeCursor();
-
+            $resultats=$conn->query("SELECT * FROM DATASENSOR WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM DATASENSOR WHERE sensor_id='$sensorId') ");
+            $resultats->setFetchMode(PDO::FETCH_ASSOC);
+            $data = $resultats->fetch();
+            $dataSensor = new DataSensorInterface();
+            $dataSensor->setId($data['id']);
+            $dataSensor->setSensorId($data['sensor_id']);
+            $dataSensor->setDate($data['date']);
+            $dataSensor->setValue($data['value']);
+            $resultats->closeCursor();
+        } catch (LogicException $e){
+            throw $e;
+        }
         return $dataSensor;
     }
 
@@ -78,33 +74,31 @@ class DataSensorService implements DataSensorServiceInterface
      * @return array of DataSensorInterface||\LogicException
      * @todo:: Corriger les erreurs
      */
-    public function getValuesBetween($startDate, $endDate, $sensorId) {
+    public function getValuesBetween($sensorId, $startDate, $endDate) {
+        
+        try {
 
-        $conn = $this->serviceConnect->connect($this->databaseObject);
-
-        $resultats=$connexion->query("SELECT * FROM DATASENSOR WHERE sensor_id='".$sensorId."' AND '".$startDate."' <= date <= '".$endDate."'");
-
-        $resultats->setFetchMode(PDO::FETCH_ASSOC);
-
-        $datas = $resultats->fetchAll();
-
-        $return = array();
-
-        foreach ($datas as $data) {
-
-            $dataSensor = new DataSensorInterface();
-            $dataSensor->setId($data['id']);
-            $dataSensor->setSensorId($data['sensor_id']);
-            $dataSensor->setDate($data['date']);
-            $dataSensor->setValue($data['value']);
-
-            array_push($return, $dataSensor);
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+            $resultats=$conn->query("SELECT * FROM DATASENSOR WHERE sensor_id='$sensorId' AND '$startDate' <= date <= '$endDate'");
+            $resultats->setFetchMode(PDO::FETCH_ASSOC);
+            $datas = $resultats->fetchAll();
+            $return = array();
+            
+            foreach ($datas as $data) {
+                $dataSensor = new DataSensorInterface();
+                $dataSensor->setId($data['id']);
+                $dataSensor->setSensorId($data['sensor_id']);
+                $dataSensor->setDate($data['date']);
+                $dataSensor->setValue($data['value']);
+                
+                array_push($return, $dataSensor);
+            }
+            $resultats->closeCursor();
+        
+        } catch (LogicException $e){
+            throw $e;
         }
-
-        $resultats->closeCursor();
-
         return $return;
-
     }
 
 }

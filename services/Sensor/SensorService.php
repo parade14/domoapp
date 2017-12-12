@@ -32,8 +32,7 @@ class SensorService implements SensorServiceInterface
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
      * @var $databaseObject DatabaseObjectInterface*
-     * @TODO: typer les paramètres du constructeur
-     */
+    */
     public function __construct(DatabaseServiceInterface $serviceConnect,DatabaseObjectInterface $databaseObject) {
         $this->serviceConnect = $serviceConnect;
         $this->databaseObject = $databaseObject;
@@ -44,12 +43,28 @@ class SensorService implements SensorServiceInterface
      * @inheritdoc
      */
     public function createSensor($type, $name, $room_id) {
-
-        $conn = $this->serviceConnect->connect($this->databaseObject);
-
-        $sql = "INSERT INTO sensor(type, name, room_id) VALUES ('$type', '$name','$room_id')";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        
+        try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+            $sql = "INSERT INTO sensor(type, name, room_id) VALUES ('$type', '$name','$room_id')";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+          
+            // on récupère l'id qu'on a inséré
+            if ($conn->query($sql) === TRUE) {
+                $last_id = $conn->insert_id;
+                // on construit l'objet inséré
+                $sensorInserted = new SensorInterface();
+                $sensorInserted->setId($last_id);
+                $sensorInserted->setName($name);
+                $sensorInserted->setRoomId($room_id);
+                $sensorInserted->setType($type);
+            }
+            
+        } catch (LogicException $e) {
+            throw $e;
+        }
+        return $sensorInserted;
     }
 
     /**
@@ -58,14 +73,18 @@ class SensorService implements SensorServiceInterface
      * @return boolean|\LogicException
      */
     public function deleteSensor($idSensor) {
+        
+        try {
 
-        $conn = $this->serviceConnect->connect($this->databaseObject);
-
-        //TODO:: try catch exception($e)
-        //TODO:: pas besoin de concaténation lors de l'utilsiation des "" en php.
-        $sql = "DELETE FROM sensor WHERE id='".$idSensor."')";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+            $sql = "DELETE FROM sensor WHERE id='$idSensor')";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            
+        } catch (LogicException $e) {
+            throw $e;
+        }
+        return true;
 
     }
 
@@ -75,17 +94,22 @@ class SensorService implements SensorServiceInterface
      * @return SensorInterface|\LogicException
      */
     public function updateSensor(SensorInterface $sensor){
+        
+        try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
 
-        $conn = $this->serviceConnect->connect($this->databaseObject);
+            $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id)";
 
-        $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id)";
-
-        $stmt = $pdo->prepare($sql);                                  
-        $stmt->bindParam(':type', $sensor->getType(), PDO::PARAM_STR);       
-        $stmt->bindParam(':name', $sensor->getName(), PDO::PARAM_STR);    
-        $stmt->bindParam(':room_id', $sensor->getRoomId(), PDO::PARAM_STR);
-        $stmt->bindParam(':id', $sensor->getId(), PDO::PARAM_INT);   
-        $stmt->execute();
+            $stmt = $conn->prepare($sql);                                  
+            $stmt->bindParam(':type', $sensor->getType(), PDO::PARAM_STR);       
+            $stmt->bindParam(':name', $sensor->getName(), PDO::PARAM_STR);    
+            $stmt->bindParam(':room_id', $sensor->getRoomId(), PDO::PARAM_STR);
+            $stmt->bindParam(':id', $sensor->getId(), PDO::PARAM_INT);   
+            $stmt->execute();
+        } catch (LogicException $e) {
+            throw $e;
+        }
+        return $sensor;
 
     }
     
