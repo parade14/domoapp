@@ -11,7 +11,7 @@ namespace Services\Session;
 
 
 
-use Services\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
 use Services\User\UserInterface;
 
 interface SessionManagerInterface extends ServiceInterface

@@ -6,10 +6,11 @@
 
 namespace Services\DataSensor;
 
+use Entities\DataSensor;
 
 interface DataSensorInterface
 {
-
+ 
     /**
      * @return int
      */

@@ -54,6 +54,7 @@ body
     font-weight: 300;
 	margin: 0 auto;
 	padding:0;
+
 }
 
 h2, p
@@ -92,6 +93,7 @@ nav ul
 	justify-content: flex-end;
 	align-items: center;
 	letter-spacing: 1px;
+	align-items: center;
 }
 
 nav ul li

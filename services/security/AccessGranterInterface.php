@@ -9,9 +9,10 @@
 namespace Services\Security;
 
 
+use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
 
-interface AccessGranterInterface
+interface AccessGranterInterface extends ServiceInterface
 {
     /**
      * @param $role string

@@ -6,6 +6,8 @@
 
 namespace Services\database;
 
+use PDO;
+use PDOException;
 
 class DatabaseService implements DatabaseServiceInterface
 {

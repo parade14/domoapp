@@ -7,7 +7,9 @@
 namespace Services\Database;
 
 
-interface DatabaseServiceInterface
+use Kernel\ServiceHandler\ServiceInterface;
+
+interface DatabaseServiceInterface extends ServiceInterface
 {
     /**
      * try to connect to a database.
