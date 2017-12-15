@@ -3,16 +3,16 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
-        <link rel="stylesheet" href="../design/css/user-home-style.css" />
+        <link rel="stylesheet" href="../../design/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../design/css/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../design/css/user-home-style.css" />
         <title>User Home</title>
     </head>
 
     <body>
         <div class="header">
             <div id="logo">
-                <img src="../design/images/logo_nascop.png" alt="Logo Nascop" />
+                <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
             </div>
             <nav>
                 <ul>

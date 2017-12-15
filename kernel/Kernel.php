@@ -8,9 +8,14 @@
 
 namespace services\kernel;
 
+use Kernel\ServiceHandler\ServiceHandler;
+
 final class Kernel
 {
-    public function init(){}
+    public static function init(){
+        $ServiceHandler = new ServiceHandler();
+
+    }
 
 
 
