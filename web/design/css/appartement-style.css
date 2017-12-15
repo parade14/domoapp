@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(https://fonts.googleapis.com/css?family=Muli);
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#conteneur
+{
+    margin: 100px auto 0;
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+}
+
+
+body {
+    font-family: 'Maven Pro', sans-serif;
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.app {
+    width: 40vh;
+    height: 60%;
+}
+
+.panel {
+    height: 100%;
+    padding: 2vh 0;
+    justify-content: space-between;
+    background-color:#383B42;
+    box-shadow:-4px 0px 10px rgba(14, 14, 14, 0.48) inset;
+    width:85%;
+    left:0;
+    top:0;
+}
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+.nav li {
+    padding: 1vh 4vw 1vh 2vw;
+    cursor: pointer;
+    display: flex;
+
+    flex-direction: row;
+    color: grey;
+    align-items: center;
+}
+
+
+.nav li:hover {
+    background-color: #176d76;
+    color: white;
+}
+
+.line {
+    border-top: 1px solid lightgrey;
+    width: 50%;
+    margin: 1vh 2vw;
+}
+
+.fa-home {
+    color:grey;
+    font-size: 2em;
+    margin-right: 0.5em;
+}
+
+.small {
+    font-size: 1.5em;
+}
+
+
+.add {
+    text-align: center;
+    background-color:orange;
+    padding: 10px 40px;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 1vh 2vw;
+
+ }
+
+.fa-home {
+    color: white;
+}
+
+h3 {
+    font-size:17px;
+    margin:0;
+    line-height: 40px;
+    color: #555;
+    cursor:pointer;
+    position:relative;
+}
+
+main {
+    flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+}
+
+.larg {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+.larg div {
+    background-color: #F7F7F7;
+    border: 1px solid #E2E2E2;
+    padding: 0 20px;
+    margin: 15px 0;
+}
+.larg div:hover {
+    background-color:#fafafa;
+}
+
+h3 span {
+    font-family: 'entypo';
+    font-size: 19px;
+    position: absolute;
+    right: 0;
+    transition: all .5s;
+}
+.larg div.close {
+    -webkit-transform:rotate(180deg);
+    transition:all .5s;
+}
