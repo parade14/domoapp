@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styleAccueilutilisateur.css">
+    <link rel="stylesheet" href="../../design/css/styleAccueilutilisateur.css">
     <title>Accueil Utilisateur</title>
 </head>
 <body>
