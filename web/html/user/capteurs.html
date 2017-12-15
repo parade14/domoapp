@@ -4,6 +4,10 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="../../design/css/style_capteurs.css">
+        <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
         <title>Mes capteurs</title>
     </head>
 
@@ -33,15 +37,16 @@
                 <legend class="titre">Appartement 1</legend>
                 <p class="AdresseAppart"> <strong>Adresse:</strong> 15 rue des Guccigang</p>
 
-                <div class="capteur">
+                <div id="capteur1">
                     <p class="piece">Chambre</p>
-                    <i class="fa fa-thermometer-empty" aria-hidden="true"></i> <!-- Insertion d'un icone de font awesome-->
+                    <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i> <!-- Insertion d'un icone de font awesome-->
                     <p class="valeur">19°C</p>
                 </div>
 
-                <div class="capteur">
+
+                <div id="capteur2">
                     <p class="piece">Salon</p>
-                    <i class="fa fa-thermometer-empty" aria-hidden="true"></i> <!-- Insertion d'un icone de font awesome-->
+                    <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i> <!-- Insertion d'un icone de font awesome-->
                     <p class="valeur">20°C</p>
                 </div>
 
