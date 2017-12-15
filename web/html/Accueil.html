@@ -4,20 +4,36 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../design/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../design/css/home-style.css" />
 		<link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<title> Nascop </title>
 	</head>
 
 
 	<body>
+		<h3 class="connect"> CONNEXION </h3>
+
+		<div class="login hidden">
+			<div class="login-header">
+				<h2 class="login-header-text">Log in </h2>
+				<i class="fa fa-times login-cross"></i>
+			</div>
+
+			<form method="POST" action="user-home.html" class="login-container">
+				<p><input type="email" placeholder="Email"></p>
+				<p><input type="password" placeholder="Password"></p>
+				<p><input type="submit" value="Log in"></p>
+			</form>
+		</div>
+
 		<div class="background"></div>
 		<div id="home_page">
 			<header id="head_page">
 				<div class="menu">
 					<div id="logo">
-						<img src="../images/logo_nascop.png" alt="Logo Nascop" />
+						<img src="../design/images/logo_nascop.png" alt="Logo Nascop" />
 					</div>
 
 					<nav>
@@ -26,7 +42,7 @@
 							<li><a class="menu_effect" href="#"> Services </a> </li>
 							<li><a class="menu_effect" href="#"> Produits </a> </li>
 							<li><a class="menu_effect" href="#"> Contact </a> </li>
-							<li><a class="menu_effect" href="#"> Connexion </a> </li>
+							<li><a class="menu_effect btn-connect"> Connexion </a> </li>
 							<li><a class="menu_effect" href="#"> Langue </a> </li>
 						</ul>
 					</nav>
@@ -42,12 +58,15 @@
 
 			</header>
 				<section>
-					<article class="nascop_description articles">
-						<h2> Qui sommes-nous ?  </h2>
+					<div id="wrap-description">
+						<article class="nascop_description articles">
+							<h2> Qui sommes-nous ?  </h2>
 
-						<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec sagittis massa. Nulla facilisi. Cras id arcu lorem, et semper purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel enim mi, in lobortis sem. Vestibulum luctus elit eu libero ultrices id fermentum sem sagittis. Nulla imperdiet mauris sed sapien dignissim id aliquam est aliquam. Maecenas non odio ipsum, a elementum nisi. Mauris non erat eu erat placerat convallis. Mauris in pretium urna. Cras laoreet molestie odio, consequat consequat velit commodo eu. Integer vitae lectus ac nunc posuere pellentesque non at eros. Suspendisse non lectus lorem.</p>
+							<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec sagittis massa. Nulla facilisi. Cras id arcu lorem, et semper purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel enim mi, in lobortis sem. Vestibulum luctus elit eu libero ultrices id fermentum sem sagittis. Nulla imperdiet mauris sed sapien dignissim id aliquam est aliquam. Maecenas non odio ipsum, a elementum nisi. Mauris non erat eu erat placerat convallis. Mauris in pretium urna. Cras laoreet molestie odio, consequat consequat velit commodo eu. Integer vitae lectus ac nunc posuere pellentesque non at eros. Suspendisse non lectus lorem.</p>
 
-					</article>
+						</article>
+
+					</div>
 
 					<article class="offer_description articles">
 
@@ -89,30 +108,33 @@
 				</section>
 
 			<footer>
+				<div class="contact_form">
 
-				<form id="form">
-					<ul class="form-wrapper">
-						<li>
-							<i class="fa fa-user form-icon"></i>
-			  				<input id="name" type="text" placeholder="NAME">
-			  			</li>
-			  			<li>
-			  				<i class="ionicons ion-at"></i>
-			  				<input id="email" type="text" placeholder="E-MAIL">
-			  			</li>
-			  			<li>
-			  				<i class="ionicons ion-ios-paperplane" font-size="90px;"></i>
-							<input type="text" placeholder="Subject" />
-						</li>
-						<li>
-							<img src="../images/message-icon.svg" alt="message icon">
-			  				<textarea id="message" type="text" placeholder="MESSAGE"></textarea>
-			  			</li>
-			  			<li>
-	 						<input id="submit" type="submit" value="Envoyer">
-	 					</li>
-	 				</ul>
-				</form>
+					<form class="form-contact">
+						<ul class="form-wrapper">
+							<li class="name">
+								<i class="fa fa-user form-icon form_icons"></i>
+				  				<input id="name" type="text" class="form-control" placeholder="NAME">
+				  			</li>
+				  			<li class="email">
+				  				<i class="ionicons ion-at form_icons"></i>
+				  				<input id="email" type="text" class="form-control" placeholder="E-MAIL">
+				  			</li>
+				  			<li class="subject">
+				  				<i class="ionicons ion-ios-paperplane form_icons"></i>
+								<input type="text" class="form-control" placeholder="Subject" />
+							</li>
+							<li class="content">
+								<i class="ionicons ion-android-textsms form_icons"></i>
+				  				<textarea id="message" type="text" class="form-control" placeholder="MESSAGE"></textarea>
+				  			</li>
+				  			<li>
+		 						<input class="submit-btn" id="submit" type="submit" value="Envoyer">
+		 					</li>
+		 				</ul>
+					</form>
+
+				</div>
 
 				<div id="coordonnees">
 					<p> Nascop </br> Région Parisienne </br> +33 6 43 52 09 38 </br> mail@nascop.com
@@ -123,6 +145,8 @@
 
 			</footer>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		<script src="../javascript/login-user.js"></script>
 	</body>
 
 </html>
