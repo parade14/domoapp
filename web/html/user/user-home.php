@@ -16,27 +16,9 @@
     </head>
 
     <body>
-       <div class="header">
-            <div id="logo">
-                <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
-            </div>
-            <nav>
-                <ul>
-                    <div id="headerLeftSide">
-                        <li><a class="menu_effect" href="#"> Accueil </a> </li>
-                        <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                        <li><a class="menu_effect" href="../modifierAppartement.html"> Appartements </a> </li>
-                        <li><a class="menu_effect" href="#"> Capteurs </a> </li>
-                    </div>
 
-                    <div id="headerRightSide">
-                        <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
-                        <li><a class="menu_effect" href="#"> Mon profil </a> </li>
-                        <li><a class="menu_effect" href="#"> Langue </a> </li>
-                    </div>
-                </ul>
-            </nav>
-        </div>
+
+        <?php include('templates/header.php'); ?>
 
        
         <section>
