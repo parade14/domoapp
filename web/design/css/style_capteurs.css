@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700");
+@import url("fonts.css");
+
+/* CSS général à la page*/
+
+body {
+    margin:0;
+    background-color: #E0F7FA;
+}
+
+/* CSS pour le menu*/
+
+#menu {
+    background-color: #0097A7; /*Couleur de fond*/
+    width: 20%; /*Définie la largeur de l'élement*/
+    min-height: 100%; /*définie la hauteur d'une boite*/
+    flex-grow:0.45; /*facteur de grossissement d'un élément flexible*/
+    justify-content: flex-end; /*indique la façon dont l'espace doit être réparti entre et autour des éléments selon l'axe principal du conteneur*/
+
+    color: white; /*définie la couleur*/
+    text-align: left;
+
+    float: left;
+    margin-right: 3%;
+    padding: 0 0 0 0;
+
+    display: flex;
+    position: fixed;
+}
+
+#menu ul li {
+    display: block;
+    list-style-type: none;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    font: 10px 'opensans-bold', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+}
+
+#menu a {
+    color: #E0F7FA;
+    text-decoration: none;
+}
+
+.menu_effect
+{
+    transition: 0.3s ease;
+    color: #ffffff;
+    text-decoration: none;
+    border-top: 2px solid #4DD0E1;
+    border-bottom: 2px solid #4DD0E1;
+    padding: 7px 0;
+    margin: 0 15px;
+}
+
+.menu_effect:hover
+{
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 3px 0;
+}
+
+/* CSS pour le contenue*/
+
+#contenu {
+    display: block;
+    float: right;
+
+}
+
+h1 {
+    font: 25px 'opensans-bold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+fieldset {
+    border: 2px solid #0097A7;
+    font: 13px 'opensans-bold', sans-serif;
+
+}
+
+.titre {
+    font: 15px 'opensans-bold', sans-serif;
+    text-transform: uppercase;
+}
+
+.piece {
+    font: 15px 'opensans-bold', sans-serif;
+    text-transform: capitalize;
+}
+
+.valeur{
+    display: flex;
+    position: left;
+}
