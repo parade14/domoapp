@@ -29,16 +29,30 @@ final class ServiceHandler implements ServiceHandlerInterface
     protected $loaded = array();
 
 
-
-
-
+    /**
+     * @param $var
+     * @param string $key
+     * @return $this|ServiceHandlerInterface
+     * @throws \LogicException
+     */
     public function addService($var, $key="")
     {
         if(is_array($var)) foreach($var as $key=>$value) $this->addService($value, $key);
-
-        else{
-            //TODO : to be continued ...
+        elseif(is_object($var)){
+            if(!key_exists($var, $this->servicesReferencedByClass)){
+                $this->servicesReferencedByClass[get_class($var)] = $key;
+            }
+            else{
+                throw new \LogicException(sprintf("Class %s as been already registred", $var));
+            }
+            if(!key_exists($key, $this->servicesReferencedByName)){
+                $this->servicesReferencedByName[$key] = get_class($var);
+            }
+            else{
+                throw new \LogicException(sprintf("Key %s already exists in dependency injection container", $key));
+            }
         }
+        return $this;
     }
 
     /**
@@ -56,9 +70,6 @@ final class ServiceHandler implements ServiceHandlerInterface
         else throw new \LogicException("Unknow service $serviceName");
 
 
-
-
-        Throw new \LogicException("unknow sevice $serviceName");
     }
 
     public function hasService($serviceName)
