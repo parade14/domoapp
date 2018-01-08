@@ -28,25 +28,21 @@
         </div>
 
         <section>
-            <article>
-                <div class="informations-wrapper">
-                    <h2> <span>Actualités</span></h2>
+                <fieldset class="informations-wrapper">
+                    <legend>Actualités</legend>
                     <ul class="informations-text">
                         <li>Système d'alarme désactivé</li>
                         <li>Nascop : nos offres évoluent, soutien de proximité avec notre nouveau chat</li>
                     </ul>
-                </div>
-            </article>
+                </fieldset>
 
-            <article>
-                <div class="informations-wrapper">
-                    <h2> <span> Dernières consommations </span> </h2>
+                <fieldset class="informations-wrapper">
+                    <legend>Dernières consommations</legend>
                     <ul class="informations-text">
                         <li>Température moyennde la maison : 18°C</li>
                         <li>Attention ! Température de la chambre : 20°C</li>
                     </ul>
-                </div>
-            </article>
+                </fieldset>
         </section>
 
 
