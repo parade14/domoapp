@@ -1,0 +1,26 @@
+.blocStat{
+
+	border-radius: 10px;
+	width: 25%;
+	border : 1px solid black;
+	text-align: center;
+	margin:20px;
+	background-color: white;
+}
+
+.blocStat img {
+	width : 50%;
+
+}
+
+.blocs {
+	display : flex;
+}
+
+.blocs select {
+	margin : 10px;
+}
+
+.value {
+	font-size: 50px;
+}
