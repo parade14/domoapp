@@ -3,6 +3,11 @@ html{
     height: 500px;
 }
 
+body{
+    background: url(../../images/Backgroundswagg.jpg) center;
+    blur: 8px;
+}
+
 
 
 .form{
