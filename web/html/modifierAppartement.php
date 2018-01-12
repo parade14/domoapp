@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+    <html>
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../design/css/user-home-style.css" />
         <link rel="stylesheet" href="../design/css/appartement-style.css" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
     </head>
 
@@ -33,35 +34,47 @@
 
             <div class="app row">
                 <div class="panel column">
-                    <div class="lists">
                         <ul class="nav column">
-                            <li><div class="row show_hide"><i class="fa fa-home"></i>Appartement 1</div></li>
+                            <li><div class="row show_hide"><i class="fa fa-home"></i>Mes Appartements</div></li>
                         </ul>
                         <div class="line"></div>
-                        <div class="add row"><i class="material-icons small">add_circle_outline</i>Add</div>
-                    </div>
+                        <div class="appartment-list">
+                            <h3 class="appartment form_1"> <span> Appartement 1 </span></h3>
+                        </div>
+                        <div class="add row"><i class="material-icons small">add_circle_outline</i>Ajouter</div>
                 </div>
             </div>
 
             <main>
-                <article class="larg">
-                    <div>
-                        <h3>Appartement 1 <span class="entypo-down-open"></span></h3>
-
-                        <div>
-                            <form class="toggleDiv" action="" method="post">
-                                <label>Adresse </label><input type="text" name="adresse" />
-                                </br>
-                                <label>Superficie </label><input type="text" name="superficie" />
-                                </br>
-                                <label>Nombre d'habitants </label><input type="text" name="nbHabitants" />
-                                </br>
-                                <input type="submit" value="Valider"/>
-                            </form>
+                <div class="larg">
+                    <div class="larg-w form_1">
+                        <div class="angle-wrap">
+                            <h3>Appartement 1 </h3>
+                            <i class="fa fa-angle-left form_1"></i>
                         </div>
 
+                            <form class="toggleDiv form_1" action="" method="post">
+                                <div class="input">
+                                    <label>Adresse </label>
+                                    <input class="text-field" type="text" name="adresse" />
+                                </div>
+
+                                <div class="input">
+                                    <label>Superficie </label>
+                                    <input class="text-field" type="text" name="superficie" />
+                                </div>
+
+                                <div class="input">
+                                    <label>Nombre d'habitants </label>
+                                    <input class="text-field" type="text" name="nbHabitants" />
+                                </div>
+
+                                <input type="submit" class="submit" value="Valider"/>
+                            </form>
+                        <div id="dinamic-fields"></div>
+
                     </div>
-                </article>
+                </div>
             </main>
 
         </div>
