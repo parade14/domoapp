@@ -251,30 +251,3 @@ div.hidden {
     font-family: inherit;
     font-size: 0.95em;
 }
-
-.login input[type="email"],
-.login input[type="password"] {
-    background: #fff;
-    border-color: #bbb;
-    color: #555;
-}
-
-.login input[type="email"]:focus,
-.login input[type="password"]:focus {
-    border-color: #888;
-}
-
-.login input[type="submit"] {
-    background: #26b7be;
-    border-color: transparent;
-    color: #fff;
-    cursor: pointer;
-}
-
-.login input[type="submit"]:hover {
-    background: #007284;
-}
-
-.login input[type="submit"]:focus {
-    border-color: #05a;
-}
