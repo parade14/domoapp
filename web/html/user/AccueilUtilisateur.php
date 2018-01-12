@@ -6,6 +6,7 @@
     <title>Accueil Utilisateur</title>
 </head>
 <body>
+    <img src="../../../images/Backgroundswagg.jpg">
 <form>
     <div class="form">
         <fieldset>
