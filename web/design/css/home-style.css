@@ -56,6 +56,10 @@ body
 	padding:0;
 }
 
+section {
+    height: 200%;
+}
+
 h2, p
 {
 	margin: 0 auto;
@@ -72,7 +76,7 @@ h2, p
 	background-color: #006064;
 	z-index:2;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-	padding: 1.8rem;
+	padding: 1.6rem;
 }
 
 
@@ -114,6 +118,10 @@ nav ul li a
 	position: fixed;
 	top: 20px;
 	left: 140px;
+}
+
+section {
+    height:calc(200% - 1.6rem);
 }
 
 .articles

@@ -40,40 +40,30 @@ body {
 .panel {
     height: 100%;
     padding: 2vh 0;
-    justify-content: space-between;
     background-color:#383B42;
     box-shadow:-4px 0px 10px rgba(14, 14, 14, 0.48) inset;
-    width:85%;
-    left:0;
-    top:0;
 }
 
 .nav {
     list-style-type: none;
     padding: 0;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-around;
+    background-color: #176d76;
 }
 
 .nav li {
-    padding: 1vh 4vw 1vh 2vw;
     cursor: pointer;
     display: flex;
 
     flex-direction: row;
-    color: grey;
-    align-items: center;
-}
-
-
-.nav li:hover {
-    background-color: #176d76;
     color: white;
+    align-items: center;
 }
 
 .line {
     border-top: 1px solid lightgrey;
-    width: 50%;
+    width: 72%;
     margin: 1vh 2vw;
 }
 
@@ -90,7 +80,7 @@ body {
 
 .add {
     text-align: center;
-    background-color:orange;
+    background-color:#2fcece;
     padding: 10px 40px;
     border-radius: 20px;
     color: white;
@@ -114,35 +104,91 @@ h3 {
     position:relative;
 }
 
+.appartment {
+    display: flex;
+    justify-content: center;
+    color: #3f6c82;
+}
+
+.appartment:hover {
+    background-color: #176d76;
+    color: white;
+}
+
+.appartment span {
+
+}
+
 main {
     flex:1;
     -webkit-flex:1;
     -ms-flex:1;
 }
 
-.larg {
+.larg-w {
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+
+}
+
+.larg .larg-w {
+    background-color: #F7F7F7;
+    border: 1px solid #E2E2E2;
     max-width: 960px;
     margin: 30px auto;
     padding: 0 30px;
+
 }
-.larg div {
-    background-color: #F7F7F7;
-    border: 1px solid #E2E2E2;
-    padding: 0 20px;
-    margin: 15px 0;
-}
-.larg div:hover {
+.larg .larg-w:hover {
     background-color:#fafafa;
 }
 
-h3 span {
+.angle-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fa {
+    font-size: 1.8em !important;
+}
+
+.angle-wrap i {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+}
+
+.appartment-header span {
     font-family: 'entypo';
     font-size: 19px;
     position: absolute;
     right: 0;
     transition: all .5s;
 }
-.larg div.close {
-    -webkit-transform:rotate(180deg);
-    transition:all .5s;
+
+
+.toggleDiv {
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+
+}
+
+.toggleDiv .text-field {
+    margin: 5px;
+    width: 50%;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.submit {
+    width: 20%;
 }

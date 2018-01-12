@@ -13,8 +13,6 @@
 
 
 	<body>
-		<h3 class="connect"> CONNEXION </h3>
-
 		<div class="login hidden">
 			<div class="login-header">
 				<h2 class="login-header-text">Log in </h2>
@@ -29,7 +27,6 @@
 		</div>
 
 		<div class="background"></div>
-		<div id="home_page">
 			<header id="head_page">
 				<div class="menu">
 					<div id="logo">
@@ -134,19 +131,16 @@
 				<div id="coordonnees">
 					<p> Nascop </br> Région Parisienne </br> +33 6 43 52 09 38 </br> mail@nascop.com
 					</p>
-<<<<<<< HEAD
 
 				<div class="bottom-bar">
 					Tous droits Réservés © 2017 | Nascop
-=======
 				</div>
 				<div id="copyright">
 					<p> Tous droits réservés 2017 - © NASCOP - Solution Domotique </p>
->>>>>>> 904125058c9e8f5974edbb4f79ec2a5bbd081ac9
 				</div>
 
 			</footer>
-		</div>
+
 		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 		<script src="../javascript/login-user.js"></script>
 	</body>
