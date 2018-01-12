@@ -3,11 +3,11 @@
     <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../design/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../design/css/ionicons/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../design/css/user-home-style.css" />
-        <link rel="stylesheet" href="../design/css/appartement-style.css" />
+        <link rel="stylesheet" href="../../design/css/user-home-style.css" />
+        <link rel="stylesheet" href="../../design/css/appartement-style.css" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
     </head>
@@ -15,7 +15,7 @@
     <body>
         <div class="header">
             <div id="logo">
-                <img src="../design/images/logo_nascop.png" alt="Logo Nascop" />
+                <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
             </div>
             <nav>
                 <ul>
@@ -81,7 +81,7 @@
 
 
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <script src="../javascript/apartement.js"></script>
+        <script src="../../javascript/apartement.js"></script>
     </body>
 
 </html>

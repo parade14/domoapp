@@ -10,6 +10,24 @@
     </head>
 
     <body>
+
+    <div class="profile hidden">
+        <div class="profile-header">
+            <h2 class="profile-header-text">Mon profil </h2>
+            <i class="fa fa-times login-cross"></i>
+        </div>
+        <div class="profile-container">
+            <p>Nom : Durant</p>
+            <p>Prénom : Alphonse</p>
+            <p>Téléphone : 01 62 52 98 15</p>
+            <p>Mail : alphonse.durant@gmail.com</p>
+        </div>
+
+        <p class="modifier">Modifier mon profil</p>
+    </div>
+
+
+
         <div class="header">
             <div id="logo">
                 <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
@@ -18,7 +36,7 @@
                 <ul>
                     <li><a class="menu_effect" href="#"> Accueil </a> </li>
                     <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                    <li><a class="menu_effect" href="../modifierAppartement.php"> Appartements </a> </li>
+                    <li><a class="menu_effect" href="modifierAppartement.php"> Appartements </a> </li>
                     <li><a class="menu_effect" href="capteurs.php"> Capteurs </a> </li>
                     <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
                     <li><a class="menu_effect" href="#"> Mon profil </a> </li>
