@@ -1,0 +1,90 @@
+
+<html>
+<head><link rel="stylesheet" type="text/css" href="https://educ.isep.fr/moodle/theme/standard/styles.php" />
+<link rel="stylesheet" type="text/css" href="https://educ.isep.fr/moodle/theme/ingenuous/styles.php" />
+<?php include('php.php');?>
+<script src="java.js" type="text/javascript"></script>
+
+	<meta charset="utf-8">
+	<title>Ajout d'un président</title>
+
+	</head>
+	<body>
+
+
+
+		<!-- Question 2 -->
+
+
+		<form method="post" action="traitement"><!-- Les valuers de method et action sont à compléter -->
+
+
+				 <label for="Login"> Login :  </label>
+				 <input type="text" name="Login" required="" pattern=".{6,}" required title=" 5 caractères minimum"/></br>
+
+				 <label for="password"> password :  </label>
+				 <input type="text" name="assword" required=""/></br>
+
+				 <label for="password (repeat)"> password (repeat) :  </label>
+				 <input type="text" name="password (repeat)" required=""/></br>
+
+				 <label for="Age"> Age:  </label>
+				 <input type="text" name="Age" required=""/></br>				 
+
+				</br>
+				</br>
+				</br>
+				</br>
+
+
+				<!--question 5 -->
+
+
+			<fieldset>
+				 <legend>Utilisateur</legend>
+
+				 <label for="Login"> Login :  </label>
+				 <input type="text" name="Login" required="" /></br>
+
+				 <label for="Password"> Password :  </label>
+				 <input type="text" name="Password" required=""/></br>
+
+			</fieldset>
+
+
+			<fieldset>
+
+				<legend>Président</legend>
+
+				 <label for="Nom"> Nom du Président :  </label>
+				 <input type="text" name="Nom" required=""/></br>
+
+				 <label for="Prénom"> Prénom du Président :  </label>
+				 <input type="text" name="Prénom" required=""/></br>
+
+				 <label for="Début"> Année Début :  </label>
+				 <input type="text" name="Début" required=""/></br>
+
+				 <label for="Fin"> Année Fin :  </label>
+				 <input type="text" name="Fin" required=""/></br>
+
+
+				 <label for="Parti Politique"> Parti Politique : </label>
+				 <select name="Parti Politique" id="Parti Politique">
+				 	<option value="UNR"> UNR </option>
+				 	<option value="UDR"> UDR </option>
+				 	<option value="FNRI"> FNRI </option>
+				 	<option value="PS"> PS </option>
+				 	<option value="RPR"> RPR </option>
+				 	<option value="UMP"> UMP </option>
+				 	<option value="LaREM"> LaREM </option>
+				 	<option value="APP"> APP </option>
+
+				 </select>
+		
+				</select><br>
+			</fieldset>
+			<input type="submit">
+		</form>
+	</body>
+</html>
