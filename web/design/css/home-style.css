@@ -371,6 +371,14 @@ div.hidden {
     background-color: #f5f5f5;
 }
 
+.contact::before {
+    display: block;
+    content: " ";
+    margin-top: -90px;
+    height: 90px;
+    visibility: hidden;
+    pointer-events: none;
+}
 /* COLUMNS */
 
 .col {
