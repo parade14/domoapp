@@ -18,7 +18,7 @@
                 <ul>
                     <li><a class="menu_effect" href="#"> Accueil </a> </li>
                     <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                    <li><a class="menu_effect" href="../modifierAppartement.php"> Appartements </a> </li>
+                    <li><a class="menu_effect" href="modifierAppartement.php"> Appartements </a> </li>
                     <li><a class="menu_effect" href="capteurs.php"> Capteurs </a> </li>
                     <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
                     <li><a class="menu_effect" href="#"> Mon profil </a> </li>
