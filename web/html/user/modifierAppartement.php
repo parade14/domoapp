@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    require 'appartementController.php';
+?>
 
     <html>
     <head>
@@ -39,41 +42,54 @@
                         </ul>
                         <div class="line"></div>
                         <div class="appartment-list">
-                            <h3 class="appartment form_1"> <span> Appartement 1 </span></h3>
+                        <?php    
+                            foreach($accomodations as $item) {
+                            echo '
+                            <h3 class="appartment form_'.$item->getId().'"> 
+                                <span> Appartement '.$item->getId().' </span>
+                            </h3>';
+                            }?>
                         </div>
                         <div class="add row"><i class="material-icons small">add_circle_outline</i>Ajouter</div>
                 </div>
             </div>
 
             <main>
-                <div class="larg">
-                    <div class="larg-w form_1">
+                <div class="larg" id="containerAccommodations">
+                    <?php    
+                    foreach($accomodations as $item) {
+                    echo '
+                    <div class="larg-w form_'.$item->getId().'">
+                    
                         <div class="angle-wrap">
-                            <h3>Appartement 1 </h3>
-                            <i class="fa fa-angle-left form_1"></i>
+                            <h3>Appartement '.$item->getId().' </h3>
+                            <i class="fa fa-angle-left form_'.$item->getId().'"></i>
                         </div>
 
-                            <form class="toggleDiv form_1" action="" method="post">
+                            <form class="toggleDiv form_'.$item->getId().'" action="insertAppartement.php" method="POST">
+                                
+                               <input type="hidden" name="id" value="'.$item->getId().'">
+                                
                                 <div class="input">
                                     <label>Adresse </label>
-                                    <input class="text-field" type="text" name="adresse" />
+                                    <input class="text-field" type="text" name="adresse" value="'.$item->getStreetNumber().' '.$item->getStreet().'" />
                                 </div>
 
                                 <div class="input">
                                     <label>Superficie </label>
-                                    <input class="text-field" type="text" name="superficie" />
+                                    <input class="text-field" type="text" name="superficie" value="'.$item->getArea().'"  />
                                 </div>
 
                                 <div class="input">
-                                    <label>Nombre d'habitants </label>
-                                    <input class="text-field" type="text" name="nbHabitants" />
+                                    <label>Nombre d\'habitants </label>
+                                    <input class="text-field" type="text" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
                                 </div>
 
                                 <input type="submit" class="submit" value="Valider"/>
                             </form>
                         <div id="dinamic-fields"></div>
-
-                    </div>
+                    </div>';
+                    }?> 
                 </div>
             </main>
 

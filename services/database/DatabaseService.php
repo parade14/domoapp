@@ -4,10 +4,11 @@
  * Date: 27/11/2017
  */
 
-namespace Services\database;
+//namespace Services\Database;
 
-use PDO;
-use PDOException;
+//use PDO;
+//use PDOException;
+require 'DatabaseServiceInterface.php';
 
 class DatabaseService implements DatabaseServiceInterface
 {

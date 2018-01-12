@@ -4,10 +4,15 @@
  * Date: 27/11/2017
  */
 
-namespace Services\DataSensor;
+//namespace Services\DataSensor;
 
-use Services\database\DatabaseServiceInterface;
-use Services\database\DatabaseObjectInterface;
+//use Services\database\DatabaseServiceInterface;
+//use Services\database\DatabaseObjectInterface;
+require "/opt/lampp/htdocs/eleves/domoapp/services/DataSensor/DataSensorServiceInterface.php";
+require "/opt/lampp/htdocs/eleves/domoapp/services/DataSensor/DataSensorInterface.php";
+require "/opt/lampp/htdocs/eleves/domoapp/entities/DataSensor.php";
+
+
 
 class DataSensorService implements DataSensorServiceInterface
 {
@@ -49,13 +54,13 @@ class DataSensorService implements DataSensorServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM DATASENSOR WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM DATASENSOR WHERE sensor_id='$sensorId') ");
+            $resultats=$conn->query("SELECT * FROM DataSensor WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM DataSensor WHERE sensor_id='$sensorId') ");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $data = $resultats->fetch();
-            $dataSensor = new DataSensorInterface();
+            $dataSensor = new DataSensor();
             $dataSensor->setId($data['id']);
             $dataSensor->setSensorId($data['sensor_id']);
-            $dataSensor->setDate($data['date']);
+            $dataSensor->setDate(new DateTime($data['date']));
             $dataSensor->setValue($data['value']);
             $resultats->closeCursor();
         } catch (LogicException $e){
@@ -78,7 +83,7 @@ class DataSensorService implements DataSensorServiceInterface
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $resultats=$conn->query("SELECT * FROM DATASENSOR WHERE sensor_id='$sensorId' AND '$startDate' <= date <= '$endDate'");
+            $resultats=$conn->query("SELECT * FROM DataSensor WHERE sensor_id='$sensorId' AND '$startDate' <= date <= '$endDate'");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
             $return = array();
@@ -87,7 +92,7 @@ class DataSensorService implements DataSensorServiceInterface
                 $dataSensor = new DataSensorInterface();
                 $dataSensor->setId($data['id']);
                 $dataSensor->setSensorId($data['sensor_id']);
-                $dataSensor->setDate($data['date']);
+                $dataSensor->setDate(new DateTime($data['date']));
                 $dataSensor->setValue($data['value']);
                 
                 array_push($return, $dataSensor);

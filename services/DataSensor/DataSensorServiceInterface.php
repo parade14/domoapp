@@ -4,12 +4,12 @@
  * Date: 27/11/2017
  */
 
-namespace Services\DataSensor;
+//namespace Services\DataSensor;
 
 
 use Kernel\ServiceHandler\ServiceInterface;
 
-interface DataSensorServiceInterface extends ServiceInterface
+interface DataSensorServiceInterface //extends ServiceInterface
 {
     /**
      * get the most recent value of a sensor
