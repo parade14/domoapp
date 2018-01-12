@@ -18,7 +18,7 @@ $('.entypo-down-open').toggle(function() {
 
 
 
-var Count = 1;
+var Count = $("#containerAccommodations > div").length;
 
 
 $(".appartment-list, div.larg-w.form_1").on("click", ".appartment, div.angle-wrap", function(){

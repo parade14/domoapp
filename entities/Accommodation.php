@@ -4,7 +4,7 @@
  * Date: 20/11/2017
  */
 
-namespace Entities;
+//namespace Entities;
 
 
 class Accommodation
@@ -168,7 +168,7 @@ class Accommodation
      */
     public function getInhabitantNumber()
     {
-        return $this->postalCode;
+        return $this->inhabitantNumber;
     }
 
     /**

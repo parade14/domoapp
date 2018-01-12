@@ -4,20 +4,20 @@
  * Date: 21/11/2017
  */
 
-namespace Services\Accommodation;
+//namespace Services\Accommodation;
 
 
 
-use Kernel\ServiceHandler\ServiceInterface;
+//use Kernel\ServiceHandler\ServiceInterface;
 
-interface AccommodationServiceInterface extends ServiceInterface
+interface AccommodationServiceInterface //extends ServiceInterface
 {
     /**
      * Add an accomodation in database
      * @param $accommodation AccommodationInterface
      * @return boolean|\LogicException
      */
-    public function createAccommodation(AccommodationInterface $accommodation);
+    public function createAccommodation(Accommodation $accommodation);
 
     /**
      * Delete an accomodation in database
@@ -39,6 +39,8 @@ interface AccommodationServiceInterface extends ServiceInterface
      * @return AccommodationInterface|\LogicException
      */
     public function getAccommodationById($idAccommodation);
+    
+    public function getAccommodationByUserId($idUser);
 
 
 
