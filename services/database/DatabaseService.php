@@ -4,14 +4,18 @@
  * Date: 27/11/2017
  */
 
-//namespace Services\Database;
+namespace Services\Database;
 
-//use PDO;
-//use PDOException;
-require 'DatabaseServiceInterface.php';
+use Services\Database\DatabaseServiceInterface;
+use PDO;
+use PDOException;
 
 class DatabaseService implements DatabaseServiceInterface
 {
+    public static function getName()
+    {
+        return "database.service";
+    }
 
     /**
      * try to connect to a database.
@@ -31,7 +35,7 @@ class DatabaseService implements DatabaseServiceInterface
     		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     	} catch (PDOException $e) {
-    		echo $e->getMessage();
+    		throw $e;
     	}
 
     	return $conn;

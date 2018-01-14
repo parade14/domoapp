@@ -10,5 +10,6 @@ namespace Kernel\ServiceHandler;
 
 interface ServiceInterface
 {
+    public static function getName();
 
 }

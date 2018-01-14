@@ -4,19 +4,18 @@
  * Date: 27/11/2017
  */
 
-//namespace Services\DataSensor;
+namespace Services\DataSensor;
 
-//use Services\database\DatabaseServiceInterface;
-//use Services\database\DatabaseObjectInterface;
-require "/opt/lampp/htdocs/eleves/domoapp/services/DataSensor/DataSensorServiceInterface.php";
-require "/opt/lampp/htdocs/eleves/domoapp/services/DataSensor/DataSensorInterface.php";
-require "/opt/lampp/htdocs/eleves/domoapp/entities/DataSensor.php";
-
+use Services\database\DatabaseServiceInterface;
+use Services\database\DatabaseObjectInterface;
 
 
 class DataSensorService implements DataSensorServiceInterface
 {
 
+    public static function getName(){
+        return "datasensor.service";
+    }
 
     /**
      * The database connection
@@ -89,17 +88,17 @@ class DataSensorService implements DataSensorServiceInterface
             $return = array();
             
             foreach ($datas as $data) {
-                $dataSensor = new DataSensorInterface();
+                $dataSensor = new \DataSensor();
                 $dataSensor->setId($data['id']);
                 $dataSensor->setSensorId($data['sensor_id']);
-                $dataSensor->setDate(new DateTime($data['date']));
+                $dataSensor->setDate(new \DateTime($data['date']));
                 $dataSensor->setValue($data['value']);
                 
                 array_push($return, $dataSensor);
             }
             $resultats->closeCursor();
         
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;

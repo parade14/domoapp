@@ -4,16 +4,18 @@
  * Date: 05/12/2017
  */
 
-//namespace Services\room;
+namespace services\accomodation;
 
 
-//use Services\database\DatabaseServiceInterface;
-//use Services\database\DatabaseObjectInterface;
-require "/opt/lampp/htdocs/eleves/domoapp/services/accommodation/AccommodationServiceInterface.php";
-require "/opt/lampp/htdocs/eleves/domoapp/services/accommodation/AccommodationInterface.php";
-require "/opt/lampp/htdocs/eleves/domoapp/entities/Accommodation.php";
+use Kernel\ServiceHandler\ServiceInterface;
+use services\accommodation\AccommodationServiceInterface;
+use Services\Database\DatabaseObjectInterface;
+use Services\Database\DatabaseServiceInterface;
+use Services\Database\DatabaseService;
+use services\accommodation\AccommodationInterface;
+use Services\Database\DatabaseObject;
 
-class AccommodationService implements AccommodationServiceInterface
+class AccommodationService implements ServiceInterface
 {
 
     /**
@@ -30,27 +32,31 @@ class AccommodationService implements AccommodationServiceInterface
 
     /**
      * constructor
-     * @var $serviceConnect DatabaseServiceInterface
-     * @var $databaseObject DatabaseObjectInterface
+     * @var $serviceConnect DatabaseService
+     * @var $databaseObject DatabaseObject
      */
-    public function __construct(DatabaseServiceInterface $serviceConnect, DatabaseObjectInterface $databaseObject) {
+    public function __construct(DatabaseService $serviceConnect, DatabaseObject $databaseObject) {
         $this->serviceConnect = $serviceConnect;
         $this->databaseObject = $databaseObject;
     }
 
-
+public static function getName()
+{
+  return "accomodation.service";
+}
 
     /**
-     * Add an accommodation in database
+     * Add an accomodation in database
      * @param $accommodation AccommodationInterface
-     * @return boolean|\LogicException
+     * @return AccommodationInterface
+     * @throws \PDOException
      */
-    public function createAccommodation(Accommodation $accommodation){
+    public function createAccommodation(AccommodationInterface $accommodation){
         
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO accommodation(street, street_number, postal_code, city, area, inhabitant_number, owner_id) VALUES (:street, :street_number, :postal_code, :city, :area, :inhabitant_number, :owner_id)";
+            $sql = "INSERT INTO accomodation(street, street_number, postal_code, city, area, inhabitant_number, owner_id) VALUES (:street, :street_number, :postal_code, :city, :area, :inhabitant_number, :owner_id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':street', $accommodation->getStreet(), PDO::PARAM_STR);       
             $stmt->bindParam(':street_number', $accommodation->getStreetNumber(), PDO::PARAM_STR);    
@@ -66,14 +72,14 @@ class AccommodationService implements AccommodationServiceInterface
                 $accommodation->setId($last_id);
             }
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $accommodation;
     }
 
     /**
-     * Delete an accommodation in database
+     * Delete an accomodation in database
      * @param string $idAccommodation
      * @return boolean|\LogicException
      */
@@ -91,7 +97,7 @@ class AccommodationService implements AccommodationServiceInterface
     }
 
     /**
-     * Update an accommodation in database with the new value
+     * Update an accomodation in database with the new value
      * @param AccommodationInterface $accommodation
      * @return boolean|\LogicException
      */
@@ -115,7 +121,7 @@ class AccommodationService implements AccommodationServiceInterface
     }
 
     /**
-     * Search accommodation by id
+     * Search accomodation by id
      * @param string $idAccommodation
      * @return AccommodationInterface|\LogicException
      */
@@ -149,7 +155,7 @@ class AccommodationService implements AccommodationServiceInterface
     }
     
     /**
-     * Search accommodation by id
+     * Search accomodation by id
      * @return AccommodationInterface|\LogicException
      */
     public function getAccommodationByUserId($idUser){

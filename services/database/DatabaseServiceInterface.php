@@ -4,12 +4,13 @@
  * Date: 17/11/2017
  */
 
-//namespace Services\Database;
+namespace Services\Database;
 
 
-//use Kernel\ServiceHandler\ServiceInterface;
+use Kernel\ServiceHandler\ServiceInterface;
+use PDO;
 
-interface DatabaseServiceInterface // extends ServiceInterface
+interface DatabaseServiceInterface extends ServiceInterface
 {
     /**
      * try to connect to a database.

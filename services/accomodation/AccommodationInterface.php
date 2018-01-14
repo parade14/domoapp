@@ -4,7 +4,7 @@
  * Date: 21/11/2017
  */
 
-namespace Services\Accommodation;
+namespace services\accommodation;
 
 
 interface AccommodationInterface

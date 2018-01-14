@@ -2,7 +2,7 @@
 
 require "../../../services/database/DatabaseObject.php";
 require "../../../services/database/DatabaseService.php";
-require "../../../services/accommodation/AccommodationService.php";
+require "../../../services/accomodation/AccommodationService.php";
 
 $dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
 

@@ -4,7 +4,7 @@
  * Date: 20/11/2017
  */
 
-//namespace Entities;
+namespace Entities;
 
 
 class DataSensor

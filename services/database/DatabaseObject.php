@@ -4,11 +4,12 @@
  * Date: 27/11/2017
  */
 
-//namespace Services\Database;
+namespace Services\Database;
 
 //use PDO;
 //use PDOException;
-require 'DatabaseObjectInterface.php';
+
+use Services\Database\DatabaseObjectInterface;
 
 class DatabaseObject implements DatabaseObjectInterface
 {
@@ -17,26 +18,26 @@ class DatabaseObject implements DatabaseObjectInterface
     private $serverName;
     private $userName;
     
-    public function __construct($dataBaseName, $password , $serverName, $userName) {
+    public function __construct($dataBaseName ="nascop", $password ="", $serverName ="localhost", $userName ="root") {
         $this->dataBaseName =$dataBaseName;
         $this->password =$password;
         $this->serverName =$serverName;
         $this->userName = $userName;
     }
        
-    public function getDatabaseName(): string {
+    public function getDatabaseName() {
         return $this->dataBaseName;
     }
 
-    public function getPassword(): string {
+    public function getPassword() {
         return $this->password;
     }
 
-    public function getServerName(): string {
+    public function getServerName() {
         return $this->serverName;
     }
 
-    public function getUserName(): string {
+    public function getUserName() {
         return $this->userName;
     }
 
