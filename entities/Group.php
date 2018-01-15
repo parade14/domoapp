@@ -7,7 +7,9 @@
 namespace Entities;
 
 
-class Group
+use services\database\EntityHasOwnerInterface;
+
+class Group implements EntityHasOwnerInterface
 {
 
     /**
@@ -59,6 +61,10 @@ class Group
     }
 
 
-  
+    public function getOwnerId()
+    {
+        return $this->getGestionnaireId();
+    }
+
 
 }

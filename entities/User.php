@@ -9,7 +9,9 @@
 namespace Entities;
 
 
-class User
+use services\database\EntityHasOwnerInterface;
+
+class User implements EntityHasOwnerInterface
 {
     /**
      * @var integer
@@ -170,6 +172,11 @@ class User
     {
         $this->profileType = $profileType;
         return $this;
+    }
+
+    public function getOwnerId()
+    {
+      return $this->getId();
     }
 
 
