@@ -76,7 +76,7 @@ h2, p
 	background-color: #006064;
 	z-index:2;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-	padding: 1.6rem;
+	padding: 15px;
 }
 
 
@@ -121,11 +121,13 @@ nav ul li a
 }
 
 section {
-    height:calc(200% - 1.6rem);
+    height:200%;
+    background: #f5f5f5;
 }
 
 .articles
 {
+
 	display: flex;
 	flex-direction: column;
 	border-bottom: 1px solid rgba(232,229,224,0.1);
@@ -138,6 +140,7 @@ article h2
 {
 	border-bottom: 1px solid #6a6a6a;
 	margin-bottom: 3rem;
+    padding-top: 5rem;
     font-weight: 700;
 }
 
@@ -171,7 +174,8 @@ header .banner-text h3 {
 article
 {
 	color: #6a6a6a;
-	padding: 90px 0 72px;
+    height: 45%;
+
 }
 
 #wrap-description
@@ -179,13 +183,15 @@ article
 	background-color: #E0F7FA;
 }
 
-.nascop_description
-{
-	height: 100%;
+.nascop_description {
+    height: 90%;
+    position: relative;
+    top: 10%;
 }
 
 .offer_description
 {
+    height: 45%;
 	background: #0d6f6b;
 	width: 100%;
 	color: #ffffff;
@@ -258,7 +264,7 @@ a.button:hover{
 a.learn-more
 {
 	position: relative;
-	width: 100px;
+	width: 130px;
 	margin: 0 auto;
 }
 
@@ -376,7 +382,7 @@ div.hidden {
     content: " ";
     margin-top: -90px;
     height: 90px;
-    visibility: hidden;
+    background: #f5f5f5;
     pointer-events: none;
 }
 /* COLUMNS */
