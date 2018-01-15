@@ -14,6 +14,9 @@ use services\accomodation\AccommodationService;
 use Services\Database\DatabaseObject;
 use Services\Database\DatabaseService;
 use Services\DataSensor\DataSensorService;
+use Services\room\RoomService;
+use Services\Sensor\SensorService;
+use Services\user\UserService;
 
 final class Kernel
 {
@@ -27,6 +30,9 @@ final class Kernel
             ->addService(DatabaseService::class)
             ->addService(DataSensorService::class)
             ->addService(DatabaseObject::class)
+            ->addService(RoomService::class)
+            ->addService(SensorService::class)
+            ->addService(UserService::class)
         ;
     }
 

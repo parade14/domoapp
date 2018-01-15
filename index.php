@@ -12,6 +12,6 @@ require('utilities/autoload.php');
 $kernel = new \kernel\Kernel();
 
 
+$accomodationServfice = $kernel->get("accomodation.service");
 
-print_r($kernel->get("accomodation.service"));
 

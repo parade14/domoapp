@@ -12,6 +12,9 @@ use Services\database\DatabaseObjectInterface;
 
 class RoomService implements RoomServiceInterface
 {
+    public static function getName(){
+        return "room.service";
+    }
 
     /**
      * The database connection
