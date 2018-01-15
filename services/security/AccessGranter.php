@@ -9,6 +9,7 @@
 namespace Services\Security;
 
 
+use services\database\EntityHasOwnerInterface;
 use Services\HttpFoundation\AccessDeniedException;
 use Services\Session\SessionManagerInterface;
 
@@ -38,14 +39,18 @@ class AccessGranter implements AccessGranterInterface
 
     public function isGranted($role, $object = null)
     {
-        switch($object){
-            case null:
-                return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getProfileType())) ? true : new AccessDeniedException();
-            break;
-
-            //TODO : implements others cases
-        }
-
+         return $this->grantedByRole($role) || $this->grantedByOwner($object);
     }
 
+
+    protected function grantedByRole($role){
+        return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getProfileType())) ? true : false;
+    }
+
+    protected function grantedByOwner($object){
+
+        if($object instanceof EntityHasOwnerInterface) return ($this->sessionManager->getCurrentUser()->getId() === $object->getOwnerId()) ? true : false;
+
+        return false;
+    }
 }

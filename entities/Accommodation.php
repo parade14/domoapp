@@ -7,7 +7,9 @@
 namespace Entities;
 
 
-class Accommodation
+use services\database\EntityHasOwnerInterface;
+
+class Accommodation implements EntityHasOwnerInterface
 {
 
     /**
