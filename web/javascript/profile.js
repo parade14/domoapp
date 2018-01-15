@@ -1,18 +1,18 @@
 $(function(){
 
     $('.btn-connect').click(function(){
-        if ($('div.login').hasClass('hidden'))
-            $('div.login').removeClass('hidden');
-        $('body > *:not(div.profile)').css({'-webkit-filter': 'blur(5px)'});
-        $('div.login').animate({top: '35%'}, 700);
-        $.scrollLock( true );
+        if ($('div.profile').hasClass('hidden'))
+            $('div.profile').removeClass('hidden');
+            $('body > *:not(div.profile)').css({'-webkit-filter': 'blur(5px)'});
+            $('div.profile').animate({top: '35%'}, 700);
+            $.scrollLock( true );
     });
 
 
     $('.login-cross').click(function(evt){
-        $('div.login').css({'top': '0'});
-        $('body > *:not(div.login)').css({'-webkit-filter': ''});
-        $('div.login').addClass("hidden");
+        $('div.profile').css({'top': '0'});
+        $('body > *:not(div.profile)').css({'-webkit-filter': ''});
+        $('div.profile').addClass("hidden");
         $.scrollLock( false );
     });
 

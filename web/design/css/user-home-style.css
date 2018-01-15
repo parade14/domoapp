@@ -220,20 +220,27 @@ div.hidden {
     justify-content: space-between;
     align-items: center;
     background: #26b7be;
-    padding: 20px;
-    font-size: 1.4em;
+    padding: 8px;
+    font-size: 1.2em;
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;
     color: #fff;
+
+}
+
+.profile-header-text{
+    width: 100%;
+    text-align: center;
 }
 
 .fa-times:hover {
     color: black;
 }
-.profile-container {
+.profile-container, .modifier {
     background: #ebebeb;
-    padding: 12px;
+    padding: 10px;
+    font-weight: bold ;
 }
 
 .profile p {
@@ -250,4 +257,9 @@ div.hidden {
     outline: 0;
     font-family: inherit;
     font-size: 0.95em;
+}
+
+.modifier input[type="submit"] {
+    font-weight: bold;
+    text-decoration: none;
 }

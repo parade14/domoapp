@@ -9,7 +9,10 @@
 namespace Entities;
 
 
-class Message
+use services\database\EntityHasOwnerInterface;
+use Services\Security\AccessGranterInterface;
+
+class Message implements EntityHasOwnerInterface
 {
 
     /**
@@ -127,5 +130,9 @@ class Message
         return $this;
     }
 
+    public function getOwnerId()
+    {
+      return $this->getAuthorId();
+    }
 
 }

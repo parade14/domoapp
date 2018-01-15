@@ -7,7 +7,9 @@
 namespace Entities;
 
 
-class Order
+use services\database\EntityHasOwnerInterface;
+
+class Order implements EntityHasOwnerInterface
 {
 
     /**
@@ -80,6 +82,9 @@ class Order
         return $this;
     }
 
-  
+  public function getOwnerId()
+  {
+      return $this->getUserId();
+  }
 
 }

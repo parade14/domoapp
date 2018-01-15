@@ -21,13 +21,14 @@
             <i class="fa fa-times login-cross"></i>
         </div>
         <div class="profile-container">
-            <p>Nom : Durant</p>
-            <p>Prénom : Alphonse</p>
-            <p>Téléphone : 01 62 52 98 15</p>
-            <p>Mail : alphonse.durant@gmail.com</p>
+            <p>TYPE : Gestionnaire</p>
+            <p>NOM : Durant</p>
+            <p>PRENOM : Alphonse</p>
+            <p>TELEPHONE : 01 62 52 98 15</p>
+            <p>MAIL : alphonse.durant@gmail.com</p>
         </div>
 
-        <p class="modifier">Modifier mon profil</p>
+        <p class="modifier"><a href="ModifierProfil.html"> <input type="submit" value="Modifier"> </a></p>
     </div>
 
 
