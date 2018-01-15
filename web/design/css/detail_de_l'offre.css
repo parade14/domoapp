@@ -1,6 +1,4 @@
-body {
-  background: #39D;
-}
+
 
 .circular-menu {
   width: 900px;
@@ -14,10 +12,10 @@ body {
 
 .circle p {
   text-decoration: none;
-  color: white;
+  color: black;
   display: block;
   height: 50px;
-  width: 130px;
+  width: 200px;
   line-height: 40px;
   margin-left: -20px;
   margin-top: -20px;
@@ -30,13 +28,13 @@ body {
 }
 
 .circle p:hover {
-  color: red;
+  color: blue;
 }
 
 .menu-button {
   position: absolute;
   top: calc(35%);
-  left: calc(42%);
+  left: calc(45%);
   text-decoration: none;
   text-align: center;
   color: #444;
@@ -55,46 +53,57 @@ body {
 
 
 
-
-/*
+/* Bouton et affichage des description*/
 
 
 body {
-  background: #ccc;
+  background: #e0f7fa;
   font-family: "Source Sans Pro", sans-serif;
-  color: #333;
+  color: black;
 }
+
+
 .container {
   margin: 100px auto;
   width: 50px;
 }
+
+
 .roll {
-  position: absolute;
-  display: block;
-  transition: all 400ms ease-in-out;
+  /*position: absolute;*/
+  /*display: block;*/
+  transition: all 1ms ease-in-out;
   text-decoration: none;
   transform-style: preserve-3d;
   }
+
+
 .roll:hover {
   z-index: 100;
   transform: perspective( 500px ) rotateY( -40deg ) rotateX( 5deg ) rotateZ( -10deg );
   }
+
+
+
 .roll .roll-img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 300px;
+  right: 1000px;
   z-index: 10;
   overflow: hidden;
-  display: block;
+  /*display: block;*/
   margin: 0;
-  border: 8px solid #f8971d;
+  border: 8px solid blue;
   border-radius: 50%;
   width: 0px;
   height: 0px;
   
   background-size: 100px 100px;
-  transition: all 400ms ease-in-out;
+  transition: all 1ms ease-in-out;
   }
+
+
+
 .roll:hover .roll-img {
   margin: -50px 0 0 -50px;
   width: 100px;
@@ -102,25 +111,34 @@ body {
   box-shadow: 2px 2px 8px rgba(0,0,0,.3),
     inset 0 0 20px rgba(0,0,0,.7);
   }
+
+
+
 .roll-container {
   position: absolute;
   z-index: 5;
   overflow: hidden;
-  display: block;
+  /*display: block;*/
   width: 0;
   height: 0;
-  transition: all 500ms ease-in-out;
+
   }
+
+
+
 .roll:hover .roll-container {
   top: -28px;
   left: 0;
   width: 220px;
   height: 1000px;
   }
+
+
+
 .roll-copy {
   position: absolute;
   right: 8px;
-  display: block;
+  /*display: block;*/
   box-shadow: 2px 2px 8px rgba(0,0,0,.3),
     inset -1px -1px 0 rgba(255,255,255,.4);
   border: 2px solid #999;
@@ -130,5 +148,8 @@ body {
   background: #eee;
   background: linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%) #eee;
   color: #333;
+  top: 300px
+  right: 1000px;
   }
-*/
+
+
