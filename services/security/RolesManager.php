@@ -6,7 +6,7 @@
  * Time: 10:27
  */
 
-namespace Services\Security;
+namespace services\security;
 
 class RolesManager implements RolesManagerInterface
 {

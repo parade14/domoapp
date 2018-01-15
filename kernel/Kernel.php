@@ -10,16 +10,16 @@ namespace kernel;
 
 use Kernel\ServiceHandler\ServiceHandler;
 use Kernel\ServiceHandler\ServiceInterface;
-use services\accomodation\AccommodationService;
+use Services\Accomodation\AccommodationService;
 use Services\Database\DatabaseObject;
 use Services\Database\DatabaseService;
-use Services\DataSensor\DataSensorService;
-use Services\room\RoomService;
+use Services\Datasensor\DataSensorService;
+use Services\Room\RoomService;
 use Services\Security\AccessGranter;
-use services\security\RolesManager;
+use Services\Security\RolesManager;
 use Services\Sensor\SensorService;
 use Services\Session\SessionManager;
-use Services\user\UserService;
+use Services\User\UserService;
 
 final class Kernel
 {

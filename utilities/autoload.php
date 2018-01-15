@@ -6,7 +6,7 @@
  * Time: 10:00
  */
 
-function __autoload($className)
+function autoload($className)
 {
     $folder = __DIR__.'/../';
     $className = ltrim($className, '\\');
@@ -19,5 +19,9 @@ function __autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    include strtolower($folder ). $fileName;
+
+
+    include $folder. $fileName;
 }
+
+spl_autoload_register('autoload');
