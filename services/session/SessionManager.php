@@ -26,11 +26,20 @@ class SessionManager implements SessionManagerInterface
         $this->session = $_SESSION;
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
     public function getSession($name){
         if ($this->hasKey($name)) return $this->session[$name];
         Throw new \LogicException(sprintf("Undefined %s key in session", $name));
     }
 
+    /**
+     * @param string $name
+     * @param string $value
+     * @return $this|SessionManagerInterface
+     */
     public function add($name, $value)
     {
         if($this->hasKey($name)) Throw new \LogicException(sprintf("Key %s already exists in session", $name));
@@ -39,10 +48,19 @@ class SessionManager implements SessionManagerInterface
         return $this;
     }
 
+    /**
+     * @param $key string
+     * @return bool
+     */
     public function hasKey($key){
         return array_key_exists($key, $this->session) and !empty($this->session[$key]);
     }
 
+    /**
+     * @param $name string
+     * @param $value string
+     * @return $this
+     */
     public function set($name, $value){
 
         if($this->hasKey($name))  $this->session[$name] = $value;

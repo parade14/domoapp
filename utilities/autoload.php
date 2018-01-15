@@ -19,5 +19,5 @@ function __autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    include $folder . $fileName;
+    include strtolower($folder ). $fileName;
 }

@@ -14,6 +14,9 @@ use Services\Session\SessionManagerInterface;
 
 class AccessGranter implements AccessGranterInterface
 {
+    public static function getName(){
+        return "access.granter";
+    }
 
     /**
      * @var SessionManagerInterface

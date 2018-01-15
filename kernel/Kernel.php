@@ -15,7 +15,10 @@ use Services\Database\DatabaseObject;
 use Services\Database\DatabaseService;
 use Services\DataSensor\DataSensorService;
 use Services\room\RoomService;
+use Services\Security\AccessGranter;
+use services\security\RolesManager;
 use Services\Sensor\SensorService;
+use Services\Session\SessionManager;
 use Services\user\UserService;
 
 final class Kernel
@@ -33,6 +36,9 @@ final class Kernel
             ->addService(RoomService::class)
             ->addService(SensorService::class)
             ->addService(UserService::class)
+            ->addService(RolesManager::class)
+            ->addService(AccessGranter::class)
+            ->addService(SessionManager::class)
         ;
     }
 
