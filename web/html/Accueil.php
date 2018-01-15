@@ -37,7 +37,7 @@
 						<ul>
 							<li><a class="menu_effect" href="#"> Accueil </a> </li>
 							<li><a class="menu_effect" href="#"> Notre offre </a> </li>
-							<li><a class="menu_effect" href="#"> Contact </a> </li>
+							<li><a class="menu_effect" href="#contact"> Contact </a> </li>
 							<li><a class="menu_effect btn-connect"> Connexion </a> </li>
 							<li><a class="menu_effect" href="#"> Langue </a> </li>
 						</ul>
@@ -103,7 +103,7 @@
 
 				</section>
 
-			<div class="contact">
+			<div class="contact" id="contact">
 				<div class="container">
 					<div class="form-wrapper">
 						<h2>Contact</h2>
