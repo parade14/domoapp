@@ -9,16 +9,15 @@
 namespace Kernel\ServiceHandler;
 
 use ReflectionClass;
-final class ServiceHandler implements ServiceHandlerInterface
+use Kernel\ServiceHandler\ServiceHandlerInterface;
+
+class ServiceHandler
 {
     /**
      * @var array
      */
     protected $servicesReferencedByName = array();
-    /**
-     * @var array
-     */
-    protected $servicesReferencedByClass = array();
+
     /**
      * @var array
      */
@@ -28,6 +27,10 @@ final class ServiceHandler implements ServiceHandlerInterface
      */
     protected $loaded = array();
 
+    public static function getName()
+    {
+      return "service.handler";
+    }
 
     /**
      * @param $var
@@ -38,15 +41,11 @@ final class ServiceHandler implements ServiceHandlerInterface
     public function addService($var, $key="")
     {
         if(is_array($var)) foreach($var as $key=>$value) $this->addService($value, $key);
-        elseif(is_object($var)){
-            if(!key_exists($var, $this->servicesReferencedByClass)){
-                $this->servicesReferencedByClass[get_class($var)] = $key;
-            }
-            else{
-                throw new \LogicException(sprintf("Class %s as been already registred", $var));
-            }
+        else{
+            $key = empty($key) ? $var::getName() : $key;
+
             if(!key_exists($key, $this->servicesReferencedByName)){
-                $this->servicesReferencedByName[$key] = get_class($var);
+                $this->servicesReferencedByName[$key] = $var;
             }
             else{
                 throw new \LogicException(sprintf("Key %s already exists in dependency injection container", $key));
@@ -67,6 +66,7 @@ final class ServiceHandler implements ServiceHandlerInterface
         elseif(array_key_exists($serviceName, $this->servicesReferencedByName)){
             return $this->resolve($this->servicesReferencedByName[$serviceName]);
         }
+        elseif(in_array($serviceName, $this->servicesReferencedByName)) return $this->resolve($this->servicesReferencedByName[array_search($serviceName, $this->servicesReferencedByName)]);
         else throw new \LogicException("Unknow service $serviceName");
 
 
@@ -78,10 +78,6 @@ final class ServiceHandler implements ServiceHandlerInterface
 
     }
 
-    public function getServiceName()
-    {
-       return self::class;
-    }
 
 
     /**
@@ -99,8 +95,9 @@ final class ServiceHandler implements ServiceHandlerInterface
                 $parameters = $constructor->getParameters();
                 $constructor_parameters = [];
                 foreach($parameters as $parameter){
+
                     if( $parameter->getClass() ){
-                        $constructor_parameters[] = $this->get($this->servicesReferencedByClass[$parameter->getClass()->getName()]);
+                        $constructor_parameters[] = $this->get(str_replace('Interface',"",$parameter->getClass()->getName()));
                     } else {
                         $constructor_parameters[] = $parameter->getDefaultValue();
                     }

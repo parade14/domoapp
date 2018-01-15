@@ -4,7 +4,7 @@
  * Date: 17/11/2017
  */
 
-//namespace Services\Database;
+namespace Services\Database;
 
 
 interface DatabaseObjectInterface

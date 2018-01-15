@@ -9,4 +9,10 @@
 require('utilities/autoload.php');
 //test autoload
 
+$kernel = new \kernel\Kernel();
+
+print_r($kernel->get("access.granter"));
+
+
+
 
