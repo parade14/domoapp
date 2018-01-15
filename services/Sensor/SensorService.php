@@ -13,6 +13,9 @@ use Services\database\DatabaseObjectInterface;
 class SensorService implements SensorServiceInterface
 {
 
+    public static function getName(){
+        return "sensor.service";
+    }
 
     /**
      * TODO: what ?
@@ -54,7 +57,7 @@ class SensorService implements SensorServiceInterface
             if ($conn->query($sql) === TRUE) {
                 $last_id = $conn->insert_id;
                 // on construit l'objet inséré
-                $sensorInserted = new SensorInterface();
+                $sensorInserted = new Sensor();
                 $sensorInserted->setId($last_id);
                 $sensorInserted->setName($name);
                 $sensorInserted->setRoomId($room_id);

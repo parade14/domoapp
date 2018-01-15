@@ -13,6 +13,10 @@ use Services\Database\DatabaseObjectInterface;
 
 class DatabaseObject implements DatabaseObjectInterface
 {
+    public static function getName(){
+        return "database.object";
+    }
+
     private $dataBaseName;
     private $password;
     private $serverName;
