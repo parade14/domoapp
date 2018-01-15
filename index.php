@@ -11,7 +11,10 @@ require('utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
+print_r($kernel->get("access.granter"));
+print_r($kernel->get("room.service"));
+print_r($kernel->get("user.service"));
 
 
-print_r($kernel->get("accomodation.service"));
+
 

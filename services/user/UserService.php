@@ -7,11 +7,15 @@
 namespace Services\user;
 
 
+use Entities\User;
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
 
 class UserService implements UserServiceInterface
 {
+    public static function getName(){
+        return "user.service";
+    }
 
     /**
      * The database connection
@@ -54,7 +58,7 @@ class UserService implements UserServiceInterface
                 $user->setId($last_id);
             }
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $user;
@@ -70,7 +74,7 @@ class UserService implements UserServiceInterface
             $sql = "DELETE FROM user WHERE id='$idUser')";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return true;
@@ -85,15 +89,15 @@ class UserService implements UserServiceInterface
 
             $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id)";
             $stmt = $conn->prepare($sql);        
-            $stmt->bindParam(':id', $room->getId(), PDO::PARAM_STR);
-            $stmt->bindParam(':first_name', $room->getFirstName(), PDO::PARAM_STR);       
-            $stmt->bindParam(':last_name', $room->getLastName(), PDO::PARAM_STR);    
-            $stmt->bindParam(':phone', $room->getPhone(), PDO::PARAM_STR);
-            $stmt->bindParam(':email', $room->getEmail(), PDO::PARAM_STR);   
-            $stmt->bindParam(':password', $room->getPassword(), PDO::PARAM_STR);  
-            $stmt->bindParam(':profile_type', $room->getProfileType(), PDO::PARAM_STR);  
+            $stmt->bindParam(':id', $user->getId(), PDO::PARAM_STR);
+            $stmt->bindParam(':first_name', $user->getFirstName(), PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $user->getLastName(), PDO::PARAM_STR);
+            $stmt->bindParam(':phone', $user->getPhone(), PDO::PARAM_STR);
+            $stmt->bindParam(':email', $user->getEmail(), PDO::PARAM_STR);
+            $stmt->bindParam(':password', $user->getPassword(), PDO::PARAM_STR);
+            $stmt->bindParam(':profile_type', $user->getProfileType(), PDO::PARAM_STR);
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $user;
@@ -106,7 +110,7 @@ class UserService implements UserServiceInterface
         $conn = $this->serviceConnect->connect($this->databaseObject);
         try {
             if($field != "id" && $field != "last_name" && $field != "email" ){
-                throw new LogicException("invalid field");
+                throw new \LogicException("invalid field");
 
             } else {
                 $resultats=$conn->query("SELECT * FROM user WHERE ".$field."='".$value."'");
@@ -114,7 +118,7 @@ class UserService implements UserServiceInterface
                 $datas = $resultats->fetchAll();
                 $return = array();
                 foreach ($datas as $data) {
-                    $user = new UserInterface();
+                    $user = new User();
                     $user->setId($data['id']);
                     $user->setFirstName($data['first_name']);
                     $user->setLastName($data['last_name']);
@@ -126,7 +130,7 @@ class UserService implements UserServiceInterface
                 } 
                 $resultats->closeCursor();
             }
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
                 throw $e;
         }
         return $return;
