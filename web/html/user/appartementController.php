@@ -1,18 +1,14 @@
 <?php
 
-//require '/opt/lampp/htdocs/eleves/domoapp/utilities/autoload.php';
-/*use Services\Database\DatabaseObject;
-use Services\DataSensor\DataSensorService;
-use Services\Database\DatabaseService;*/
-require "../../../services/database/DatabaseObject.php";
-require "../../../services/database/DatabaseService.php";
-require "../../../services/accomodation/AccommodationService.php";
+require('C:\wamp64\www\domoapp\utilities\autoload.php');
+//test autoload
 
-$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
+$kernel = new \kernel\Kernel();
 
-$databaseService = new DatabaseService();
 
-$accommodationService = new AccommodationService($databaseService, $dataBase);
+$databaseService = $kernel->get("database.service");
+
+$accommodationService = $kernel->get("accommodation.service");
 $databaseService->connect($dataBase);
 
 $accomodations = $accommodationService->getAccommodationByUserId(1); // TODO GET THE CORRECT USER ID
