@@ -7,5 +7,3 @@
  */
 
 phpinfo();
-
-echo "cho hello";
