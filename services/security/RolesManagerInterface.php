@@ -10,6 +10,7 @@ namespace Services\Security;
 
 
 
+use Entities\User;
 use Kernel\ServiceHandler\ServiceInterface;
 
 interface RolesManagerInterface extends ServiceInterface
@@ -20,4 +21,11 @@ interface RolesManagerInterface extends ServiceInterface
      * @return boolean
      */
     public function compareRoles($role1, $role2);
+
+    /**
+     * @param $user User
+     * @param $role string
+     * @return mixed
+     */
+    public function addRole(User $user, $role);
 }
