@@ -63,11 +63,17 @@
                     
                         <div class="angle-wrap">
                             <h3>Appartement '.$item->getId().' </h3>
+                            
+                            <span onClick="deleteAccommodation('.$item->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span>
+                            
                             <i class="fa fa-angle-left form_'.$item->getId().'"></i>
+                            
                         </div>
+                        
+                        
 
                             <form class="toggleDiv form_'.$item->getId().'" action="insertOrUpdateAppartement.php" method="POST">
-                                
+
                                <input type="hidden" name="id" value="'.$item->getId().'">
                                    
                                <div class="input">
