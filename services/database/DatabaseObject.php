@@ -6,10 +6,6 @@
 
 namespace Services\Database;
 
-//use PDO;
-//use PDOException;
-
-
 
 class DatabaseObject implements DatabaseObjectInterface
 {
