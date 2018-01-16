@@ -30,9 +30,14 @@ class RolesManager implements RolesManagerInterface
     }
 
     public function addRole(User $user, $role){
-        if(array_key_exists($role, $this->roles)) {
-
+        if(is_string($role) and array_key_exists($role, $this->roles)) {
+            $user->addRoles($this->roles[$role]);
+            $user->addRoles($role);
         }
+        elseif(is_array($role)) foreach ($role as $roleUnited) $this->addRole($user, $roleUnited);
+        elseif(is_string($role) and !array_key_exists($role, $this->roles)) throw new \LogicException("unknow $role");
+
+        return $this;
     }
 
     public static function getName()

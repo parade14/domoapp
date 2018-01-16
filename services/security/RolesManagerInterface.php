@@ -24,7 +24,7 @@ interface RolesManagerInterface extends ServiceInterface
 
     /**
      * @param $user User
-     * @param $role string
+     * @param $role string|array
      * @return mixed
      */
     public function addRole(User $user, $role);

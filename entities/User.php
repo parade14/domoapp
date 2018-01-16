@@ -190,7 +190,10 @@ class User implements EntityHasOwnerInterface, UserInterface
         return $this->getRoles();
     }
 
-    abstract public function addRoles();
+    public function addRoles($roles)
+    {
+        foreach ($roles as $role) if(!in_array($role, $this->roles)) $this->roles[]=$role;
+    }
 
 
 }
