@@ -12,8 +12,10 @@ use services\accommodation\AccommodationServiceInterface;
 use Services\Database\DatabaseObjectInterface;
 use Services\Database\DatabaseServiceInterface;
 use Services\Database\DatabaseService;
-use services\accommodation\AccommodationInterface;
 use Services\Database\DatabaseObject;
+use Entities\Accommodation;
+
+use PDO;
 
 class AccommodationService implements ServiceInterface
 {
@@ -29,6 +31,14 @@ class AccommodationService implements ServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
+    
+    public function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    public function setDataBaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
 
     /**
      * constructor
@@ -42,21 +52,21 @@ class AccommodationService implements ServiceInterface
 
 public static function getName()
 {
-  return "accomodation.service";
+  return "accommodation.service";
 }
 
     /**
      * Add an accomodation in database
-     * @param $accommodation AccommodationInterface
-     * @return AccommodationInterface
+     * @param $accommodation Accommodation
+     * @return Accommodation
      * @throws \PDOException
      */
-    public function createAccommodation(AccommodationInterface $accommodation){
+    public function createAccommodation(Accommodation $accommodation){
         
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO accomodation(street, street_number, postal_code, city, area, inhabitant_number, owner_id) VALUES (:street, :street_number, :postal_code, :city, :area, :inhabitant_number, :owner_id)";
+            $sql = "INSERT INTO Accommodation(street, street_number, postal_code, city, area, inhabitant_number, owner_id) VALUES (:street, :street_number, :postal_code, :city, :area, :inhabitant_number, :owner_id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':street', $accommodation->getStreet(), PDO::PARAM_STR);       
             $stmt->bindParam(':street_number', $accommodation->getStreetNumber(), PDO::PARAM_STR);    
@@ -98,10 +108,10 @@ public static function getName()
 
     /**
      * Update an accomodation in database with the new value
-     * @param AccommodationInterface $accommodation
+     * @param Accommodation $accommodation
      * @return boolean|\LogicException
      */
-    public function updateAccommodation(AccommodationInterface $accommodation){
+    public function updateAccommodation(Accommodation $accommodation){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             $sql = "UPDATE Accommodation SET street=:street, street_number=:street_number, city=:city, postal_code=:postal_code, area=:area, inhabitant_number=:inhabitant_number, user_id=:owner_id WHERE id=:id)";
@@ -123,7 +133,7 @@ public static function getName()
     /**
      * Search accomodation by id
      * @param string $idAccommodation
-     * @return AccommodationInterface|\LogicException
+     * @return Accommodation|\LogicException
      */
     public function getAccommodationById($idAccommodation){
         
@@ -156,7 +166,7 @@ public static function getName()
     
     /**
      * Search accomodation by id
-     * @return AccommodationInterface|\LogicException
+     * @return Accommodation|\LogicException
      */
     public function getAccommodationByUserId($idUser){
         
