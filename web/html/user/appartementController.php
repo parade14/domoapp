@@ -1,6 +1,6 @@
 <?php
 
-require('C:\wamp64\www\domoapp\utilities\autoload.php');
+require("../../../utilities/autoload.php");
 //test autoload
 
 $kernel = new \kernel\Kernel();

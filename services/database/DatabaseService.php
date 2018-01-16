@@ -10,7 +10,7 @@ use Services\Database\DatabaseServiceInterface;
 use PDO;
 use PDOException;
 
-class DatabaseService
+class DatabaseService implements DatabaseServiceInterface
 {
     public static function getName()
     {

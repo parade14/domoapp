@@ -11,7 +11,7 @@ namespace Services\Database;
 
 use Services\Database\DatabaseObjectInterface;
 
-class DatabaseObject
+class DatabaseObject implements DatabaseObjectInterface
 {
     public static function getName(){
         return "database.object";
