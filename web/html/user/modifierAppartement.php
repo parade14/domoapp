@@ -64,7 +64,7 @@
                         <div class="angle-wrap">
                             <h3>Appartement '.$item->getId().' </h3>
                             
-                            <span onClick="deleteAccommodation('.$item->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span>
+                            <span onClick="deleteAccommodation('.$item->getId().','.$item->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span>
                             
                             <i class="fa fa-angle-left form_'.$item->getId().'"></i>
                             

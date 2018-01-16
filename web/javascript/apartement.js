@@ -41,19 +41,27 @@ $('.add').click(function (){
         classAppartment.appendChild(newSpan);
         newSpan.innerHTML = "Appartement " + Count;
         $('.appartment').last().after(classAppartment);
-        var form_content = ' <div class="larg-w form_'+Count+'"> <div class="angle-wrap"> <h3>Appartement ' + Count + ' </h3><span onClick="deleteAccommodation(-1)"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span> <i class="fa fa-angle-left form_'+Count+'"></i> </div> <div> <form class="toggleDiv form_'+Count+'" action="insertOrUpdateAppartement.php" method="POST"><input type="hidden" name="id" value="'+Count+'"> <div class="input"><label>N° </label><input class="text-field" type="number" name="numero"/></div><div class="input"> <label>Adresse </label> <input class="text-field" type="text" name="adresse"></div><div class="input"><label>Code Postal </label> <input class="text-field" type="number" name="codePostal"/></div><div class="input"><label>Ville </label><input class="text-field" type="text" name="ville"/></div> <div class="input"> <label>Superficie </label> <input class="text-field" type="text" name="superficie"> </div> <div class="input"> <label>Nombre d\'habitants </label> <input class="text-field" type="text" name="nbHabitants"> </div> <input type="submit" class="submit" value="Valider"> </form> </div> <div id="dinamic-fields"></div> </div>';
+        var form_content = ' <div class="larg-w form_'+Count+'"> <div class="angle-wrap"> <h3>Appartement ' + Count + ' </h3><span onClick="deleteAccommodation(-1,'+Count+')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span> <i class="fa fa-angle-left form_'+Count+'"></i> </div> <div> <form class="toggleDiv form_'+Count+'" action="insertOrUpdateAppartement.php" method="POST"><input type="hidden" name="id" value="'+Count+'"> <div class="input"><label>N° </label><input class="text-field" type="number" name="numero"/></div><div class="input"> <label>Adresse </label> <input class="text-field" type="text" name="adresse"></div><div class="input"><label>Code Postal </label> <input class="text-field" type="number" name="codePostal"/></div><div class="input"><label>Ville </label><input class="text-field" type="text" name="ville"/></div> <div class="input"> <label>Superficie </label> <input class="text-field" type="text" name="superficie"> </div> <div class="input"> <label>Nombre d\'habitants </label> <input class="text-field" type="text" name="nbHabitants"> </div> <input type="submit" class="submit" value="Valider"> </form> </div> <div id="dinamic-fields"></div> </div>';
         $(".larg-w").last().after(form_content);
     }
 
 });
 
 
-function deleteAccommodation(id){
-    
+function deleteAccommodation(id, value){
+    // si l'appartement n'existe pas en BDD
     if(id===-1){
-        alert('-1');
+        $('.form_'+value).remove();
+        Count = $("#containerAccommodations > div").length;
     } else {
-        alert(id);
+        // si il existe en BDD
+        $.ajax({
+            url: "supprimerAppartement.php?id="+id,
+            success: function(data){
+                $('.form_'+value).remove();
+                Count = $("#containerAccommodations > div").length;
+            }
+        });
     }
     
     
