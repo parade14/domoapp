@@ -64,7 +64,7 @@ class ServiceHandler
         if(array_key_exists($serviceName, $this->loaded)) return $this->loaded[$serviceName];
         elseif(array_key_exists($serviceName, $this->loading)) throw new \LogicException("Circular references for service $serviceName");
         elseif(array_key_exists($serviceName, $this->servicesReferencedByName)){
-            return $this->resolve($this->servicesReferencedByName[$serviceName]);
+            return $this->loaded[$serviceName] = $this->resolve($this->servicesReferencedByName[$serviceName]);
         }
         elseif(in_array($serviceName, $this->servicesReferencedByName)) return $this->resolve($this->servicesReferencedByName[array_search($serviceName, $this->servicesReferencedByName)]);
         else throw new \LogicException("Unknow service $serviceName");

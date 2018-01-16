@@ -16,16 +16,16 @@ use Kernel\ServiceHandler\ServiceInterface;
 interface RolesManagerInterface extends ServiceInterface
 {
     /**
-     * @param $role1 string
-     * @param $role2 string
+     * @param $needed string
+     * @param $role string|array
      * @return boolean
      */
-    public function compareRoles($role1, $role2);
+    public function compareRoles($needed, $role);
 
     /**
      * @param $user User
      * @param $role string|array
-     * @return mixed
+     * @return $this
      */
     public function addRole(User $user, $role);
 }

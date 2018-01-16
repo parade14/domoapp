@@ -192,7 +192,9 @@ class User implements EntityHasOwnerInterface, UserInterface
 
     public function addRoles($roles)
     {
-        foreach ($roles as $role) if(!in_array($role, $this->roles)) $this->roles[]=$role;
+        if(is_array($roles)) foreach ($roles as $role) $this->addRoles($role);
+
+        else if(!in_array($roles, $this->roles)) $this->roles[]=$roles;
     }
 
 

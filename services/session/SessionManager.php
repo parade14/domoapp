@@ -9,10 +9,14 @@
 namespace Services\Session;
 
 
+use Entities\User;
+use services\security\RolesManager;
+
 class SessionManager implements SessionManagerInterface
 {
 
     protected $session;
+    protected $rolesManager;
 
     public static function getName()
     {
@@ -20,10 +24,19 @@ class SessionManager implements SessionManagerInterface
     }
 
 
-    public function __construct()
+    public function __construct(RolesManager $rolesManager)
     {
         session_start();
-        $this->session = $_SESSION;
+        $this->session =& $_SESSION;
+        if(!is_array($this->session)) $this->session = array();
+
+        $this->rolesManager = $rolesManager;
+
+        if(!array_key_exists("current_user", $this->session)){
+            $this->session["current_user"] = new User();
+            $this->rolesManager->addRole($this->session["current_user"],"ANONYMOUS_USER");
+
+        }
     }
 
     /**
@@ -69,10 +82,10 @@ class SessionManager implements SessionManagerInterface
     }
 
     /**
-     * @return \Services\User\UserInterface|void
+     * @return \Services\User\UserInterface
      */
     public function getCurrentUser()
     {
-        // TODO: Implement getCurrentUser() method.
+        return $this->getSession("current_user");
     }
 }

@@ -44,7 +44,7 @@ class AccessGranter implements AccessGranterInterface
 
 
     protected function grantedByRole($role){
-        return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getProfileType())) ? true : false;
+        return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getRoles())) ? true : false;
     }
 
     protected function grantedByOwner($object){
