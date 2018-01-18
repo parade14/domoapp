@@ -10,20 +10,10 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://C:/Windows/System32" />
+          <root url="file://$USER_HOME$/Desktop" />
         </CLASSES>
         <SOURCES>
-          <root url="file://C:/Windows/System32" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHP Runtime" type="php">
-        <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
-        </CLASSES>
-        <SOURCES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard" />
+          <root url="file://$USER_HOME$/Desktop" />
         </SOURCES>
       </library>
     </orderEntry>

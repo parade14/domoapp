@@ -6,11 +6,12 @@
 
 namespace Services\Database;
 
-use Services\Database\DatabaseServiceInterface;
 use PDO;
 use PDOException;
 
-class DatabaseService
+use Services\Database\DatabaseServiceInterface;
+
+class DatabaseService implements DatabaseServiceInterface
 {
     public static function getName()
     {

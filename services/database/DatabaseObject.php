@@ -6,12 +6,8 @@
 
 namespace Services\Database;
 
-//use PDO;
-//use PDOException;
 
-use Services\Database\DatabaseObjectInterface;
-
-class DatabaseObject
+class DatabaseObject implements DatabaseObjectInterface
 {
     public static function getName(){
         return "database.object";
@@ -43,6 +39,21 @@ class DatabaseObject
 
     public function getUserName() {
         return $this->userName;
+    }
+        public function setDatabaseName($dataBaseName) {
+        $this->dataBaseName = $dataBaseName;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setServerName($serverName) {
+        $this->serverName = $serverName;
+    }
+
+    public function setUserName($userName) {
+        $this->userName = $userName;
     }
 
 }

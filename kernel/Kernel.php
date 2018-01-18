@@ -19,6 +19,7 @@ use Services\Security\AccessGranter;
 use Services\Security\RolesManager;
 use Services\Sensor\SensorService;
 use Services\Session\SessionManager;
+use services\templates\TemplateService;
 use Services\User\UserService;
 
 final class Kernel
@@ -39,6 +40,7 @@ final class Kernel
             ->addService(RolesManager::class)
             ->addService(AccessGranter::class)
             ->addService(SessionManager::class)
+            ->addService(TemplateService::class)
         ;
     }
 

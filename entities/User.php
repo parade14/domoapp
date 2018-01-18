@@ -10,8 +10,9 @@ namespace Entities;
 
 
 use services\database\EntityHasOwnerInterface;
+use Services\User\UserInterface;
 
-class User implements EntityHasOwnerInterface
+class User implements EntityHasOwnerInterface, UserInterface
 {
     /**
      * @var integer
@@ -47,6 +48,11 @@ class User implements EntityHasOwnerInterface
      * @var string
      */
     protected $profileType;
+
+    /**
+     * @var array
+     */
+    protected $roles =array();
 
     /**
      * @return int
@@ -177,6 +183,18 @@ class User implements EntityHasOwnerInterface
     public function getOwnerId()
     {
       return $this->getId();
+    }
+
+    public function getRoles()
+    {
+        return $this->getRoles();
+    }
+
+    public function addRoles($roles)
+    {
+        if(is_array($roles)) foreach ($roles as $role) $this->addRoles($role);
+
+        else if(!in_array($roles, $this->roles)) $this->roles[]=$roles;
     }
 
 

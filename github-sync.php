@@ -6,5 +6,5 @@
  * Time: 14:55
  */
 
-git pull`;
+'git pull';
 

@@ -8,9 +8,6 @@
 
 namespace Services\Session;
 
-
-
-
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\User\UserInterface;
 
