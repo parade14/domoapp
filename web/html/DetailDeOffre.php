@@ -17,7 +17,7 @@
   <div class="circle">
 
         <div class="container">
-          <a href="#" class="roll" src="../design/images/thermo.png">
+          <a href="#" class="roll">
             <p> Mouvement </p>
             <span class="roll-img"></span>
             <span class="roll-container">
@@ -57,6 +57,7 @@
           <a href="#" class="roll">
             <p> Monoxyde de carbone </p>
             <span class="roll-img"></span>
+
             <span class="roll-container">
               <span class="roll-copy">
                 Plusieurs capteurs de monoxyde de carbone seront placés à des endroits stratégiques de votre appartement notamment dans la cuisine. Ce gaz est inodore et invisible ! 
@@ -81,6 +82,7 @@
           <a href="#" class="roll">
             <p> Température </p>
             <span class="roll-img"></span>
+            <span class="temperature"></span>
             <span class="roll-container">
               <span class="roll-copy">
                 Un ou plusieurs capteurs de température seront placées à des endroits stratégiques de votre appartement afin de le surveiller et de contrôler la température de chaques pièces. 
