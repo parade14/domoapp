@@ -22,7 +22,7 @@
         <header id="head_page">
             <div class="menu">
                 <div id="logo">
-                    <img src="../images/logo_nascop.png" alt="Logo Nascop" />
+                    <img src="images/logo_nascop.png" alt="Logo Nascop" />
                 </div>
 
                 <nav>
