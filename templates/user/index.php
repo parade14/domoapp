@@ -3,12 +3,12 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../design/css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../design/css/ionicons/css/ionicons.min.css">
-        <link rel="stylesheet" href="../../design/css/user-home-style.css" />
+        <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../css/user-home-style.css" />
 
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <script src="../../javascript/profile.js"></script>
+        <script src="javascript/profile.js"></script>
 
         <title>User Home</title>
     </head>
@@ -35,7 +35,7 @@
 
         <div class="header">
             <div id="logo">
-                <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
+                <img src="../images/logo_nascop.png" alt="Logo Nascop" />
             </div>
             <nav>
                 <ul>
@@ -62,7 +62,7 @@
                 <fieldset class="informations-wrapper">
                     <legend>Dernières consommations</legend>
                     <ul class="informations-text">
-                        <li>Température moyennde la maison : 18°C</li>
+                        <li>Température moyenn de la maison : 18°C</li>
                         <li>Attention ! Température de la chambre : 20°C</li>
                     </ul>
                 </fieldset>

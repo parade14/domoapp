@@ -17,7 +17,7 @@ class RolesManager implements RolesManagerInterface
     public function __construct(){
         $this->roles = array(
             "ANONYMOUS_USER"=>array(),
-            "AUTHENTICATED_USER"=>array("ANONYMOUS_USER"),
+            "AUTHENTICATED_USER"=>array(),
             "GESTIONNAIRE"=>array("AUTHENTICATED_USER"),
             "SERVICE_CLIENT"=>array("GESTIONNAIRE", "AUTHENTICATED_USER"),
         );
@@ -41,7 +41,7 @@ class RolesManager implements RolesManagerInterface
             return $i>0;
         }
 
-        if(!in_array($needed, $this->roles) or !in_array($role, $this->roles)) throw new \LogicException("unknow role $role or $needed");
+        if(!array_key_exists($needed, $this->roles) or !array_key_exists($role, $this->roles)) throw new \LogicException("unknow role $role or $needed");
 
         return $needed === $role or in_array($role, $this->roles[$needed]);
     }

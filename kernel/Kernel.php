@@ -9,6 +9,7 @@
 namespace kernel;
 
 use controllers\AccueilController;
+use controllers\UserController;
 use Kernel\ServiceHandler\ServiceHandler;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\Accomodation\AccommodationService;
@@ -52,6 +53,7 @@ final class Kernel implements ServiceInterface
          */
         $this->serviceHandler
             ->addService(AccueilController::class)
+            ->addService(UserController::class)
         ;
     }
 

@@ -1,7 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Nicolas
- * Date: 19/01/2018
- * Time: 15:11
+ * User: nicol
+ * Date: 20/11/2017
+ * Time: 14:40
  */
+
+require('../../utilities/autoload.php');
+//test autoload
+
+$kernel = new \kernel\Kernel();
+
+echo $controller = $kernel->get("user.controller")->index();
+

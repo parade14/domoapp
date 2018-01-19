@@ -90,7 +90,7 @@ class UserService implements UserServiceInterface
 
             $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
             $stmt = $conn->prepare($sql);        
-            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_STR);
+            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_INT);
             $stmt->bindParam(':first_name', $user->getFirstName(), \PDO::PARAM_STR);
             $stmt->bindParam(':last_name', $user->getLastName(), \PDO::PARAM_STR);
             $stmt->bindParam(':phone', $user->getPhone(), \PDO::PARAM_STR);
@@ -114,7 +114,8 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->query("SELECT * FROM user WHERE ".$field."='".$value."'");
+                $resultats=$conn->prepare("SELECT * FROM user WHERE :field = :value");
+                $resultats->execute(array("field"=>$field, "value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();

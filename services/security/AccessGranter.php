@@ -49,7 +49,7 @@ class AccessGranter implements AccessGranterInterface
 
     protected function grantedByOwner($object){
 
-        if($object instanceof EntityHasOwnerInterface) return ($this->sessionManager->getCurrentUser()->getId() === $object->getOwnerId()) ? true : false;
+        if(is_object($object)) if($object instanceof EntityHasOwnerInterface) return ($this->sessionManager->getCurrentUser()->getId() === $object->getOwnerId()) ? true : false;
 
         return false;
     }
