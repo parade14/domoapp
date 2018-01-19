@@ -2,16 +2,8 @@
 
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="../design/css/home-style.css" />
-		<link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<title> Nascop </title>
-	</head>
+<?php include('head.php'); ?>
 
-<?php echo $hello ?>
 	<body>
 		<div class="login hidden">
 			<div class="login-header">
@@ -30,7 +22,7 @@
         <header id="head_page">
             <div class="menu">
                 <div id="logo">
-                    <img src="../design/images/logo_nascop.png" alt="Logo Nascop" />
+                    <img src="../images/logo_nascop.png" alt="Logo Nascop" />
                 </div>
 
                 <nav>
@@ -74,9 +66,9 @@
                         <h3> Securité </h3>
                         <li class="offer-list">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            Capteur de mouvements infrarouge </br>
+                            Capteur de mouvements infrarouge <br />
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            Détection d'intrusions </br>
+                            Détection d'intrusions <br />
                             <i class="fa fa-check" aria-hidden="true"></i>
                             Alarme opérationnelle 24h/24
                         </li>
@@ -88,9 +80,9 @@
                         <h3> Confort </h3>
                         <li class="offer-list">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            Gérer la température des pièces </br>
+                            Gérer la température des pièces <br />
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            Vérifier le taux d'humidité </br>
+                            Vérifier le taux d'humidité <br />
                         </li>
                     </div>
 
@@ -109,11 +101,11 @@
 						<h2>Contact</h2>
 						<div class="row cf">
 							<p>Votre Nom : </p>
-							<input class="text-input" type="text" name="text1" id="text1">
+							<input class="text-input" type="text" name="text1" id="text1" />
 						</div>
 						<div class="row cf">
 							<p>Votre Email : </p>
-							<input class="text-input" type="text" name="text1" id="text1">
+							<input class="text-input" type="text" name="text1" id="text1" />
 						</div>
 						<div class="row cf">
 							<div class="message">Votre Message : </div>
@@ -128,7 +120,7 @@
 
 			<footer>
 				<div id="coordonnees">
-					<p> Nascop </br> Région Parisienne </br> +33 6 43 52 09 38 </br> mail@nascop.com
+					<p> Nascop <br /> Région Parisienne <br /> +33 6 43 52 09 38 <br /> mail@nascop.com
 					</p>
 
 				<div class="bottom-bar">

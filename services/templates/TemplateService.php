@@ -34,7 +34,7 @@ class TemplateService implements ServiceInterface
      */
     public function parse($file, $params =array(), $allowCache = false)
     {
-        $file = __DIR__."/../../web/".$file;
+        $file = AUTOLOAD_DIR."/../web/".$file;
 
 
         if (!is_file($file))

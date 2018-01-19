@@ -36,6 +36,6 @@ class baseController implements ServiceInterface
      * @throws \Exception
      */
     public function index(){
-        return $this->kernel->get("template.service")->parse("a_trier/html/index.php", array("hello"=>"hello"));
+        return $this->kernel->get("template.service")->parse("general_layout/templates/index.php", array("hello"=>"hello"));
     }
 }

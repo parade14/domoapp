@@ -6,6 +6,9 @@
  * Time: 10:00
  */
 
+define('AUTOLOAD_DIR', __DIR__);
+
+
 function autoload($className)
 {
     $folder = __DIR__.'/../';

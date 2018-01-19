@@ -6,7 +6,7 @@
  * Time: 14:40
  */
 
-require('utilities/autoload.php');
+require('../utilities/autoload.php');
 //test autoload
 
 $kernel = new \kernel\Kernel();
