@@ -11,7 +11,7 @@
 		<title> Nascop </title>
 	</head>
 
-
+<?php echo $hello ?>
 	<body>
 		<div class="login hidden">
 			<div class="login-header">

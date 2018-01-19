@@ -10,15 +10,6 @@ require('utilities/autoload.php');
 //test autoload
 
 $kernel = new \kernel\Kernel();
-$kernel->get("session.manager");
 
-/**
- * @var Services\Session\SessionManager
- */
-$sessionManager = $kernel->get("session.manager");
+echo $controller = $kernel->get("base.controller")->index();
 
-var_dump($sessionManager->getCurrentUser());
-
-var_dump($_SESSION);
-
-//print_r($kernel->get("session.manager")->getCurrentUser());

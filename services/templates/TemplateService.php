@@ -26,19 +26,25 @@ class TemplateService implements ServiceInterface
 
 
     /**
+     * @param $file
+     * @param array $params
+     * @param bool $allowCache
      * @return bool|string
      * @throws \Exception
      */
-    public function parse($file, $params =array())
+    public function parse($file, $params =array(), $allowCache = false)
     {
+        $file = __DIR__."/../../web/".$file;
+
+
         if (!is_file($file))
         {
             throw new \Exception($file . ' is not a valid file');
         }
 
 
-        if( file_exists($file.'.cache' )) {
-            return file_get_contents( $file.'.cache' );
+        if( file_exists("$file.cache") and $allowCache) {
+            return file_get_contents( "$file.cache" );
         }
 
         extract( $params);
@@ -51,7 +57,7 @@ class TemplateService implements ServiceInterface
 
         ob_end_clean();
 
-        file_put_contents( $file.'.cache',
+        if($allowCache) file_put_contents( "$file.cache",
             $result );
 
         return $result;
