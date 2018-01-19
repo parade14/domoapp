@@ -12,13 +12,18 @@ $dataBase = $kernel->get("database.object");
 $databaseService = $kernel->get("database.service");
 
 $accommodationService = $kernel->get("accommodation.service");
+$sessionService = $kernel->get("session.manager");
 
 $accommodationService->setServiceConnect($databaseService);
 $accommodationService->setDataBaseObject($dataBase);
         
 $databaseService->connect($dataBase);
 
-$accomodations = $accommodationService->getAccommodationByUserId(1); // TODO GET THE CORRECT USER ID
+$accomodations = $accommodationService->getAccommodationByUserId(1);
+
+$user= $sessionService->getCurrentUser();
+
+
 
 
 
