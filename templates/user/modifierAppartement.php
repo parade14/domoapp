@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../../design/css/user-home-style.css" />
         <link rel="stylesheet" href="../../design/css/appartement-style.css" />
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
     </head>
@@ -53,6 +54,7 @@
                         <div class="add row"><i class="material-icons small">add_circle_outline</i>Ajouter</div>
                 </div>
             </div>
+           
 
             <main>
                 <div class="larg" id="containerAccommodations">
@@ -68,9 +70,7 @@
                             
                             <i class="fa fa-angle-left form_'.$item->getId().'"></i>
                             
-                        </div>
-                        
-                        
+                        </div>                        
 
                             <form class="toggleDiv form_'.$item->getId().'" action="insertOrUpdateAppartement.php" method="POST">
 
@@ -98,15 +98,17 @@
 
                                 <div class="input">
                                     <label>Superficie </label>
-                                    <input class="text-field" type="text" name="superficie" value="'.$item->getArea().'"  />
+                                    <input class="text-field" type="number" name="superficie" value="'.$item->getArea().'"  />
                                 </div>
 
                                 <div class="input">
                                     <label>Nombre d\'habitants </label>
-                                    <input class="text-field" type="text" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
+                                    <input class="text-field" type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
                                 </div>
-
+                                
+                                <button id="modifierForm_'.$item->getId().'" type="button" onClick="modifierForm('.$item->getId().')">Modifier</button>
                                 <input type="submit" class="submit" value="Valider"/>
+                                <button class="annulerForm" id="annulerForm_'.$item->getId().'" type="button" onClick="annulerForm('.$item->getId().')">Annuler</button>
                             </form>
                         <div id="dinamic-fields"></div>
                     </div>';
@@ -115,9 +117,13 @@
             </main>
 
         </div>
+        <div id="dialog" title="Delete this accommodation">
+                Please confirm the deletion
+        </div>
 
-
+        
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="../../javascript/apartement.js"></script>
     </body>
 
