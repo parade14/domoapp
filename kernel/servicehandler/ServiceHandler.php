@@ -8,6 +8,7 @@
 
 namespace Kernel\ServiceHandler;
 
+use kernel\Kernel;
 use ReflectionClass;
 use Kernel\ServiceHandler\ServiceHandlerInterface;
 
@@ -27,9 +28,16 @@ class ServiceHandler
      */
     protected $loaded = array();
 
+
     public static function getName()
     {
       return "service.handler";
+    }
+
+    public function __construct(Kernel $kernel)
+    {
+        $this->loaded[$kernel::getName()] = $kernel;
+        $this->servicesReferencedByName[$kernel::getName()] = Kernel::class;
     }
 
     /**
