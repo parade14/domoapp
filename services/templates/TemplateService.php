@@ -15,60 +15,49 @@ use Kernel\ServiceHandler\ServiceInterface;
  */
 class TemplateService implements ServiceInterface
 {
-    /**
-     * @var array
-     */
-    private $attributs = array();
-    /**
-     * @var array
-     */
-    private $properties = array();
+
 
     /**
      * TemplateObject constructor.
+     */
+    public function __construct()
+    {
+    }
+
+
+    /**
      * @param $file
+     * @param array $params
+     * @param bool $allowCache
+     * @return bool|string
      * @throws \Exception
      */
-    public function __construct( $file )
+    public function parse($file, $params =array(), $allowCache = false)
     {
+        $file = AUTOLOAD_DIR."/../web/".$file;
+
 
         if (!is_file($file))
         {
             throw new \Exception($file . ' is not a valid file');
         }
-        $this->attributs['file'] = $file;
-    }
 
-    /**
-     * @param $property
-     * @param $value
-     */
-    public function assign( $property, $value )
-    {
-        $this->properties[ $property ] = $value;
-    }
 
-    /**
-     * @return bool|string
-     */
-    public function parse()
-    {
-
-        if( file_exists($this->attributs['file'].'.cache' )) {
-            return file_get_contents( $this->attributs['file'].'.cache' );
+        if( file_exists("$file.cache") and $allowCache) {
+            return file_get_contents( "$file.cache" );
         }
 
-        extract( $this->properties );
+        extract( $params);
 
         ob_start();
 
-        require $this->attributs['file'];
+        require $file;
 
         $result = ob_get_contents();
 
         ob_end_clean();
 
-        file_put_contents( $this->attributs['file'].'.cache',
+        if($allowCache) file_put_contents( "$file.cache",
             $result );
 
         return $result;

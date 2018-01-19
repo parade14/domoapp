@@ -8,6 +8,7 @@
 
 namespace kernel;
 
+use controllers\baseController;
 use Kernel\ServiceHandler\ServiceHandler;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\Accomodation\AccommodationService;
@@ -22,13 +23,16 @@ use Services\Session\SessionManager;
 use services\templates\TemplateService;
 use Services\User\UserService;
 
-final class Kernel
+final class Kernel implements ServiceInterface
 {
     protected $serviceHandler;
 
     public function __construct()
     {
-        $this->serviceHandler = new ServiceHandler();
+        $this->serviceHandler = new ServiceHandler($this);
+        /**
+         * Adding services
+         */
         $this->serviceHandler
             ->addService(AccommodationService::class)
             ->addService(DatabaseService::class)
@@ -42,6 +46,13 @@ final class Kernel
             ->addService(SessionManager::class)
             ->addService(TemplateService::class)
         ;
+
+        /**
+         * Adding controllers
+         */
+        $this->serviceHandler
+            ->addService(baseController::class)
+        ;
     }
 
 
@@ -52,6 +63,11 @@ final class Kernel
      */
     public function get($serviceName)
     {
-        return $this->serviceHandler->get($serviceName);
+        return ($serviceName == "kernel") ? $this : $this->serviceHandler->get($serviceName);
+    }
+
+    public static function getName()
+    {
+        return "kernel";
     }
 }
