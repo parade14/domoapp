@@ -39,7 +39,7 @@
             <div class="app row">
                 <div class="panel column">
                         <ul class="nav column">
-                            <li><div class="row show_hide"><i class="fa fa-home"></i>Mes Appartements</div></li>
+                            <li><div class="row show_hide"><i class="fa fa-home"></i>Mes Appartements id=<?php echo $user->getId()?></div></li>
                         </ul>
                         <div class="line"></div>
                         <div class="appartment-list">
