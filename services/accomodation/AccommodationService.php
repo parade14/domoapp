@@ -74,22 +74,18 @@ public static function getName()
             $userId = $accommodation->getOwnerId();
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO Accommodation(street, street_number, postal_code, city, area, inhabitant_number, user_id) VALUES (':street', ':street_number', ':postal_code', ':city', ':area', ':inhabitant_number', ':owner_id')";
+            $sql = "INSERT INTO Accommodation(street, street_number, postal_code, city, area, inhabitant_number, user_id) VALUES (:street, :street_number, :postal_code, :city, :area, :inhabitant_number, :owner_id)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':street', $street, PDO::PARAM_STR);       
-            $stmt->bindParam(':street_number', $streetNumber, PDO::PARAM_STR);    
-            $stmt->bindParam(':city', $city, PDO::PARAM_STR);
-            $stmt->bindParam(':postal_code', $postalCode, PDO::PARAM_INT);
-            $stmt->bindParam(':area', $area, PDO::PARAM_INT);
-            $stmt->bindParam(':inhabitant_number', $inhabitantNumber, PDO::PARAM_INT);  
-            $stmt->bindParam(':owner_id', $userId, PDO::PARAM_INT);  
-            $stmt->execute();
             
-            if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
-                $accommodation->setId($last_id);
-            }
-            
+            $stmt->execute(array(
+            'street'=>$street,
+            'street_number'=>$streetNumber,
+            'postal_code'=>$postalCode,
+            'city'=>$city,
+            'area'=>$area,
+            'inhabitant_number'=>$inhabitantNumber,
+            'owner_id'=>$userId,
+            ));            
         } catch (\LogicException $e){
             throw $e;
         }

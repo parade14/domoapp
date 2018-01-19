@@ -1,7 +1,7 @@
 <?php
 use Entities\Accommodation;
 
-require('../../../utilities/autoload.php');
+require('../../../../utilities/autoload.php');
 $kernel = new \kernel\Kernel();
 
 $dataBase = $kernel->get("database.object");
@@ -13,4 +13,4 @@ $accommodationService->setDataBaseObject($dataBase);
         
 $databaseService->connect($dataBase);
 
-$accommodationService->deleteAccommodation($_GET['id']);
+//$accommodationService->deleteAccommodation($_GET['id']);
