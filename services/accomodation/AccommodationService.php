@@ -101,7 +101,7 @@ public static function getName()
         
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM Accommodation WHERE id='$idAccommodation')";
+            $sql = "DELETE FROM Accommodation WHERE id='$idAccommodation'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
         } catch (LogicException $e){

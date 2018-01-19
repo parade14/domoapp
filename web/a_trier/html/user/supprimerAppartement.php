@@ -13,4 +13,4 @@ $accommodationService->setDataBaseObject($dataBase);
         
 $databaseService->connect($dataBase);
 
-//$accommodationService->deleteAccommodation($_GET['id']);
+$accommodationService->deleteAccommodation($_GET['id']);
