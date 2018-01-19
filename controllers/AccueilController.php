@@ -13,7 +13,7 @@ use kernel\Kernel;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\Session\SessionManager;
 
-class baseController implements ServiceInterface
+class AccueilController implements ServiceInterface
 {
     /**
      * @var Kernel
@@ -28,7 +28,7 @@ class baseController implements ServiceInterface
 
     public static function getName()
     {
-        return "base.controller";
+        return "accueil.controller";
     }
 
     /**
@@ -36,6 +36,6 @@ class baseController implements ServiceInterface
      * @throws \Exception
      */
     public function index(){
-        return $this->kernel->get("template.service")->parse("general_layout/templates/index.php", array("hello"=>"hello"));
+        return $this->kernel->get("template.service")->parse("accueil/index.php", array("hello"=>"hello"));
     }
 }

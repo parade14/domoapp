@@ -104,12 +104,12 @@ class SensorService implements SensorServiceInterface
             $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id)";
 
             $stmt = $conn->prepare($sql);                                  
-            $stmt->bindParam(':type', $sensor->getType(), PDO::PARAM_STR);       
-            $stmt->bindParam(':name', $sensor->getName(), PDO::PARAM_STR);    
+            $stmt->bindParam(':type', $sensor->getType(), \PDO::PARAM_STR);
+            $stmt->bindParam(':name', $sensor->getName(), \PDO::PARAM_STR);
             $stmt->bindParam(':room_id', $sensor->getRoomId(), PDO::PARAM_STR);
-            $stmt->bindParam(':id', $sensor->getId(), PDO::PARAM_INT);   
+            $stmt->bindParam(':id', $sensor->getId(), \PDO::PARAM_INT);
             $stmt->execute();
-        } catch (LogicException $e) {
+        } catch (\LogicException $e) {
             throw $e;
         }
         return $sensor;
