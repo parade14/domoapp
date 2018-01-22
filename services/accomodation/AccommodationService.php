@@ -101,8 +101,9 @@ public static function getName()
         
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM Accommodation WHERE id='$idAccommodation'";
+            $sql = "DELETE FROM Accommodation WHERE id=:id";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
             $stmt->execute();
         } catch (LogicException $e){
             throw $e;
