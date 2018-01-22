@@ -47,10 +47,23 @@ class UserService implements UserServiceInterface
     public function createUser(UserInterface $user){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
+            
+            $firstName = $user->getFirstName();
+            $email = $user->getEmail();
+            $lastName = $user->getLastName();
+            $password = $user->getPassword();
+            $phone = $user->getPhone();
+            $profileType = $user->getProfileType();
 
             $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
-                    . "VALUES ('$user->getFirstName()', '$user->getLastName()','$user->getPhone()', '$user->getEmail()', '$user->getPassword()', '$user->getProfileType()')";
+                    . "VALUES (:firstName, :lastName, :phone, :email, :password, :profile_type)";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);    
+            $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);    
+            $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);    
+            $stmt->bindParam(':profile_type', $profileType, PDO::PARAM_INT);    
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);    
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);    
             $stmt->execute();
             
             if ($conn->query($sql) === TRUE) {
@@ -71,9 +84,11 @@ class UserService implements UserServiceInterface
     public function deleteUser($idUser){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-
-            $sql = "DELETE FROM user WHERE id='$idUser')";
+            
+            $sql = "DELETE FROM user WHERE id=:idUser)";
+            
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT); 
             $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
