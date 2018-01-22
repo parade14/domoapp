@@ -89,5 +89,15 @@ interface UserInterface
      */
     public function setProfileType($profileType);
 
+    /**
+     * @return array
+     */
+    public function getRoles();
+
+    /**
+     * @param $roles array
+     * @return $this
+     */
+    public function addRoles($roles);
 
 }

@@ -1,4 +1,3 @@
-
 /*
 
 $('.show_hide').click(function () {
@@ -17,8 +16,15 @@ $('.entypo-down-open').toggle(function() {
 }); */
 
 
-
+$('#dialog').hide();
 var Count = $("#containerAccommodations > div").length;
+
+$('input').each(function(index) {
+    $(this).prop('disabled', true );
+});
+
+$('.annulerForm').hide();
+
 
 
 $(".appartment-list, div.larg-w.form_1").on("click", ".appartment, div.angle-wrap", function(){
@@ -41,12 +47,61 @@ $('.add').click(function (){
         classAppartment.appendChild(newSpan);
         newSpan.innerHTML = "Appartement " + Count;
         $('.appartment').last().after(classAppartment);
-        var form_content = ' <div class="larg-w form_'+Count+'"> <div class="angle-wrap"> <h3>Appartement ' + Count + ' </h3> <i class="fa fa-angle-left form_'+Count+'"></i> </div> <div> <form class="toggleDiv form_'+Count+'" action="" method="post"> <div class="input"> <label>Adresse </label> <input class="text-field" type="text" name="adresse"> </div> <div class="input"> <label>Superficie </label> <input class="text-field" type="text" name="superficie"> </div> <div class="input"> <label>Nombre d\'habitants </label> <input class="text-field" type="text" name="nbHabitants"> </div> <input type="submit" class="submit" value="Valider"> </form> </div> <div id="dinamic-fields"></div> </div>';
+        var form_content = ' <div class="larg-w form_'+Count+'"> <div class="angle-wrap"> <h3>Appartement ' + Count + ' </h3><span onClick="deleteAccommodation(-1,'+Count+')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span> <i class="fa fa-angle-left form_'+Count+'"></i> </div> <div> <form class="toggleDiv form_'+Count+'" action="insertOrUpdateAppartement.php" method="POST"><input type="hidden" name="id" value="'+Count+'"> <div class="input"><label>N° </label><input class="text-field" type="number" name="numero"/></div><div class="input"> <label>Adresse </label> <input class="text-field" type="text" name="adresse"></div><div class="input"><label>Code Postal </label> <input class="text-field" type="number" name="codePostal"/></div><div class="input"><label>Ville </label><input class="text-field" type="text" name="ville"/></div> <div class="input"> <label>Superficie </label> <input class="text-field" type="number" name="superficie"> </div> <div class="input"> <label>Nombre d\'habitants </label> <input class="text-field" type="number" name="nbHabitants"> </div> <input type="submit" class="submit" value="Valider"> </form> </div> <div id="dinamic-fields"></div> </div>';
         $(".larg-w").last().after(form_content);
     }
 
 });
 
+
+function deleteAccommodation(id, value){
+    // si l'appartement n'existe pas en BDD
+    if(id===-1){
+        $('.form_'+value).remove();
+        Count = $("#containerAccommodations > div").length;
+    } else {
+        $("#dialog").dialog({
+        autoOpen:  true,
+        modal: true,
+        buttons : {
+             "Confirm" : function() {
+                 $(this).dialog("close");
+                    $.ajax({
+                    url: "supprimerAppartement.php?id="+id,
+                    success: function(data){
+                        $('.form_'+value).remove();
+                        Count = $("#containerAccommodations > div").length;
+                        alert("The accommodation is deleted");
+                        }
+                    });
+             },
+             "Cancel" : function() {
+                $(this).dialog("close");
+             }
+           }
+         });
+        
+
+    }
+}
+
+function modifierForm(idAccommodation){
+    $('.form_'+idAccommodation+' input').each(function(index) {
+        $(this).prop('disabled', false );
+        $('#modifierForm_'+idAccommodation).hide();
+        $('#annulerForm_'+idAccommodation).show();
+    });
+}
+
+function annulerForm(idAccommodation){
+    
+    $('.form_'+idAccommodation).trigger('reset')
+    $('.form_'+idAccommodation+' input').each(function(index) {
+        $(this).prop('disabled', true );
+        $('#modifierForm_'+idAccommodation).show();
+        $('#annulerForm_'+idAccommodation).hide();
+    });
+}
 
 
 

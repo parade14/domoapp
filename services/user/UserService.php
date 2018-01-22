@@ -11,6 +11,7 @@ use Entities\User;
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
 
+
 class UserService implements UserServiceInterface
 {
     public static function getName(){
@@ -47,13 +48,13 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "INSERT INTO room(first_name, last_name, phone, email, password, profile_type) "
+            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
                     . "VALUES ('$user->getFirstName()', '$user->getLastName()','$user->getPhone()', '$user->getEmail()', '$user->getPassword()', '$user->getProfileType()')";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             
             if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
+                $last_id = $conn->lastInsertId();
                 // on construit l'objet inséré
                 $user->setId($last_id);
             }
@@ -87,15 +88,15 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id)";
+            $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
             $stmt = $conn->prepare($sql);        
-            $stmt->bindParam(':id', $user->getId(), PDO::PARAM_STR);
-            $stmt->bindParam(':first_name', $user->getFirstName(), PDO::PARAM_STR);
-            $stmt->bindParam(':last_name', $user->getLastName(), PDO::PARAM_STR);
-            $stmt->bindParam(':phone', $user->getPhone(), PDO::PARAM_STR);
-            $stmt->bindParam(':email', $user->getEmail(), PDO::PARAM_STR);
-            $stmt->bindParam(':password', $user->getPassword(), PDO::PARAM_STR);
-            $stmt->bindParam(':profile_type', $user->getProfileType(), PDO::PARAM_STR);
+            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_INT);
+            $stmt->bindParam(':first_name', $user->getFirstName(), \PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $user->getLastName(), \PDO::PARAM_STR);
+            $stmt->bindParam(':phone', $user->getPhone(), \PDO::PARAM_STR);
+            $stmt->bindParam(':email', $user->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindParam(':password', $user->getPassword(), \PDO::PARAM_STR);
+            $stmt->bindParam(':profile_type', $user->getProfileType(), \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
@@ -113,8 +114,9 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->query("SELECT * FROM user WHERE ".$field."='".$value."'");
-                $resultats->setFetchMode(PDO::FETCH_ASSOC);
+                $resultats=$conn->prepare("SELECT * FROM user WHERE :field = :value");
+                $resultats->execute(array("field"=>$field, "value"=>$value));
+                $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();
                 foreach ($datas as $data) {

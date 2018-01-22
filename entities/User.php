@@ -9,7 +9,10 @@
 namespace Entities;
 
 
-class User
+use services\database\EntityHasOwnerInterface;
+use Services\User\UserInterface;
+
+class User implements EntityHasOwnerInterface, UserInterface
 {
     /**
      * @var integer
@@ -45,6 +48,11 @@ class User
      * @var string
      */
     protected $profileType;
+
+    /**
+     * @var array
+     */
+    protected $roles =array();
 
     /**
      * @return int
@@ -150,7 +158,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = md5($password);
         return $this;
     }
 
@@ -170,6 +178,23 @@ class User
     {
         $this->profileType = $profileType;
         return $this;
+    }
+
+    public function getOwnerId()
+    {
+      return $this->getId();
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    public function addRoles($roles)
+    {
+        if(is_array($roles)) foreach ($roles as $role) $this->addRoles($role);
+
+        else if(!in_array($roles, $this->roles)) $this->roles[]=$roles;
     }
 
 
