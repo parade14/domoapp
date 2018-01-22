@@ -29,7 +29,25 @@ class UserService implements UserServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
+    
+    
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
 
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+    
 
     /**
      * constructor
@@ -55,7 +73,7 @@ class UserService implements UserServiceInterface
             $phone = $user->getPhone();
             $profileType = $user->getProfileType();
 
-            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
+            $sql = "INSERT INTO User(first_name, last_name, phone, email, password, profile_type) "
                     . "VALUES (:firstName, :lastName, :phone, :email, :password, :profile_type)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);    
@@ -85,7 +103,7 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             
-            $sql = "DELETE FROM user WHERE id=:idUser)";
+            $sql = "DELETE FROM User WHERE id=:idUser)";
             
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT); 
@@ -103,7 +121,7 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
+            $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
             $stmt = $conn->prepare($sql);        
             $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_INT);
             $stmt->bindParam(':first_name', $user->getFirstName(), \PDO::PARAM_STR);
@@ -129,8 +147,8 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->prepare("SELECT * FROM user WHERE :field = :value");
-                $resultats->execute(array("field"=>$field, "value"=>$value));
+                $resultats=$conn->prepare("SELECT * FROM User WHERE $field = :value");
+                $resultats->execute(array(":value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();
