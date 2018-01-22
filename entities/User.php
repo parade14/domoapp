@@ -158,7 +158,7 @@ class User implements EntityHasOwnerInterface, UserInterface
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = md5($password);
         return $this;
     }
 
@@ -187,7 +187,7 @@ class User implements EntityHasOwnerInterface, UserInterface
 
     public function getRoles()
     {
-        return $this->getRoles();
+        return $this->roles;
     }
 
     public function addRoles($roles)

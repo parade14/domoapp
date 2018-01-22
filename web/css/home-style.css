@@ -360,6 +360,7 @@ footer
 	background: rgba(0, 0, 0, 0.32);
 	text-align: left;
 	padding: 10px 0;
+
 	.subject,
 	.content {
 	    width: 80%;

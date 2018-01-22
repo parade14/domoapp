@@ -49,9 +49,14 @@ class RoomService implements RoomServiceInterface
     public function createRoom($name, $area, $accommodation_id){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
+                       
 
-            $sql = "INSERT INTO room(name, area, accommodation_id) VALUES ('$name', '$area','$accommodation_id')";
+            $sql = "INSERT INTO Room(name, area, accommodation_id) VALUES (:name, :area, :accommodation_id)";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':area', $area, PDO::PARAM_INT);       
+            $stmt->bindParam(':name', $name , PDO::PARAM_STR);    
+            $stmt->bindParam(':accommodation_id', $accommodation_id, PDO::PARAM_INT);
+            
             $stmt->execute();
             
             if ($conn->query($sql) === TRUE) {
@@ -79,8 +84,9 @@ class RoomService implements RoomServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "DELETE FROM room WHERE id='".$idRoom."')";
+            $sql = "DELETE FROM room WHERE id=:idRoom)";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
         } catch (LogicException $e){
             throw $e;

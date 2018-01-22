@@ -29,7 +29,25 @@ class UserService implements UserServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
+    
+    
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
 
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+    
 
     /**
      * constructor
@@ -47,10 +65,23 @@ class UserService implements UserServiceInterface
     public function createUser(UserInterface $user){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
+            
+            $firstName = $user->getFirstName();
+            $email = $user->getEmail();
+            $lastName = $user->getLastName();
+            $password = $user->getPassword();
+            $phone = $user->getPhone();
+            $profileType = $user->getProfileType();
 
-            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
-                    . "VALUES ('$user->getFirstName()', '$user->getLastName()','$user->getPhone()', '$user->getEmail()', '$user->getPassword()', '$user->getProfileType()')";
+            $sql = "INSERT INTO User(first_name, last_name, phone, email, password, profile_type) "
+                    . "VALUES (:firstName, :lastName, :phone, :email, :password, :profile_type)";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);    
+            $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);    
+            $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);    
+            $stmt->bindParam(':profile_type', $profileType, PDO::PARAM_INT);    
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);    
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);    
             $stmt->execute();
             
             if ($conn->query($sql) === TRUE) {
@@ -71,9 +102,11 @@ class UserService implements UserServiceInterface
     public function deleteUser($idUser){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-
-            $sql = "DELETE FROM user WHERE id='$idUser')";
+            
+            $sql = "DELETE FROM User WHERE id=:idUser)";
+            
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT); 
             $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
@@ -88,9 +121,9 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
+            $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
             $stmt = $conn->prepare($sql);        
-            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_STR);
+            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_INT);
             $stmt->bindParam(':first_name', $user->getFirstName(), \PDO::PARAM_STR);
             $stmt->bindParam(':last_name', $user->getLastName(), \PDO::PARAM_STR);
             $stmt->bindParam(':phone', $user->getPhone(), \PDO::PARAM_STR);
@@ -114,7 +147,8 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->query("SELECT * FROM user WHERE ".$field."='".$value."'");
+                $resultats=$conn->prepare("SELECT * FROM User WHERE $field = :value");
+                $resultats->execute(array(":value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();

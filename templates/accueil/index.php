@@ -30,7 +30,7 @@
                         <li><a class="menu_effect" href="#"> Accueil </a> </li>
                         <li><a class="menu_effect" href="#"> Notre offre </a> </li>
                         <li><a class="menu_effect" href="#contact"> Contact </a> </li>
-                        <li><a class="menu_effect btn-connect"> Connexion </a> </li>
+                        <li><a class="menu_effect btn-connect" href="#" > Connexion </a> </li>
                         <li><a class="menu_effect" href="#"> Langue </a> </li>
                     </ul>
                 </nav>
