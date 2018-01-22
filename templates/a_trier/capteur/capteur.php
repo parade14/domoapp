@@ -6,28 +6,13 @@
         <link rel="stylesheet" href="../../design/css/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../design/css/ionicons/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../../design/css/capteur-style.css" />
+        <link rel="stylesheet" href="../../../web/design/css/capteur-style.css" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
     </head>
 
     <body>
-        <div class="header">
-            <div id="logo">
-                <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
-            </div>
-            <nav>
-                <ul>
-                    <li><a class="menu_effect" href="../Accueil.php"> Accueil </a> </li>
-                    <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                    <li><a class="menu_effect" href="modifierAppartement.php"> Appartements </a> </li>
-                    <li><a class="menu_effect" href="#"> Capteurs </a> </li>
-                    <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
-                    <li><a class="menu_effect" href="#"> Mon profil </a> </li>
-                    <li><a class="menu_effect" href="#"> Langue </a> </li>
-                </ul>
-            </nav>
-        </div>
+       <?php include '../../headers/headerUserConnected.php'; ?>
 
         <div class="main-wrapper">
             <div class="icon-effect-1 icon-effect-1a">

@@ -8,7 +8,7 @@
             <li><a class="menu_effect" href="#"> Accueil </a> </li>
             <li><a class="menu_effect" href="#"> Statistiques </a> </li>
             <li><a class="menu_effect" href="../user/modifierAppartement.php"> Appartements </a> </li>
-            <li><a class="menu_effect" href="capteurs.php"> Capteurs </a> </li>
+            <li><a class="menu_effect" href="../capteur/capteur.php"> Capteurs </a> </li>
             <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
             <li><a class="menu_effect btn-connect" href="../others/ModificationClient.php"> Mon profil </a> </li>
             <li><a class="menu_effect" href="#"> Langue </a> </li>
