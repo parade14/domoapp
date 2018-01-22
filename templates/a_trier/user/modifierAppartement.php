@@ -6,11 +6,11 @@
     <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../../design/css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../design/css/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../../web/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../../web/css/ionicons/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../../design/css/user-home-style.css" />
-        <link rel="stylesheet" href="../../design/css/appartement-style.css" />
+        <link rel="stylesheet" href="../../../web/css/user-home-style.css" />
+        <link rel="stylesheet" href="../../../web/css/appartement-style.css" />
          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
@@ -39,7 +39,7 @@
             <div class="app row">
                 <div class="panel column">
                         <ul class="nav column">
-                            <li><div class="row show_hide"><i class="fa fa-home"></i>Mes Appartements id=<?php echo $user->getId()?></div></li>
+                            <li><div class="row show_hide"><i class="fa fa-home"></i>Mes Appartements></div></li>
                         </ul>
                         <div class="line"></div>
                         <div class="appartment-list">
@@ -124,7 +124,7 @@
         
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="../../javascript/apartement.js"></script>
+        <script src="../../../web/javascript/apartement.js"></script>
     </body>
 
 </html>

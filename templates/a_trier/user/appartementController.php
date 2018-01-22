@@ -2,7 +2,7 @@
 
 
 
-require('../../../../utilities/autoload.php');
+require('../../../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
@@ -21,7 +21,8 @@ $databaseService->connect($dataBase);
 
 $accomodations = $accommodationService->getAccommodationByUserId(1);
 
-$user= $sessionService->getCurrentUser();
+//$user= $sessionService->getCurrentUser();
+//$idUser= $user->getId();
 
 
 
