@@ -174,15 +174,16 @@ button {
     top: 250px;
     left: 198px;
     display: flex;
+    flex-wrap: wrap;
     width: 85vw;
-    height: 69.5vh;
+    height: 65.5vh;
+    overflow-y: scroll;
 }
 
 .box {
     width: 230px;
     height: 230px;
     margin: 0.2%;
-    padding: 15px;
     box-sizing: border-box;
     display: inline-block;
     background: #036C81;
@@ -316,8 +317,8 @@ button {
 }
 
 .temp {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 35px;
+    margin-left: 35px;
     padding-left: 20px;
 }
 
@@ -471,12 +472,89 @@ button {
 
 /* POPUP */
 
-#test-form {
-    background: white;
-    margin: 0 auto;
-    width: 30%;
+.hidden {
+    display: none;
 }
 
-.mfp-with-fade {
-    transition: all .5s ease;
+.add_captor {
+    width: 500px;
+    height: 200px;
+    margin: 0 auto;
+    font-size: 16px;
+    position: fixed;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    top: 0;
+    left: 50%;
+    z-index: 3;
+}
+
+.login-header,
+.add_captor p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #26b7be;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.fa-times:hover {
+    color: black;
+}
+
+.captor-container {
+    background: #ebebeb;
+    padding: 12px;
+}
+
+.add_captor p {
+    padding: 12px;
+}
+
+.add_captor input, .add_captor select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+}
+
+
+.add_captor input, .add_captor select {
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+}
+
+.add_captor input:focus, .add_captor select:focus {
+    border-color: #888;
+}
+
+.add_captor input[type="submit"] {
+    background: #26b7be;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add_captor input[type="submit"]:hover {
+    background: #007284;
+}
+
+.add_captor input[type="submit"]:focus {
+    border-color: #05a;
 }
