@@ -23,11 +23,12 @@ class UserController extends BaseController
      * @return mixed
      * @throws \Exception
      */
-    public function index($post){
+    public function index(){
+
 
 
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
-        if($var) return $this->get("template.service")->parse("user/index.php", array("hello"=>"hello"));
+        if($var) return $this->get("template.service")->parse("user/index.php", array("user"=>$this->get('session.manager')->getCurrentUser()));
 
         throw new AccessDeniedException();
     }

@@ -29,7 +29,7 @@ class SessionManager implements SessionManagerInterface
 
     public function __construct(RolesManager $rolesManager, UserServiceInterface $userService)
     {
-        session_start();
+        if(session_id() == '') session_start();
         $this->session =& $_SESSION;
         $this->userService = $userService;
         if(!is_array($this->session)) $this->session = array();
@@ -101,17 +101,20 @@ class SessionManager implements SessionManagerInterface
     /**
      * @param $email
      * @param $password
-     * @return array|bool|User
+     * @return bool|User
+     * @throws \Exception
      */
     public function checkUser($email, $password){
         try{
-            $user = $this->userService->getUserBy('email', $email);
+            $results = $this->userService->getUserBy('email', $email);
+
+            if(is_array($results)) $user = $results[0];
         }
         catch(\Exception $e){
-            return false;
+            throw $e;
         }
         if($user instanceof User){
-            return ($user->getPassword === md5($password)) ? $user : false;
+            return ($user->getPassword() === md5(md5($password))) ? $user : false;
         }
         return false;
     }
@@ -120,9 +123,13 @@ class SessionManager implements SessionManagerInterface
      * @param $email
      * @param $password
      * @return bool
+     * @throws \Exception
      */
     public function connectUser($email, $password){
-        if($user = $this->checkUser($email, $password) instanceof User){
+        if( ($user = $this->checkUser($email, $password)) instanceof User){
+
+            $this->rolesManager->addRole($user, "AUTHENTICATED_USER");
+
             $this->setCurrentUser($user);
             return true;
         }

@@ -31,4 +31,8 @@ abstract class BaseController implements ServiceInterface
     public function get($serviceName){
         return $this->kernel->get($serviceName);
     }
+
+    public function redirect($location){
+        header("Location: $location");
+    }
 }

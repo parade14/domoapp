@@ -5,15 +5,16 @@
 <?php include('head.php'); ?>
 
 	<body>
-		<div class="login hidden">
+		<div class="login <?= ($formRetry)? "": "hidden"?>">
 			<div class="login-header">
 				<h2 class="login-header-text">Log in </h2>
 				<i class="fa fa-times login-cross"></i>
 			</div>
 
-			<form method="POST" action="user/user-home.php" class="login-container">
-				<p><input type="email" placeholder="Email"></p>
-				<p><input type="password" placeholder="Password"></p>
+			<form method="POST" action="index.php" class="login-container">
+                <?=($formRetry) ? "badCredentials" :"" ?>
+				<p><input type="email" name="email" placeholder="Email"></p>
+				<p><input type="password" name="password" placeholder="Password"></p>
 				<p><input type="submit" value="Log in"></p>
 			</form>
 		</div>

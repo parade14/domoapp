@@ -45,7 +45,7 @@ class User implements EntityHasOwnerInterface, UserInterface
     protected $password;
 
     /**
-     * @var string
+     * @var int
      */
     protected $profileType;
 
@@ -167,16 +167,16 @@ class User implements EntityHasOwnerInterface, UserInterface
      */
     public function getProfileType()
     {
-        return $this->profileType;
+        return (int) $this->profileType;
     }
 
     /**
-     * @param string $profileType
+     * @param int $profileType
      * @return User
      */
     public function setProfileType($profileType)
     {
-        $this->profileType = $profileType;
+        $this->profileType =(int) $profileType;
         return $this;
     }
 
