@@ -8,14 +8,14 @@
 
 namespace controllers;
 
+use Entities\User;
 use kernel\Kernel;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
 
 class UserController extends BaseController
 {
-    public static function getName()
-    {
+    public static function getName(){
         return "user.controller";
     }
 
@@ -24,6 +24,8 @@ class UserController extends BaseController
      * @throws \Exception
      */
     public function index($post){
+
+
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
         if($var) return $this->get("template.service")->parse("user/index.php", array("hello"=>"hello"));
 

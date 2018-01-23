@@ -29,8 +29,8 @@ class UserService implements UserServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
-    
-    
+
+
     function getServiceConnect() {
         return $this->serviceConnect;
     }
@@ -47,7 +47,7 @@ class UserService implements UserServiceInterface
         $this->databaseObject = $databaseObject;
     }
 
-    
+
 
     /**
      * constructor
@@ -65,25 +65,17 @@ class UserService implements UserServiceInterface
     public function createUser(UserInterface $user){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            
-            $firstName = $user->getFirstName();
-            $email = $user->getEmail();
-            $lastName = $user->getLastName();
-            $password = $user->getPassword();
-            $phone = $user->getPhone();
-            $profileType = $user->getProfileType();
 
-            $sql = "INSERT INTO User(first_name, last_name, phone, email, password, profile_type) "
-                    . "VALUES (:firstName, :lastName, :phone, :email, :password, :profile_type)";
+            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) VALUES (:firstName, :lastName,:phone,:email, :password, :profileType)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);    
-            $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);    
-            $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);    
-            $stmt->bindParam(':profile_type', $profileType, PDO::PARAM_INT);    
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);    
-            $stmt->bindParam(':password', $password, PDO::PARAM_STR);    
-            $stmt->execute();
-            
+            $stmt->execute(array(
+                ':firstName'=>$user->getFirstName(),
+                ':lastName'=>$user->getPhone(),
+                ':email'=>$user->getEmail(),
+                ':password'=>$user->getPassword(),
+                ':profileType'=>$user->getPassword(),
+            ));
+
             if ($conn->query($sql) === TRUE) {
                 $last_id = $conn->lastInsertId();
                 // on construit l'objet inséré
@@ -102,11 +94,9 @@ class UserService implements UserServiceInterface
     public function deleteUser($idUser){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            
-            $sql = "DELETE FROM User WHERE id=:idUser)";
-            
+
+            $sql = "DELETE FROM user WHERE id='$idUser')";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT); 
             $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
