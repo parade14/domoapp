@@ -11,6 +11,15 @@ use Kernel\ServiceHandler\ServiceInterface;
 
 interface UserServiceInterface extends ServiceInterface
 {
+    
+    
+    
+    
+    function getServiceConnect();
+    function getDatabaseObject();
+    function setServiceConnect($serviceConnect);
+    function setDatabaseObject($databaseObject);
+    
     /**
      * Add an user in database
      * @param UserInterface $user

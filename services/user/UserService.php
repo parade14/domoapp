@@ -31,6 +31,24 @@ class UserService implements UserServiceInterface
     protected $databaseObject;
 
 
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
+
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+
+
     /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
@@ -48,11 +66,16 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
-                    . "VALUES ('$user->getFirstName()', '$user->getLastName()','$user->getPhone()', '$user->getEmail()', '$user->getPassword()', '$user->getProfileType()')";
+            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) VALUES (:firstName, :lastName,:phone,:email, :password, :profileType)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            
+            $stmt->execute(array(
+                ':firstName'=>$user->getFirstName(),
+                ':lastName'=>$user->getPhone(),
+                ':email'=>$user->getEmail(),
+                ':password'=>$user->getPassword(),
+                ':profileType'=>$user->getPassword(),
+            ));
+
             if ($conn->query($sql) === TRUE) {
                 $last_id = $conn->lastInsertId();
                 // on construit l'objet inséré
@@ -87,16 +110,24 @@ class UserService implements UserServiceInterface
     public function updateUser(UserInterface $user){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-
-            $sql = "UPDATE user SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
-            $stmt = $conn->prepare($sql);        
-            $stmt->bindParam(':id', $user->getId(), \PDO::PARAM_INT);
-            $stmt->bindParam(':first_name', $user->getFirstName(), \PDO::PARAM_STR);
-            $stmt->bindParam(':last_name', $user->getLastName(), \PDO::PARAM_STR);
-            $stmt->bindParam(':phone', $user->getPhone(), \PDO::PARAM_STR);
-            $stmt->bindParam(':email', $user->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindParam(':password', $user->getPassword(), \PDO::PARAM_STR);
-            $stmt->bindParam(':profile_type', $user->getProfileType(), \PDO::PARAM_STR);
+            
+            $id =  $user->getId();
+            $first_name = $user->getFirstName();
+            $last_name = $user->getLastName();
+            $phone = $user->getPhone();
+            $email = $user->getEmail();
+            $password = $user->getPassword();
+            $profile_type = $user->getProfileType();
+            
+            $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+            $stmt->bindParam(':first_name', $first_name, \PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $last_name, \PDO::PARAM_STR);
+            $stmt->bindParam(':phone', $phone, \PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, \PDO::PARAM_STR);
+            $stmt->bindParam(':profile_type', $profile_type, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
@@ -114,8 +145,8 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->prepare("SELECT * FROM user WHERE :field = :value");
-                $resultats->execute(array("field"=>$field, "value"=>$value));
+                $resultats=$conn->prepare("SELECT * FROM User WHERE $field = :value");
+                $resultats->execute(array(":value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();
@@ -126,7 +157,7 @@ class UserService implements UserServiceInterface
                     $user->setLastName($data['last_name']);
                     $user->setPhone($data['phone']);
                     $user->setEmail($data['email']);
-                    $user->setPassword($data['passsword']);
+                    $user->setPassword($data['password']);
                     $user->setProfileType($data['profile_type']);
                     array_push($return, $user);
                 } 

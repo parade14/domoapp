@@ -49,8 +49,11 @@ class SensorService implements SensorServiceInterface
         
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO sensor(type, name, room_id) VALUES ('$type', '$name','$room_id')";
+            $sql = "INSERT INTO sensor(type, name, room_id) VALUES (:type, :name, :room_id)";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':type', $type, PDO::PARAM_STR);    
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);    
+            $stmt->bindParam(':room_id', $room_id, PDO::PARAM_INT);    
             $stmt->execute();
           
             // on récupère l'id qu'on a inséré
@@ -80,8 +83,9 @@ class SensorService implements SensorServiceInterface
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM sensor WHERE id='$idSensor')";
+            $sql = "DELETE FROM sensor WHERE id=:idSensor";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idSensor', $idSensor, PDO::PARAM_INT);    
             $stmt->execute();
             
         } catch (LogicException $e) {
@@ -101,7 +105,7 @@ class SensorService implements SensorServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id)";
+            $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id";
 
             $stmt = $conn->prepare($sql);                                  
             $stmt->bindParam(':type', $sensor->getType(), \PDO::PARAM_STR);

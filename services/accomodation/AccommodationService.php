@@ -159,7 +159,7 @@ public static function getName()
             $resultats=$conn->query("SELECT * FROM Accommodation WHERE id='$idAccommodation'");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
-            $return = array();
+            $return = array();  
             foreach ($datas as $data) {
                 $accommodation = new Accommodation();
                 $accommodation->setId($data['id']);

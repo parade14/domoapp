@@ -11,12 +11,15 @@ namespace Services\Session;
 
 use Entities\User;
 use services\security\RolesManager;
+use Services\user\UserService;
+use Services\User\UserServiceInterface;
 
 class SessionManager implements SessionManagerInterface
 {
 
     protected $session;
     protected $rolesManager;
+    protected $userService;
 
     public static function getName()
     {
@@ -24,10 +27,11 @@ class SessionManager implements SessionManagerInterface
     }
 
 
-    public function __construct(RolesManager $rolesManager)
+    public function __construct(RolesManager $rolesManager, UserServiceInterface $userService)
     {
         session_start();
         $this->session =& $_SESSION;
+        $this->userService = $userService;
         if(!is_array($this->session)) $this->session = array();
 
         $this->rolesManager = $rolesManager;
@@ -37,6 +41,7 @@ class SessionManager implements SessionManagerInterface
             $this->rolesManager->addRole($this->session["current_user"],"ANONYMOUS_USER");
 
         }
+
     }
 
     /**
@@ -87,5 +92,40 @@ class SessionManager implements SessionManagerInterface
     public function getCurrentUser()
     {
         return $this->getSession("current_user");
+    }
+
+    public function setCurrentUser(User $user){
+        $this->set("current_user",$user);
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return array|bool|User
+     */
+    public function checkUser($email, $password){
+        try{
+            $user = $this->userService->getUserBy('email', $email);
+        }
+        catch(\Exception $e){
+            return false;
+        }
+        if($user instanceof User){
+            return ($user->getPassword === md5($password)) ? $user : false;
+        }
+        return false;
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return bool
+     */
+    public function connectUser($email, $password){
+        if($user = $this->checkUser($email, $password) instanceof User){
+            $this->setCurrentUser($user);
+            return true;
+        }
+        return false;
     }
 }

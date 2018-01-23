@@ -97,6 +97,20 @@ body {
 }
 
 
+#annulerBtn{
+    background: #F7819F;
+}
+#annulerBtn:hover{
+    background: #FA5882;
+}
+#enregistrerBtn{
+    background: #81F781;
+}
+#enregistrerBtn:hover{
+    background: #58FA58;
+}
+
+
 
 @keyframes NO {
   from, to {
