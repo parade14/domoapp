@@ -11,5 +11,5 @@ require('../../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
-echo $controller = $kernel->get("user.controller")->index();
+echo $controller = $kernel->get("user.controller")->index($_POST);
 

@@ -48,11 +48,16 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) "
-                    . "VALUES ('$user->getFirstName()', '$user->getLastName()','$user->getPhone()', '$user->getEmail()', '$user->getPassword()', '$user->getProfileType()')";
+            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) VALUES (:firstName, :lastName,:phone,:email, :password, :profileType)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            
+            $stmt->execute(array(
+                ':firstName'=>$user->getFirstName(),
+                ':lastName'=>$user->getPhone(),
+                ':email'=>$user->getEmail(),
+                ':password'=>$user->getPassword(),
+                ':profileType'=>$user->getPassword(),
+            ));
+
             if ($conn->query($sql) === TRUE) {
                 $last_id = $conn->lastInsertId();
                 // on construit l'objet inséré
@@ -72,9 +77,9 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "DELETE FROM user WHERE id='$idUser')";
+            $sql = "DELETE FROM user WHERE id=:id";
             $stmt = $conn->prepare($sql);
-            $stmt->execute();
+            $stmt->execute(array('id'=>$idUser));
         } catch (\LogicException $e){
             throw $e;
         }
