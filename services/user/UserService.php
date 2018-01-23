@@ -31,6 +31,24 @@ class UserService implements UserServiceInterface
     protected $databaseObject;
 
 
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
+
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+
+
     /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
@@ -77,9 +95,9 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "DELETE FROM user WHERE id=:id";
+            $sql = "DELETE FROM user WHERE id='$idUser')";
             $stmt = $conn->prepare($sql);
-            $stmt->execute(array('id'=>$idUser));
+            $stmt->execute();
         } catch (\LogicException $e){
             throw $e;
         }
@@ -119,8 +137,8 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->prepare("SELECT * FROM user WHERE :field = :value");
-                $resultats->execute(array("field"=>$field, "value"=>$value));
+                $resultats=$conn->prepare("SELECT * FROM User WHERE $field = :value");
+                $resultats->execute(array(":value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();

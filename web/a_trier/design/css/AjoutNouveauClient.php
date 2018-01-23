@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../a_trier/design/css/AjoutNouveauClient.css" />
-        <title>Modicfication d'un compte client</title>
+        <title>Ajout d'un nouveau client</title>
     </head>
     <body>
 
         <div class="user">
             <header class="user__header">
-                <h1 class="user__title">Modification d'un compte client</h1>
+                <h1 class="user__title">Inscritption d'un nouveau client</h1>
             </header>
             
             <form class="form">
