@@ -114,7 +114,53 @@ body
     opacity: 1;
 }
 
+/* ADD BUTTON */
 
+button {
+    top: 180px;
+    left: 200px;
+    display: block;
+    margin: 20px auto;
+    width: 212px;
+    height: 40px;
+    color: teal;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid teal;
+    outline: none;
+}
+
+.add {
+    position: fixed;
+    overflow: hidden;
+}
+
+.add {
+    border: 3px solid #036C81;
+}
+.add:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: #2fcece;
+    transition: all 300ms;
+}
+.add:hover {
+    color: white;
+    transition: all .2s ease;
+}
+.add:hover:after {
+    width: 240px;
+    height: 240px;
+    top: -100px;
+    left: -3px;
+}
 
 /* BOXES */
 
@@ -125,7 +171,7 @@ body
 
 .container-boxes {
     position: fixed;
-    top: 220px;
+    top: 250px;
     left: 198px;
     display: flex;
     width: 85vw;
@@ -421,4 +467,16 @@ body
     bottom: 15px;
     width: 35px;
     height: 35px;
+}
+
+/* POPUP */
+
+#test-form {
+    background: white;
+    margin: 0 auto;
+    width: 30%;
+}
+
+.mfp-with-fade {
+    transition: all .5s ease;
 }
