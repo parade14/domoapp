@@ -73,19 +73,21 @@ class UserService implements UserServiceInterface
                 ':lastName'=>$user->getPhone(),
                 ':email'=>$user->getEmail(),
                 ':password'=>$user->getPassword(),
-                ':profileType'=>$user->getPassword(),
+                ':profileType'=>$user->getProfileType(),
+                ':phone'=>$user->getPhone(),
             ));
 
-            if ($conn->query($sql) === TRUE) {
+
                 $last_id = $conn->lastInsertId();
                 // on construit l'objet inséré
                 $user->setId($last_id);
-            }
+
+                return $user;
             
         } catch (\LogicException $e){
             throw $e;
         }
-        return $user;
+
     }
 
     /**
@@ -166,6 +168,7 @@ class UserService implements UserServiceInterface
         } catch (\LogicException $e){
                 throw $e;
         }
+
         return $return;
     }
 

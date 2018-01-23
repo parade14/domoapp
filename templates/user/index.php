@@ -1,3 +1,11 @@
+<?php
+/**
+ * @var $user \Entities\User
+ */
+    $user;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +29,11 @@
             <i class="fa fa-times login-cross"></i>
         </div>
         <div class="profile-container">
-            <p>TYPE : Gestionnaire</p>
-            <p>NOM : Durant</p>
-            <p>PRENOM : Alphonse</p>
-            <p>TELEPHONE : 01 62 52 98 15</p>
-            <p>MAIL : alphonse.durant@gmail.com</p>
+            <p>TYPE : <?=$user->getProfileType()?></p>
+            <p>NOM : <?=$user->getLastName()?></p>
+            <p>PRENOM : <?=$user->getFirstName()?></p>
+            <p>TELEPHONE : <?=$user->getPhone()?></p>
+            <p>MAIL : <?=$user->getEmail()?></p>
         </div>
 
         <p class="modifier"><a href="ModifierProfil.html"> <input type="submit" value="Modifier"> </a></p>

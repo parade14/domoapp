@@ -13,17 +13,8 @@ use kernel\Kernel;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\Session\SessionManager;
 
-class AccueilController implements ServiceInterface
+class AccueilController extends BaseController
 {
-    /**
-     * @var Kernel
-     */
-    protected $kernel;
-
-    public function __construct(Kernel $kernel)
-    {
-        $this->kernel = $kernel;
-    }
 
 
     public static function getName()
@@ -35,7 +26,24 @@ class AccueilController implements ServiceInterface
      * @return mixed
      * @throws \Exception
      */
-    public function index(){
-        return $this->kernel->get("template.service")->parse("accueil/index.php", array("hello"=>"hello"));
+    public function index($post){
+        $formRetry = false;
+        if(!empty($post['email']) and !empty($post['password'])){
+            if($this->indexAction($post['email'], $post['password'])) $this->redirect("user/");
+            else $formRetry = true;
+        }
+
+
+        return $this->kernel->get("template.service")->parse("accueil/index.php", array("hello"=>"hello", "formRetry"=>$formRetry));
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return boolean
+     * @throws \Exception
+     */
+    public function indexAction($email, $password){
+        return $this->get('session.manager')->connectUser($email, $password);
     }
 }

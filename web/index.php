@@ -11,5 +11,6 @@ require('../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
-echo $controller = $kernel->get("accueil.controller")->index();
+
+echo $controller = $kernel->get("accueil.controller")->index($_POST);
 
