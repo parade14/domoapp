@@ -42,6 +42,8 @@ interface AccommodationServiceInterface extends ServiceInterface
     public function getAccommodationById($idAccommodation);
     
     public function getAccommodationByUserId($idUser);
+    
+    public function getAllAccommodations();
 
 
 

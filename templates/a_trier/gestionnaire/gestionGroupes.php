@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../../web/css/accueil_gestionnaire.css" />
     <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -42,20 +43,46 @@
                 
                 foreach(${'accommodations_'.$item->getId()} as $acc){
                     echo '
-                        <div>'.$acc->getStreetNumber().' '.$acc->getStreet().' '.$acc->getCity().' '.$acc->getPostalCode().'</div>';        
+                        <div>'.$acc->getStreetNumber().' '.$acc->getStreet().', '.$acc->getCity().', '.$acc->getPostalCode().'</div>';        
                 }
                 echo '
                     </div>
-                    <button id="modifier" onclick="modifierGroupe()">Modifier</button>
-                    <button id="modifier" onclick="modifierGroupe()">Valider</button>
-                    <button id="modifier" onclick="modifierGroupe()">Annuler</button>';
+                    <button class="modifierGroupBtn" id="modifierGroup_'.$item->getId().'_Btn" onclick="modifierGroupe()">Modifier</button>
+                    <button class="validerGroupBtn"id="validerGroup_'.$item->getId().'_Btn" onclick="validerGroupe()">Valider</button>
+                    <button class="annulerGroupBtn"id="annulerGroup_'.$item->getId().'_Btn" onclick="annulerGroupe()">Annuler</button>
+                    <button class="supprimerGroupBtn" id="supprimerGroup_'.$item->getId().'_Btn" onclick="supprimerGroupe()">Supprimer</button>';
             }
         ?>
+        <br/><br/>
+        <button id="creerGroup" onclick="creerGroupe()">Créer un groupe</button>
     </div>
 
 
+
+
+
+<!------------------------------------------POPUP  CREATION -------------------------------------------------------- -->
+
+<div id="dialog-form" title="Basic dialog" style="display:none">
+    <form>
+        <span>Nom du groupe : </span><input type="text"/>
+        <br/>
+        <ul id="listAppartAjoutes">
+        </ul>
+            
+        </ul>
+        <ul id="listAppartPopup">
+            
+        </ul>
+    </form>
+</div>
+
+<!------------------------------------------POPUP  CREATION -------------------------------------------------------- -->
     
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../../../web/javascript/gestionGroupes.js"></script>
 </html>

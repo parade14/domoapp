@@ -214,4 +214,34 @@ public static function getName()
     }
 
 
+    public function getAllAccommodations(){
+        
+        try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+
+            $resultats=$conn->query("SELECT * FROM Accommodation");
+            $resultats->setFetchMode(PDO::FETCH_ASSOC);
+            $datas = $resultats->fetchAll();
+            $return = array();
+            foreach ($datas as $data) {
+                $accommodation = new Accommodation();
+                $accommodation->setId($data['id']);
+                $accommodation->setStreet($data['street']);
+                $accommodation->setStreetNumber($data['street_number']);
+                $accommodation->setArea($data['area']);
+                $accommodation->setPostalCode($data['postal_code']);
+                $accommodation->setInhabitantNumber($data['inhabitant_number']);
+                $accommodation->setCity($data['city']);
+                $accommodation->setOwnerId($data['user_id']);
+                array_push($return, $accommodation);
+            } 
+            $resultats->closeCursor();
+            
+        } catch (LogicException $e){
+            throw $e;
+        }
+        return $return;
+    }
+
+
 }
