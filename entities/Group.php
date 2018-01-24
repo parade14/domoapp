@@ -9,7 +9,7 @@ namespace Entities;
 
 use services\database\EntityHasOwnerInterface;
 
-class Group implements EntityHasOwnerInterface
+class Group
 {
 
     /**
@@ -17,6 +17,10 @@ class Group implements EntityHasOwnerInterface
      */
     protected $id;
 
+        /**
+     * @var string
+     */
+    protected $name;
     /**
      * @var int
      */
@@ -61,9 +65,13 @@ class Group implements EntityHasOwnerInterface
     }
 
 
-    public function getOwnerId()
-    {
-        return $this->getGestionnaireId();
+    public function getName(){
+        return $this->name;
+    }
+    
+    public function setName($name){
+        $this->name = $name;
+        return $this;
     }
 
 

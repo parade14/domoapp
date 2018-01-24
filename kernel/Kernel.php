@@ -22,6 +22,7 @@ use Services\Security\RolesManager;
 use Services\Sensor\SensorService;
 use Services\Session\SessionManager;
 use services\templates\TemplateService;
+use services\group\GroupService;
 use Services\User\UserService;
 
 final class Kernel implements ServiceInterface
@@ -46,6 +47,7 @@ final class Kernel implements ServiceInterface
             ->addService(AccessGranter::class)
             ->addService(SessionManager::class)
             ->addService(TemplateService::class)
+            ->addService(GroupService::class)
         ;
 
         /**
