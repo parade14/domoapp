@@ -10,6 +10,7 @@ use Services\Database\DatabaseServiceInterface;
 use Services\Database\DatabaseService;
 use Services\Database\DatabaseObject;
 use Entities\Group;
+use Entities\Accommodation;
 
 
 class GroupService {
@@ -134,5 +135,37 @@ class GroupService {
         }
         return $return;
         
+    }
+    
+    public function getAccommodationsByGroup($group){
+          try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+            
+            $id = $group->getId();
+            $resultats=$conn->query("select accommodation.* from `accommodation`, `groupaccommodation`, `group` "
+                    . "where groupAccommodation.group_id=group.id and "
+                    . "Accommodation.id = GroupAccommodation.accommodation_id and "
+                    . "GroupAccommodation.group_id='$id';");
+            
+            $datas = $resultats->fetchAll();
+            $return = array();
+            foreach ($datas as $data) {
+                $accommodation = new Accommodation();
+                $accommodation->setId($data['id']);
+                $accommodation->setStreet($data['street']);
+                $accommodation->setStreetNumber($data['street_number']);
+                $accommodation->setArea($data['area']);
+                $accommodation->setPostalCode($data['postal_code']);
+                $accommodation->setInhabitantNumber($data['inhabitant_number']);
+                $accommodation->setCity($data['city']);
+                $accommodation->setOwnerId($data['user_id']);
+                array_push($return, $accommodation);
+            } 
+            $resultats->closeCursor();
+            
+        } catch (LogicException $e){
+            throw $e;
+        }
+        return $return;        
     }
 }

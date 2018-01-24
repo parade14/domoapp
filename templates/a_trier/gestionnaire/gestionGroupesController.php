@@ -17,4 +17,10 @@ $groupService->setDataBaseObject($dataBase);
         
 $databaseService->connect($dataBase);
 
-$groups = $groupService->getGroupsByAdminId(3); // TODO GET THE CURRENT ID
+$groups = $groupService->getGroupsByAdminId(3);// TODO GET THE CURRENT ID
+$accommodationsByGroups = array();
+foreach($groups as $group) {
+    $id = $group->getId();
+    ${'accommodations_'.$id} = $groupService->getAccommodationsByGroup($group);
+
+}

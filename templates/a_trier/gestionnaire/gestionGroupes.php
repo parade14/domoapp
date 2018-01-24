@@ -33,16 +33,18 @@
     </div>
 
     <div id="listGroupes">
-         <?php    
+         <?php                
             foreach($groups as $item) {
+                
                 echo '   
                     <div id="groupe_.'.$item->getId().'">
-                        <h2>'.$item->getName().'</h2>
-                        <ul id="list_appart_groupe_">
-                            <li>
-                                
-                            </li>          
-                        </ul>
+                        <h2>'.$item->getName().'</h2>';
+                
+                foreach(${'accommodations_'.$item->getId()} as $acc){
+                    echo '
+                        <div>'.$acc->getStreetNumber().' '.$acc->getStreet().' '.$acc->getCity().' '.$acc->getPostalCode().'</div>';        
+                }
+                echo '
                     </div>
                     <button id="modifier" onclick="modifierGroupe()">Modifier</button>
                     <button id="modifier" onclick="modifierGroupe()">Valider</button>
