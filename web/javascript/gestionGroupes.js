@@ -26,13 +26,7 @@ $('.validerGroupBtn').hide();
                        location.reload();
                     }
                 });
-                
-                
-                
-                
-                
-                
-                
+ 
             } else {
                 alert('Vous devez renseigner un nom de groupe et ajouter au moins un appartement.');
             }
@@ -81,6 +75,34 @@ function creerGroupe(){
     
     $("#dialog-form").dialog('open');
  
+}
+
+
+function supprimerGroupe(idGroup){
+    
+     $("#dialogSupp").dialog({
+        autoOpen:  true,
+        modal: true,
+        buttons : {
+             "Confirm" : function() {
+                 $(this).dialog("close");
+                    $.ajax({
+                    url: "supprimerGroupe.php?id="+idGroup,
+                    success: function(data){
+                        console.log(data);
+                        alert("Le groupe a bien été supprimé");
+                        location.reload();
+                        }
+                    });
+             },
+             "Cancel" : function() {
+                $(this).dialog("close");
+             }
+           }
+         });
+    
+    
+    
 }
 
 

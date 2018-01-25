@@ -12,6 +12,8 @@ use Services\Database\DatabaseObject;
 use Entities\Group;
 use Entities\Accommodation;
 
+use PDO;
+
 
 class GroupService {
     
@@ -82,7 +84,13 @@ class GroupService {
                 
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM Group WHERE id=:id";
+            
+            $sql = "DELETE FROM `groupaccommodation` WHERE group_id=:id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idGroup, PDO::PARAM_INT); 
+            $stmt->execute();
+            
+            $sql = "DELETE FROM `Group` WHERE id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idGroup, PDO::PARAM_INT);  
             $stmt->execute();
@@ -101,7 +109,7 @@ class GroupService {
 
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "UPDATE Grou^p SET name=:name, administrator_id=:administrator_id WHERE id=:id";
+            $sql = "UPDATE `Group` SET name=:name, administrator_id=:administrator_id WHERE id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);       
             $stmt->bindParam(':administrator_id', $administrator_id, PDO::PARAM_INT); 

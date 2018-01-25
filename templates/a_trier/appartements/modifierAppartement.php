@@ -104,8 +104,8 @@
             </main>
 
         </div>
-        <div id="dialog" title="Delete this accommodation">
-                Please confirm the deletion
+        <div id="dialog" title="Supprimer un appartement">
+                Confirmez la suppression ?
         </div>
 
         

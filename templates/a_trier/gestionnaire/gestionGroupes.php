@@ -39,7 +39,7 @@
                         <button class="modifierGroupBtn" id="modifierGroup_'.$item->getId().'_Btn" onclick="modifierGroupe()">Modifier</button>
                         <button class="validerGroupBtn"id="validerGroup_'.$item->getId().'_Btn" onclick="validerGroupe()">Valider</button>
                         <button class="annulerGroupBtn"id="annulerGroup_'.$item->getId().'_Btn" onclick="annulerGroupe()">Annuler</button>
-                        <button class="supprimerGroupBtn" id="supprimerGroup_'.$item->getId().'_Btn" onclick="supprimerGroupe()">Supprimer</button>
+                        <button class="supprimerGroupBtn" id="supprimerGroup_'.$item->getId().'_Btn" onclick="supprimerGroupe('.$item->getId().')">Supprimer</button>
                     </div>';
             }
         ?>
@@ -67,8 +67,10 @@
     </form>
 </div>
 
-<!------------------------------------------POPUP  CREATION -------------------------------------------------------- -->
-    
+<!------------------------------------------POPUP  SUPPRESSION -------------------------------------------------------- -->
+<div id="dialogSupp" style="display:none" title="Supprimer un groupe">
+    Confirmer la suppression ?
+</div>
 
 
 </body>

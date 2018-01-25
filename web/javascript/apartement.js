@@ -71,7 +71,7 @@ function deleteAccommodation(id, value){
                     success: function(data){
                         $('.form_'+value).remove();
                         Count = $("#containerAccommodations > div").length;
-                        alert("The accommodation is deleted");
+                        alert("L'appartement a bien été supprimé");
                         }
                     });
              },
