@@ -1,5 +1,5 @@
 <?php
-require('../../../utilities/autoload.php');
+require('../../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 $dataBase = $kernel->get("database.object");
@@ -27,7 +27,7 @@ if(sizeOf($userTab)==1){
 
 $userService->updateUser($user);
 
-header('Location: modificationClient.php');
+header('Location: ../../web/modifierProfil/');
 
 
 

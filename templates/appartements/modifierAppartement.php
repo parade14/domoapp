@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="../../../web/css/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../../../web/css/ionicons/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="../../../web/css/user-home-style.css" />
+        <link rel="stylesheet" href="../../web/css/user-home-style.css" />
         <link rel="stylesheet" href="../../web/css/appartement-style.css" />
          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>

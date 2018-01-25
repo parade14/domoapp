@@ -5,20 +5,20 @@
 <html>
     <head>
         <meta charset="utf-8">
-    <link rel="stylesheet" href="../../../web/css/AjoutNouveauClient.css" />
-        <link rel="stylesheet" href="../../../web/css/user-home-style.css" />
+    <link rel="stylesheet" href="../../web/css/AjoutNouveauClient.css" />
+        <link rel="stylesheet" href="../../web/css/user-home-style.css" />
         <title>Modification d'un compte client</title>
     </head>
     <body>
         
-        <?php include '../../headers/headerUserConnected.php'; ?>
+        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
 
         <div class="user">
             <header class="user_header">
                 <h1 class="user_title">Modification d'un compte client</h1>
             </header>
             
-            <form class="form" action="validerModifProfil.php" method="POST">
+            <form class="form" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
                                 
                 <div class="form_group">
                     <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $last_name ?>"/>
@@ -52,5 +52,5 @@
 
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script src="../../../web/javascript/modifierClient.js"></script>
+    <script src="../../web/javascript/modifierClient.js"></script>
 </html>

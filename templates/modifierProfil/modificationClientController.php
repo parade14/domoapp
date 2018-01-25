@@ -1,7 +1,5 @@
 <?php
 
-require('../../../utilities/autoload.php');
-
 $kernel = new \kernel\Kernel();
 
 //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
