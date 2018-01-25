@@ -7,38 +7,83 @@ $('.validerGroupBtn').hide();
       width: 600,
       modal: true,
       buttons: {
-        "Save": function() {
-            if($('#form2').valid()){  //call valid for form2 and show the errors
-               alert('submit form');  //only if the form is valid submit the form
-                $( this ).dialog( "close" );
+        "Créer": function() {
+            if(validateForm()){
+                var apparts = [];
+                var nomGroupe = $('#nomGroupe').val();
+                $('input[type=checkbox]').each(function() {
+                    if(this.checked){
+                        apparts.push(this.value);
+                    }
+                });
+                $.ajax({
+                    url: 'creerGroupe.php',
+                    type: 'POST',
+                    data: {nomGroupe: nomGroupe, apparts: apparts},
+                    success: function(data){
+                       alert('Le groupe a bien été créé');
+                       $("#dialog-form").dialog( "close" );
+                       location.reload();
+                    }
+                });
+                
+                
+                
+                
+                
+                
+                
+            } else {
+                alert('Vous devez renseigner un nom de groupe et ajouter au moins un appartement.');
             }
         },
-        Cancel: function() {
-          $( this ).dialog( "close" );
+        Annuler: function() {
+            $('#formCreationGroupe')[0].reset();
+             $(this).dialog( "close" );
         }
       }
       
     });
+    
+    
+function validateForm(){
+    
+    var bool = false;
+    var nbSelected = 0;
+    
+    $('input[type=checkbox]').each(function() {
+        if(this.checked){
+            nbSelected++;
+        }
+    });
+    
+    if($('#nomGroupe').val() && nbSelected != 0){
+        bool = true;
+    }
+    return bool;
+}
 
 function modifierGroupe(){
     
 }
 
 function creerGroupe(){
+    $('#listAppartPopup').html("");
     $.ajax({
         url: "creerGroupe.php",
         success: function(data){
             jsonObj = JSON.parse(data);
             for (var i=0;i<jsonObj.length;i++){     
-                $('#listAppartPopup').append('<span>'+jsonObj[i].toString()+'</span><input type="checkbox" name="'+jsonObj[i].toString()+'" name="accommodationsSelected"><br/>');
+                $('#listAppartPopup').append('<input type="checkbox" value="'+jsonObj[i].toString().split(" :")[0].split("Appartement ")[1]+'" name="accommodationsSelected"><span> '+jsonObj[i].toString()+'</span><br/>');
             }
         }
     });
     
-    
     $("#dialog-form").dialog('open');
  
 }
+
+
 
     
 

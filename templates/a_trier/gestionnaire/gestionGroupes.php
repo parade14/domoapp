@@ -8,7 +8,7 @@
     <title>Mes groupes</title>
 
     <!-- Insertion lien utile -->
-    <link rel="stylesheet" type="text/css" href="../../../web/css/accueil_gestionnaire.css" />
+    <link rel="stylesheet" type="text/css" href="../../../web/css/gestionGroupes.css" />
     <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../design/css/ionicons/css/ionicons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
@@ -17,28 +17,16 @@
 </head>
 <body>
 <!-- En-tête -->
-    <div class="header">
-        <div id="logo">
-            <img src="../../design/images/logo_nascop.png" alt="Logo Nascop" />
-        </div>
-        <nav>
-            <ul>
-                <li><a class="menu_effect" href="accueil_gestionnaire.html"> Accueil </a> </li>
-                <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                <li><a class="menu_effect" href="#"> Mes groupes </a> </li>
-                <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
-                <li><a class="menu_effect btn-connect" href="#"> Mon profil </a> </li>
-                <li><a class="menu_effect" href="#"> Langue </a> </li>
-            </ul>
-        </nav>
-    </div>
+    <?php include '../../headers/headerGestConnected.php';?>
+ <!-- --------------------------------------------------------------------------------------------------------------------->
+
 
     <div id="listGroupes">
          <?php                
             foreach($groups as $item) {
                 
                 echo '   
-                    <div id="groupe_.'.$item->getId().'">
+                    <div class="divGroupe" id="groupe_.'.$item->getId().'">
                         <h2>'.$item->getName().'</h2>';
                 
                 foreach(${'accommodations_'.$item->getId()} as $acc){
@@ -47,15 +35,20 @@
                 }
                 echo '
                     </div>
-                    <button class="modifierGroupBtn" id="modifierGroup_'.$item->getId().'_Btn" onclick="modifierGroupe()">Modifier</button>
-                    <button class="validerGroupBtn"id="validerGroup_'.$item->getId().'_Btn" onclick="validerGroupe()">Valider</button>
-                    <button class="annulerGroupBtn"id="annulerGroup_'.$item->getId().'_Btn" onclick="annulerGroupe()">Annuler</button>
-                    <button class="supprimerGroupBtn" id="supprimerGroup_'.$item->getId().'_Btn" onclick="supprimerGroupe()">Supprimer</button>';
+                    <div class="divButtons"> 
+                        <button class="modifierGroupBtn" id="modifierGroup_'.$item->getId().'_Btn" onclick="modifierGroupe()">Modifier</button>
+                        <button class="validerGroupBtn"id="validerGroup_'.$item->getId().'_Btn" onclick="validerGroupe()">Valider</button>
+                        <button class="annulerGroupBtn"id="annulerGroup_'.$item->getId().'_Btn" onclick="annulerGroupe()">Annuler</button>
+                        <button class="supprimerGroupBtn" id="supprimerGroup_'.$item->getId().'_Btn" onclick="supprimerGroupe()">Supprimer</button>
+                    </div>';
             }
         ?>
         <br/><br/>
-        <button id="creerGroup" onclick="creerGroupe()">Créer un groupe</button>
+        <div class="divButtons">
+            <button id="creerGroup" onclick="creerGroupe()">Créer un groupe</button>
+        </div>
     </div>
+   
 
 
 
@@ -63,13 +56,10 @@
 
 <!------------------------------------------POPUP  CREATION -------------------------------------------------------- -->
 
-<div id="dialog-form" title="Basic dialog" style="display:none">
-    <form>
-        <span>Nom du groupe : </span><input type="text"/>
-        <br/>
-        <ul id="listAppartAjoutes">
-        </ul>
-            
+<div id="dialog-form" title="Créer un groupe" style="display:none">
+    <form id="formCreationGroupe">
+        <span>Nom du groupe : </span><input name="nomGroupe" id="nomGroupe" type="text"/>
+        <br/>            
         </ul>
         <ul id="listAppartPopup">
             

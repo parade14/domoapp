@@ -18,7 +18,7 @@ class DatabaseObject implements DatabaseObjectInterface
     private $serverName;
     private $userName;
     
-    public function __construct($dataBaseName ="nascop", $password ="", $serverName ="localhost", $userName ="root") {
+    public function __construct($dataBaseName ="nascop", $password ="root", $serverName ="localhost", $userName ="root") {
         $this->dataBaseName =$dataBaseName;
         $this->password =$password;
         $this->serverName =$serverName;

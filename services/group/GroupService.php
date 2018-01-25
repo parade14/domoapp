@@ -58,19 +58,25 @@ class GroupService {
 
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO Group(name, administrator_id) VALUES (:name, :administrator_id)";
+            $sql = "INSERT INTO `Group`(name, administrator_id) VALUES (:name, :administrator_id)";
             $stmt = $conn->prepare($sql);
             
             $stmt->execute(array(
             'name'=>$name,
             'administrator_id'=>$administrator_id,
-            ));            
+            ));     
+
+            $stmt = $conn->query("SELECT LAST_INSERT_ID()");
+            $lastId = $stmt->fetchColumn();
+            $group->setId($lastId);
         } catch (\LogicException $e){
             throw $e;
         }
         return $group;
         
     }
+    
+    
 
     public function deleteGroup($idGroup){
                 
@@ -167,5 +173,21 @@ class GroupService {
             throw $e;
         }
         return $return;        
+    }
+    
+    public function createGroupAccommodation($idGroup, $idAccommodation){
+        try {
+            $conn = $this->serviceConnect->connect($this->databaseObject);
+            $sql = "INSERT INTO `GroupAccommodation`(group_id, accommodation_id) VALUES (:idGroup, :idAccommodation)";
+            $stmt = $conn->prepare($sql);
+            
+            $stmt->execute(array(
+            'idGroup'=>$idGroup,
+            'idAccommodation'=>$idAccommodation,
+            ));            
+        } catch (\LogicException $e){
+            throw $e;
+        }
+        
     }
 }

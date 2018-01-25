@@ -19,6 +19,8 @@ interface GroupServiceInterface extends ServiceInterface
     public function getGroupsByAdminId($idUser);
     
     public function getAccommodationsByGroup($group);
+    
+    public function createGroupAccommodation($idGroup, $idAccommodation);
 
     
 }
