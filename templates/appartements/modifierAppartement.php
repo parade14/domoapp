@@ -1,7 +1,9 @@
-<!DOCTYPE html>
 <?php
-    require 'appartementController.php';
+    $accomodations;
+
 ?>
+<!DOCTYPE html>
+
 
     <html>
     <head>
@@ -10,7 +12,7 @@
         <link rel="stylesheet" href="../../../web/css/ionicons/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../../../web/css/user-home-style.css" />
-        <link rel="stylesheet" href="../../../web/css/appartement-style.css" />
+        <link rel="stylesheet" href="../../web/css/appartement-style.css" />
          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Titre</title>
@@ -18,8 +20,7 @@
 
     <body>
         
-        <?php include '../../headers/headerUserConnected.php';?>
-        
+        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
         
         <div id="conteneur" class="bckg">
 
@@ -41,7 +42,7 @@
                         <div class="add row"><i class="material-icons small">add_circle_outline</i>Ajouter</div>
                 </div>
             </div>
-           
+
 
             <main>
                 <div class="larg" id="containerAccommodations">
@@ -59,7 +60,7 @@
                             
                         </div>                        
 
-                            <form class="toggleDiv form_'.$item->getId().'" action="insertOrUpdateAppartement.php" method="POST">
+                            <form class="toggleDiv form_'.$item->getId().'" action="../../templates/appartements/insertOrUpdateAppartement.php" method="POST">
 
                                <input type="hidden" name="id" value="'.$item->getId().'">
                                    
@@ -111,7 +112,7 @@
         
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="../../../web/javascript/apartement.js"></script>
+        <script src="../../web/javascript/apartement.js"></script>
     </body>
 
 </html>

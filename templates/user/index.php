@@ -11,9 +11,9 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../css/ionicons/css/ionicons.min.css">
-        <link rel="stylesheet" href="../css/user-home-style.css" />
+        <link rel="stylesheet" href="../../web/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../web/css/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../web/css/user-home-style.css" />
 
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="javascript/profile.js"></script>
@@ -41,22 +41,7 @@
 
 
 
-        <div class="header">
-            <div id="logo">
-                <img src="../images/logo_nascop.png" alt="Logo Nascop" />
-            </div>
-            <nav>
-                <ul>
-                    <li><a class="menu_effect" href="#"> Accueil </a> </li>
-                    <li><a class="menu_effect" href="#"> Statistiques </a> </li>
-                    <li><a class="menu_effect" href="modifierAppartement.php"> Appartements </a> </li>
-                    <li><a class="menu_effect" href="capteurs.php"> Capteurs </a> </li>
-                    <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
-                    <li><a class="menu_effect btn-connect" href="#"> Mon profil </a> </li>
-                    <li><a class="menu_effect" href="#"> Langue </a> </li>
-                </ul>
-            </nav>
-        </div>
+        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
 
         <section>
                 <fieldset class="informations-wrapper">
