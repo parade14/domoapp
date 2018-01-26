@@ -26,6 +26,7 @@ class AccommodationController extends BaseController
         $databaseService = $kernel->get("database.service");
         $accommodationService = $kernel->get("accommodation.service");
         $sessionService = $kernel->get("session.manager");
+        $roomService = $kernel->get("room.service");
         $accommodationService->setServiceConnect($databaseService);
         $accommodationService->setDataBaseObject($dataBase);
         $databaseService->connect($dataBase);
@@ -34,7 +35,7 @@ class AccommodationController extends BaseController
 
         //$var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
         //if($var)
-            return $this->get("template.service")->parse("appartements/modifierAppartement.php", array("user"=>$this->get('session.manager')->getCurrentUser(), "accomodations" =>$accomodations));
+            return $this->get("template.service")->parse("appartements/modifierAppartement.php", array("user"=>$this->get('session.manager')->getCurrentUser(), "accomodations" =>$accomodations, "roomService" => $roomService));
 
         //throw new AccessDeniedException();
     }

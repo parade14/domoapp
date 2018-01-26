@@ -1,5 +1,6 @@
 <?php
     $accomodations;
+    $roomService;
 
 ?>
 <!DOCTYPE html>
@@ -92,7 +93,25 @@
                                 <div class="input">
                                     <label>Nombre d\'habitants </label>
                                     <input class="text-field" type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
-                                </div>
+                                </div>';
+                    
+                                $rooms = $roomService->getRoomBy('accommodation_id', $item->getId());
+                                
+                                echo '<div>
+                                      <h2>Pièces :</h2>';
+                                
+                                foreach($rooms as $room){
+                                    echo '<div>'.$room->getName().'</div>';
+                                }
+                                echo '</div>
+                                   
+                                <div>
+                                <span>Créer une pièce</span>
+                                
+                                
+                                
+                                
+                               
                                 
                                 <button id="modifierForm_'.$item->getId().'" type="button" onClick="modifierForm('.$item->getId().')">Modifier</button>
                                 <input type="submit" class="submit" value="Valider"/>

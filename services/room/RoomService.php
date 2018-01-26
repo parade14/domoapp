@@ -9,6 +9,8 @@ namespace Services\room;
 
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
+use Entities\Room;
+use PDO;
 
 class RoomService implements RoomServiceInterface
 {
@@ -125,16 +127,16 @@ class RoomService implements RoomServiceInterface
     public function getRoomBy($field, $value) {
         $conn = $this->serviceConnect->connect($this->databaseObject);
         try {
-            if($field != "id_room" && $field != "name" && $field != "accomodation_id" ){
+            if($field != "id" && $field != "name" && $field != "accommodation_id" ){
                 throw new LogicException("invalid field");
 
             } else {
-                $resultats=$conn->query("SELECT * FROM ROOM WHERE ".$field."='".$value."'");
+                $resultats=$conn->query("SELECT * FROM `Room` WHERE ".$field."='".$value."'");
                 $resultats->setFetchMode(PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();
                 $return = array();
                 foreach ($datas as $data) {
-                    $room = new RoomInterface();
+                    $room = new Room();
                     $room->setId($data['id']);
                     $room->setAccommodationId($data['accommodation_id']);
                     $room->setName($data['name']);
