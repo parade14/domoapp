@@ -29,7 +29,24 @@ class RoomService implements RoomServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
+    
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
 
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+    
 
     /**
      * constructor
@@ -53,7 +70,7 @@ class RoomService implements RoomServiceInterface
             $conn = $this->serviceConnect->connect($this->databaseObject);
                        
 
-            $sql = "INSERT INTO Room(name, area, accommodation_id) VALUES (:name, :area, :accommodation_id)";
+            $sql = "INSERT INTO `room`(name, area, accommodation_id) VALUES (:name, :area, :accommodation_id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':area', $area, PDO::PARAM_INT);       
             $stmt->bindParam(':name', $name , PDO::PARAM_STR);    
@@ -61,15 +78,15 @@ class RoomService implements RoomServiceInterface
             
             $stmt->execute();
             
-            if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
-                // on construit l'objet inséré
-                $roomInserted = new RoomInterface();
-                $roomInserted->setId($last_id);
-                $roomInserted->setName($name);
-                $roomInserted->setArea($area);
-                $roomInserted->setAccommodationId($accommodation_id);
-            }
+            $stmt = $conn->query("SELECT LAST_INSERT_ID()");
+            $lastId = $stmt->fetchColumn();
+           
+            // on construit l'objet inséré
+            $roomInserted = new Room();
+            $roomInserted->setId($lastId);
+            $roomInserted->setName($name);
+            $roomInserted->setArea($area);
+            $roomInserted->setAccommodationId($accommodation_id);
             
         } catch (LogicException $e){
             throw $e;
@@ -85,8 +102,18 @@ class RoomService implements RoomServiceInterface
     public function deleteRoom($idRoom){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
+            
+            $sql = "DELETE FROM `datasensor` WHERE sensor_id IN (SELECT id from `sensor` where room_id=:idRoom)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $sql = "DELETE FROM `sensor` WHERE room_id=:idRoom";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
+            $stmt->execute();
 
-            $sql = "DELETE FROM room WHERE id=:idRoom)";
+            $sql = "DELETE FROM `room` WHERE id=:idRoom";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
