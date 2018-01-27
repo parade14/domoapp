@@ -1,6 +1,7 @@
 <?php
     $accomodations;
     $roomService;
+    $user;
 
 ?>
 <!DOCTYPE html>
@@ -94,6 +95,10 @@
                                     <label>Nombre d\'habitants </label>
                                     <input class="text-field" type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
                                 </div>
+                                
+                                <div class="input" style="display:none">
+                                    <input class="text-field" type="number" name="userId" value="'.$user->getId().'" />
+                                </div>
                             
                                 <button id="modifierForm_'.$item->getId().'" type="button" onClick="modifierForm('.$item->getId().')">Modifier</button>
                                 <input type="submit" class="submit" value="Valider"/>
@@ -141,6 +146,7 @@
                 </ul>
             </form>
         </div>
+        <input style="display:none" id="userId" value="<?php echo $user->getId();?>" />
 
         
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
@@ -149,6 +155,3 @@
     </body>
 
 </html>
-
-
-
