@@ -19,9 +19,8 @@ class AccommodationController extends BaseController
      * @throws \Exception
      */
     public function index(){
-        $kernel = new \kernel\Kernel();
+        $kernel = $this->kernel;
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $accommodationService = $kernel->get("accommodation.service");
@@ -29,7 +28,8 @@ class AccommodationController extends BaseController
         $accommodationService->setServiceConnect($databaseService);
         $accommodationService->setDataBaseObject($dataBase);
         $databaseService->connect($dataBase);
-        $accomodations = $accommodationService->getAccommodationByUserId(1);
+        $user = $sessionService->getCurrentUser();
+        $accomodations = $accommodationService->getAccommodationByUserId($user->getId());
        
 
         //$var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
