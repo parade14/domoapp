@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-    require 'modificationClientController.php';
+    $user;
 ?>
+
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -21,11 +22,11 @@
             <form class="form" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
                                 
                 <div class="form_group">
-                    <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $last_name ?>"/>
+                    <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $user->getLastName(); ?>"/>
                 </div>
                 
                 <div class="form_group">
-                    <input type="text" placeholder="Prénom" name="first_name" class="form_input" value="<?php echo $first_name ?>"/>
+                    <input type="text" placeholder="Prénom" name="first_name" class="form_input" value="<?php echo $user->getFirstName(); ?>"/>
                 </div>
                 
                 <!--<div class="form_group">
@@ -33,12 +34,13 @@
                 </div>-->
                                
                 <div class="form_group">
-                    <input type="text" placeholder="Numéro de Téléphone" name="phone" class="form_input" value="<?php echo $phone ?>"/>
+                    <input type="text" placeholder="Numéro de Téléphone" name="phone" class="form_input" value="<?php echo $user->getPhone(); ?>"/>
                 </div>
                 
                 <div class="form_group">
-                    <input type="email" placeholder="Email" class="form_input" name="email" value="<?php echo $email ?>" />
+                    <input type="email" placeholder="Email" class="form_input" name="email" value="<?php echo $user->getEmail(); ?>" />
                 </div>
+                <input style="display:none" name="id" value="<?php echo $user->getId(); ?>" />
                 
                 <!--<div class="form_group">
                     <input type="password" placeholder="Password" class="form_input" value=""/>
