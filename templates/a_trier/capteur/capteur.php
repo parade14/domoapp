@@ -20,14 +20,14 @@
 
            <form action="" class="captor-container">
                <p><select id="select-captor">
-                       <option value="captor_id_1">captor_name_1</option>
-                       <option value="captor_id_2">captor_name_2</option>
-                       <option value="captor_id_3">captor_name_3</option>
+                       <option value="1">captor_name_1</option>
+                       <option value="2">captor_name_2</option>
+                       <option value="3">captor_name_3</option>
                    </select>
                </p>
                <p><select id="select-room">
-                       <option value="room_id_1">room_name_1</option>
-                       <option value="room_id_2">room_name_2</option>
+                       <option value="1">room_name_1</option>
+                       <option value="2">room_name_2</option>
                        <option value="new_room">new_room</option>
                    </select>
                </p>
