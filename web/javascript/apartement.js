@@ -27,7 +27,7 @@ $('.annulerForm').hide();
 
 
 
-$(".appartment-list, div.larg-w").on("click", ".appartment, div.angle-wrap", function(){
+$(document).on("click", ".appartment, .angle-wrap", function(){
     var appartmentClass = $(this).attr('class').split(' ')[1];
     $("form."+appartmentClass).slideToggle(500, 'swing');
 
