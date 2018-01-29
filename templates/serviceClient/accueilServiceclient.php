@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../design/css/accueilclient.css" />
+        <link rel="stylesheet" href="../../web/css/accueilServiceclient.css" />
         <title>Service client</title>
         <script src="https://use.fontawesome.com/be7fe78f06.js"></script>
     </head>
@@ -15,7 +15,7 @@
                     <div class=icon>
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                     </div>
-                    <a href="../../html/client/profileclient.html"><span>Profil client</span></a>
+                    <a href=""><span>Profil client</span></a>
                 </div>
             </li>
             <li class="var_nav">

@@ -552,3 +552,7 @@ button {
 .add_captor input[type="submit"]:focus {
     border-color: #05a;
 }
+.active {
+
+    color: #C11111 !important;
+}

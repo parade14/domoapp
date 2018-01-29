@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    
+    var idAcc = window.location.href.split('idAcc=');
+    
+    if(idAcc[1] == undefined){
+        $('#mesApparts').toggleClass('active');
+
+    } else {
+        $('#appart_'+idAcc[1]).toggleClass('active');
+    }
 
     /*$('.box').click(function() {
         $(this).toggleClass('selected');
