@@ -12,6 +12,7 @@ use controllers\AccueilController;
 use controllers\ModifProfilController;
 use controllers\UserController;
 use controllers\CapteursController;
+use controllers\ServiceClientController;
 use controllers\AccommodationController;
 use Kernel\ServiceHandler\ServiceHandler;
 use Kernel\ServiceHandler\ServiceInterface;
@@ -62,6 +63,7 @@ final class Kernel implements ServiceInterface
             ->addService(AccommodationController::class)
             ->addService(ModifProfilController::class)
             ->addService(CapteursController::class)
+            ->addService(ServiceClientController::class)
         ;
     }
 

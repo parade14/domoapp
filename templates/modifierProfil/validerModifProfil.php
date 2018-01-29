@@ -17,7 +17,6 @@ $phone = $_POST["phone"];
 $email = $_POST["email"];
 $id = $_POST["id"];
 
-echo $id;
 $userTab = $userService->getUserBy('id',$id);
 if(sizeOf($userTab)>0){
     $user = $userTab[0];

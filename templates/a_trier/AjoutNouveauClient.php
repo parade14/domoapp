@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../a_trier/design/css/AjoutNouveauClient.css" />
+        <link rel="stylesheet" href="../../web/css/AjoutNouveauClient.css" />
         <title>Ajout d'un nouveau client</title>
     </head>
     <body>
