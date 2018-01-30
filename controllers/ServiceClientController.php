@@ -16,12 +16,12 @@ class ServiceClientController extends BaseController
      * @throws \Exception
      */
     public function index(){
-        $kernel = new \kernel\Kernel();
+
 
         //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
-        $dataBase = $kernel->get("database.object");
-        $databaseService = $kernel->get("database.service");
-        $sessionService = $kernel->get("session.manager");
+        $dataBase = $this->get("database.object");
+        $databaseService = $kthis->get("database.service");
+        $sessionService = $this->get("session.manager");
         $databaseService->connect($dataBase);
 
 //        $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");

@@ -20,7 +20,7 @@ class CapteursController extends BaseController
      */
     public function index(){
         
-        $kernel = new \kernel\Kernel();
+        $kernel = $this->kernel;
 
         //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
