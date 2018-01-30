@@ -20,7 +20,7 @@ class CapteursController extends BaseController
      */
     public function index(){
         
-        $kernel = new \kernel\Kernel();
+        $kernel = $this->kernel;
 
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");

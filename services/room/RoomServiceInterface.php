@@ -29,11 +29,10 @@ interface RoomServiceInterface extends ServiceInterface
     public function deleteRoom($idRoom);
 
     /**
-     * update a room 
-     * @param RoomInterface $room the room to update
-     * @return RoomInterface|\LogicException
+     * @param \Entities\Room $room
+     * @return mixed
      */
-    public function updateRoom(RoomInterface $room);
+    public function updateRoom(\Entities\Room $room);
     
     /**
      * Search room(s) by the field in parameter

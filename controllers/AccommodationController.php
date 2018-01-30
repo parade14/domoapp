@@ -19,9 +19,8 @@ class AccommodationController extends BaseController
      * @throws \Exception
      */
     public function index(){
-        $kernel = new \kernel\Kernel();
+        $kernel = $this->kernel;
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $accommodationService = $kernel->get("accommodation.service");

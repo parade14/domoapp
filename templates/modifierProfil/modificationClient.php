@@ -41,7 +41,7 @@
                     <input type="email" placeholder="Email" class="form_input" name="email" value="<?php echo $user->getEmail(); ?>" />
                 </div>
                 <input style="display:none" name="id" value="<?php echo $user->getId(); ?>" />
-                
+
                 <!--<div class="form_group">
                     <input type="password" placeholder="Password" class="form_input" value=""/>
                 </div>-->

@@ -29,7 +29,7 @@ class RoomService implements RoomServiceInterface
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
-    
+
     function getServiceConnect() {
         return $this->serviceConnect;
     }
@@ -46,7 +46,7 @@ class RoomService implements RoomServiceInterface
         $this->databaseObject = $databaseObject;
     }
 
-    
+
 
     /**
      * constructor
@@ -59,11 +59,11 @@ class RoomService implements RoomServiceInterface
     }
 
     /**
-     * create a room 
      * @param string $name
      * @param int $area
      * @param string $accommodation_id
-     * @return RoomInterface|\LogicException
+     * @return \LogicException|Room
+     * @throws \Exception
      */
     public function createRoom($name, $area, $accommodation_id){
         try {
@@ -80,7 +80,7 @@ class RoomService implements RoomServiceInterface
             
             $stmt = $conn->query("SELECT LAST_INSERT_ID()");
             $lastId = $stmt->fetchColumn();
-           
+
             // on construit l'objet inséré
             $roomInserted = new Room();
             $roomInserted->setId($lastId);
@@ -88,7 +88,7 @@ class RoomService implements RoomServiceInterface
             $roomInserted->setArea($area);
             $roomInserted->setAccommodationId($accommodation_id);
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $roomInserted;
@@ -117,18 +117,17 @@ class RoomService implements RoomServiceInterface
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return true;
     }
 
     /**
-     * update a room 
-     * @param RoomInterface $room the room to update
-     * @return RoomInterface|\LogicException
+     * @param Room $room
+     * @return Room|mixed
      */
-    public function updateRoom(RoomInterface $room){
+    public function updateRoom(Room $room){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
@@ -139,23 +138,23 @@ class RoomService implements RoomServiceInterface
             $stmt->bindParam(':accommodation_id', $room->getAccommodationId(), PDO::PARAM_STR);
             $stmt->bindParam(':id', $room->getId(), PDO::PARAM_INT);   
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $room;
     }
-    
+
     /**
-     * Search room(s) by the field in parameter
-     * @param string $field id_room|name|accomodation_id
+     * @param string $field
      * @param string $value
-     * @return array of RoomInterface|\LogicException
+     * @return array
+     * @throws \Exception
      */
     public function getRoomBy($field, $value) {
         $conn = $this->serviceConnect->connect($this->databaseObject);
         try {
             if($field != "id" && $field != "name" && $field != "accommodation_id" ){
-                throw new LogicException("invalid field");
+                throw new \LogicException("invalid field");
 
             } else {
                 $resultats=$conn->query("SELECT * FROM `Room` WHERE ".$field."='".$value."'");
@@ -172,7 +171,7 @@ class RoomService implements RoomServiceInterface
                 } 
                 $resultats->closeCursor();
             }
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
                 throw $e;
         }
         return $return;
