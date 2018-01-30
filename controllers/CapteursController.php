@@ -22,7 +22,6 @@ class CapteursController extends BaseController
         
         $kernel = new \kernel\Kernel();
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $databaseService->connect($dataBase);
@@ -35,8 +34,8 @@ class CapteursController extends BaseController
         
         
         $capteurService = $kernel->get("sensor.service");
-        $accommodationService->setServiceConnect($databaseService);
-        $accommodationService->setDataBaseObject($dataBase);
+        $capteurService->setServiceConnect($databaseService);
+        $capteurService->setDataBaseObject($dataBase);
         
         $roomService = $kernel->get("room.service");
         $roomService->setServiceConnect($databaseService);
@@ -45,6 +44,7 @@ class CapteursController extends BaseController
         $accommodations = $accommodationService->getAccommodationByUserId($this->get('session.manager')->getCurrentUser()->getId());
         
         $rooms = [];
+        $sensors = [];
         
         if(isset($_GET['idAcc'])){
             $rooms = $roomService->getRoomBy("accommodation_id", $_GET['idAcc']);

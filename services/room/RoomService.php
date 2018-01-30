@@ -70,7 +70,7 @@ class RoomService implements RoomServiceInterface
             $conn = $this->serviceConnect->connect($this->databaseObject);
                        
 
-            $sql = "INSERT INTO `room`(name, area, accommodation_id) VALUES (:name, :area, :accommodation_id)";
+            $sql = "INSERT INTO `Room`(name, area, accommodation_id) VALUES (:name, :area, :accommodation_id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':area', $area, PDO::PARAM_INT);       
             $stmt->bindParam(':name', $name , PDO::PARAM_STR);    
@@ -103,17 +103,17 @@ class RoomService implements RoomServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             
-            $sql = "DELETE FROM `datasensor` WHERE sensor_id IN (SELECT id from `sensor` where room_id=:idRoom)";
+            $sql = "DELETE FROM `DataSensor` WHERE sensor_id IN (SELECT id from `Sensor` where room_id=:idRoom)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
             
-            $sql = "DELETE FROM `sensor` WHERE room_id=:idRoom";
+            $sql = "DELETE FROM `Sensor` WHERE room_id=:idRoom";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
 
-            $sql = "DELETE FROM `room` WHERE id=:idRoom";
+            $sql = "DELETE FROM `Room` WHERE id=:idRoom";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idRoom', $idRoom, PDO::PARAM_INT);
             $stmt->execute();
@@ -132,7 +132,7 @@ class RoomService implements RoomServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE room SET area=:area, name=:name, accommodation_id=:accommodation_id WHERE id=:id)";
+            $sql = "UPDATE `Room` SET area=:area, name=:name, accommodation_id=:accommodation_id WHERE id=:id)";
             $stmt = $conn->prepare($sql);                                  
             $stmt->bindParam(':area', $room->getArea(), PDO::PARAM_STR);       
             $stmt->bindParam(':name', $room->getName(), PDO::PARAM_STR);    

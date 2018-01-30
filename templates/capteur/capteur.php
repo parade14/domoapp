@@ -1,4 +1,12 @@
 <?php
+    $kernel = new \kernel\Kernel();
+    $dataBase = $kernel->get("database.object");
+    $databaseService = $kernel->get("database.service");
+    $databaseService->connect($dataBase);
+    $capteurService = $kernel->get("sensor.service");
+    $capteurService->setServiceConnect($databaseService);
+    $capteurService->setDataBaseObject($dataBase);
+    
     $accommodations;
     $rooms;
 
@@ -40,7 +48,6 @@
                <p><input type="submit" value="CREER"></p>
            </form>
        </div>
-
        <div class="main-wrapper">
            <div class="icon-effect-1 icon-effect-1a">
                <a href="#" class="icon"><i class="fa fa-lightbulb-o"></i></a>
@@ -64,24 +71,31 @@
             </ul>
        </div>
 
-       <button id="btnAjoutCapteur" class="add popup-with-form btn-connect" href="#test-form">Ajouter un capteur<i class="ionicons ion-plus-round"></i></button>
+       <button id="btnAjoutCapteur" class="add popup-with-form btn-connect" href="#test-form">Ajouter un capteur</button>
        <div class="container-boxes">
        
         <?php foreach($rooms as $room){
-            
+            $sensors = $capteurService->getSensorBy('room_id', $room->getId());            
             echo '
                 <div class="box first">
                     <span class="icon-cont"><i class="fa fa-bed"></i></span>
 
-                    <h3>'.$room->getName().'</h3>
-
+                    <h3>'.$room->getName().'</h3>';
+                    
+                    foreach($sensors as $sensor){
+                        echo '<div style="color:white">'.$sensor->getType().'</div>';
+                    }
+            
+                    
+                    
+                    echo '
                     <!--<ul class="hidden">
                         <li>Lorem ipsum dolor</li>
                         <li>Set amet consecuter</li>
                         <li>Lorem ipsum dolor</li>
                         <li>Set amet consecuter</li>
                     </ul>-->
-                    <a class="expand"><span>17</span></a>
+                    <!--<a class="expand"><span>17</span></a>-->
                 </div>';
        }?>
         </div>
