@@ -12,7 +12,18 @@
     </head>
     <body>
         
-        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
+        <?php 
+        
+        if($user->getProfileType() == 1){
+            include(dirname(__FILE__).'/../headers/headerUserConnected.php');
+        } else if($user->getProfileType() == 2){
+            include(dirname(__FILE__).'/../headers/headerServiceClient.php');
+        } else if($user->getProfileType() == 3){
+            include(dirname(__FILE__).'/../headers/headerGestConnected.php');
+        }
+        
+        
+        ?>
 
         <div class="user">
             <header class="user_header">
