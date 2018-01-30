@@ -36,6 +36,7 @@ class ModifProfilController extends BaseController
         if($var){
             return $this->get("template.service")->parse("modifierProfil/modificationClient.php", array("user"=>$user[0]));
         }else{
+            header('Location: ../');
             throw new AccessDeniedException();
         }
     }

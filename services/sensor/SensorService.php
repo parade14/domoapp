@@ -71,18 +71,11 @@ class SensorService implements SensorServiceInterface
             $stmt->bindParam(':type', $type, PDO::PARAM_STR);    
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);    
             $stmt->bindParam(':room_id', $room_id, PDO::PARAM_INT);    
-            $stmt->execute();
-          
-            // on récupère l'id qu'on a inséré
-            if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
-                // on construit l'objet inséré
-                $sensorInserted = new Sensor();
-                $sensorInserted->setId($last_id);
-                $sensorInserted->setName($name);
-                $sensorInserted->setRoomId($room_id);
-                $sensorInserted->setType($type);
-            }
+            $stmt->execute();            // on construit l'objet inséré
+            $sensorInserted = new Sensor();
+            $sensorInserted->setName($name);
+            $sensorInserted->setRoomId($room_id);
+            $sensorInserted->setType($type);
             
         } catch (LogicException $e) {
             throw $e;
@@ -100,7 +93,8 @@ class SensorService implements SensorServiceInterface
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM sensor WHERE id=:idSensor";
+            $sql = "DELETE FROM `DataSensor` WHERE id=:idSensor";
+            $sql = "DELETE FROM `Sensor` WHERE id=:idSensor";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idSensor', $idSensor, PDO::PARAM_INT);    
             $stmt->execute();
@@ -122,7 +116,7 @@ class SensorService implements SensorServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id";
+            $sql = "UPDATE `Sensor` SET type=:type, name=:name, room_id=:room_id WHERE id=:id";
 
             $stmt = $conn->prepare($sql);                                  
             $stmt->bindParam(':type', $sensor->getType(), \PDO::PARAM_STR);

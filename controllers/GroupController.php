@@ -43,6 +43,7 @@ class GroupController extends BaseController
         if($var && $this->get('session.manager')->getCurrentUser()->getProfileType()==3){
             return $this->get("template.service")->parse("gestionnaire/gestionGroupes.php", array("groups" => $groups, "groupService"=>$groupService));
         } else {
+           header('Location: ../');
            throw new AccessDeniedException();
         }
     }

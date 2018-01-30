@@ -29,6 +29,7 @@ class ServiceClientController extends BaseController
             return $this->get("template.service")->parse("serviceClient/accueilServiceClient.php", array());
         }else{
             throw new AccessDeniedException();
+            
         }
     }
 }

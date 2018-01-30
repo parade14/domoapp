@@ -45,14 +45,24 @@ class CapteursController extends BaseController
         
         $rooms = [];
         $sensors = [];
+        $idAcc;
         
         if(isset($_GET['idAcc'])){
             $rooms = $roomService->getRoomBy("accommodation_id", $_GET['idAcc']);
+            $idAcc = $_GET['idAcc'];
         }
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
         if($var){
-            return $this->get("template.service")->parse("capteur/capteur.php", array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms));
+            if(isset($idAcc)){
+                $array = array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms, "idAcc" => $idAcc);
+            } else {
+               $array = array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms);
+
+            }
+            
+            return $this->get("template.service")->parse("capteur/capteur.php", $array);
         } else {
+            header('Location: ../');
             throw new AccessDeniedException();
         }
     }
