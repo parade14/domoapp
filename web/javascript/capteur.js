@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    
+    var idAcc = window.location.href.split('idAcc=');
+    
+    if(idAcc[1] == undefined){
+        $('#mesApparts').toggleClass('active');
+
+    } else {
+        $('#appart_'+idAcc[1]).toggleClass('active');
+    }
 
     /*$('.box').click(function() {
         $(this).toggleClass('selected');
@@ -6,29 +15,6 @@ $(document).ready(function() {
     });
     */
 
-    menu_translate();
-
-
-    $(".main__menu2 ul li:first-child").click(function() {
-        $(".main__menu2 ul li").toggleClass("small");
-
-        if ($(".main__menu2 ul li").hasClass("small")) {
-
-            menu_translate();
-
-        } else {
-            $(".main__menu2 ul li:not(:first-child)").css({"-webkit-transform": "", "-moz-transform": "", "-ms-transform": "", "-o-transform": "", "transform": "", "visibility": "visible"});
-        }
-    });
-
-
-    function menu_translate()
-    {
-        $(".main__menu2 ul li:not(:first-child)").each(function (index) {
-            var translation = (index + 1) * (-100);
-            $(this).css({"-webkit-transform": "translate("+translation+"%)", "-moz-transform": "translate("+translation+"%)", "-ms-transform": "translate("+translation+"%)", "-o-transform": "translate("+translation+"%)", "transform": "translate("+translation+"%)"});
-        });
-    }
 
     $.fn.inlineEdit = function(replaceWith) {
 
@@ -122,14 +108,14 @@ $(document).ready(function() {
     $(document).on('submit', '.captor-container', function() {
         var form_content = '<div class="box first">' +
             '                <span class="icon-cont"><i class="fa fa-bed"></i></span>' +
-            '                <h3>Chambre 1</h3>' +
+            '                <h3>'+$("#select-room option:selected" ).text()+'</h3>' +
             '                <ul class="hidden">\n' +
             '                    <li>Lorem ipsum dolor</li>' +
             '                    <li>Set amet consecuter</li>' +
             '                    <li>Lorem ipsum dolor</li>' +
             '                    <li>Set amet consecuter</li>' +
             '                </ul>' +
-            '                <a class="expand"><span>17</span></a>' +
+            '                <a class="expand"><span></span></a>' +
             '            </div>';
         $(".box.first").last().after(form_content);
 
@@ -142,10 +128,20 @@ $(document).ready(function() {
     $('#select-room').change(function() {
         if ($(this).val() === 'new_room') {
 
-            var select_room = $(this);
-            select_room.hide();
-            select_room.after(room_input);
+            $(this).hide();
+            $(this).after(room_input);
             room_input.focus();
+
+            room_input.blur(function () {
+
+                if ($(room_input).val() != "") {
+                    var room = '<option value="3">'+$(room_input).val()+'</option>';
+                    $('#select-room option').last().before(room);
+                }
+
+                $(room_input).remove();
+                $('#select-room').show();
+            });
         }
     });
 

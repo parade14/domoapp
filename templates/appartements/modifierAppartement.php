@@ -1,7 +1,7 @@
 <?php
     $accomodations;
     $roomService;
-
+    $user;
 ?>
 <!DOCTYPE html>
 
@@ -52,7 +52,7 @@
                     echo '
                     <div class="larg-w form_'.$item->getId().'">
                     
-                        <div class="angle-wrap">
+                        <div class="angle-wrap form_'.$item->getId().'">
                             <h3>Appartement '.$item->getId().' </h3>
                             
                             <span onClick="deleteAccommodation('.$item->getId().','.$item->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span>
@@ -93,7 +93,15 @@
                                 <div class="input">
                                     <label>Nombre d\'habitants </label>
                                     <input class="text-field" type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
-                                </div>';
+                                </div>
+                                
+                                <div class="input" style="display:none">
+                                    <input class="text-field" type="number" name="userId" value="'.$user->getId().'" />
+                                </div>
+                            
+                                <button id="modifierForm_'.$item->getId().'" type="button" onClick="modifierForm('.$item->getId().')">Modifier</button>
+                                <input type="submit" class="submit" value="Valider"/>
+                                <button class="annulerForm" id="annulerForm_'.$item->getId().'" type="button" onClick="annulerForm('.$item->getId().')">Annuler</button>';
                     
                                 $rooms = $roomService->getRoomBy('accommodation_id', $item->getId());
                                 
@@ -101,22 +109,16 @@
                                       <h2>Pièces :</h2>';
                                 
                                 foreach($rooms as $room){
-                                    echo '<div>'.$room->getName().'</div>';
+                                    echo '<div><span onClick="supprimerPiece('.$room->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span>  '
+                                            .$room->getName().', '.$room->getArea().'m² </div>';
+                
                                 }
                                 echo '</div>
                                    
                                 <div>
-                                <span>Créer une pièce</span>
+                                <button type="button" class="btnCreerPiece" id="btnCreerPiece_'.$item->getId().'" onclick="creerPiece('.$item->getId().')">Créer une pièce</button>
                                 </div>
-                                
-                                
-                                
-                                
                                
-                                
-                                <button id="modifierForm_'.$item->getId().'" type="button" onClick="modifierForm('.$item->getId().')">Modifier</button>
-                                <input type="submit" class="submit" value="Valider"/>
-                                <button class="annulerForm" id="annulerForm_'.$item->getId().'" type="button" onClick="annulerForm('.$item->getId().')">Annuler</button>
                             </form>
                         <div id="dinamic-fields"></div>
                     </div>';
@@ -128,6 +130,22 @@
         <div id="dialog" title="Supprimer un appartement">
                 Confirmez la suppression ?
         </div>
+        <div id="dialog-delete-room" title="Supprimer une pièce"  style="display:none">
+                Confirmez la suppression ? Ceci entraînera la suppression des capteurs de la pièce.
+        </div>
+        
+        <div id="dialog-form-add-room" title="Ajouter une pièce" style="display:none">
+            <form id="formCreationPiece">
+                <span>Nom de la pièce : </span><input name="nomPiece" id="nomPiece" type="text"/>
+                <br/>            
+                <span>Superficie : </span><input name="superficie" id="superficie" type="number"/>
+                </ul>
+                <ul id="listPiecePopup">
+
+                </ul>
+            </form>
+        </div>
+        <input style="display:none" id="userId" value="<?php echo $user->getId();?>" />
 
         
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

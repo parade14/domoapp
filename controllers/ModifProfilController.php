@@ -2,10 +2,10 @@
 
 namespace controllers;
 
-use Entities\Accommodation;
 use kernel\Kernel;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
+use Entities\User;
 
 
 class ModifProfilController extends BaseController
@@ -19,13 +19,26 @@ class ModifProfilController extends BaseController
      * @throws \Exception
      */
     public function index(){
+        
+        $kernel = new \kernel\Kernel();
 
+        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
+        $dataBase = $kernel->get("database.object");
+        $databaseService = $kernel->get("database.service");
+        $sessionService = $kernel->get("session.manager");
+        $userService = $kernel->get("user.service");
+        $userService->setServiceConnect($databaseService);
+        $userService->setDataBaseObject($dataBase);
+        $databaseService->connect($dataBase);
+        $user = $userService->getUserBy("id", 1);//$this->get('session.manager')->getCurrentUser()->getId());
+       
 
-        //$var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
-        //if($var)
-            return $this->get("template.service")->parse("modifierProfil/modificationClient.php", array("user"=>$this->get('session.manager')->getCurrentUser(), ));
-
-        //throw new AccessDeniedException();
+        $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
+        if($var){
+            return $this->get("template.service")->parse("modifierProfil/modificationClient.php", array("user"=>$user[0]));
+        }else{
+            throw new AccessDeniedException();
+        }
     }
 }
 

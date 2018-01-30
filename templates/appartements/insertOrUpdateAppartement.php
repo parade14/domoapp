@@ -19,8 +19,7 @@ $streetNumber = $_POST['numero'];
 $codePostal = $_POST['codePostal'];
 $city = $_POST['ville'];
 
-// TODO Recup correct user_id (session)
-$ownerId = '1';
+$ownerId = $_POST['userId'];;
 
 $area = $_POST['superficie'];
 $inhabitantNumber = $_POST['nbHabitants'];

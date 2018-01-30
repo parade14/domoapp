@@ -400,13 +400,6 @@ button {
     transition: all 0.2s ease-in;
 }
 
-.main__menu2 ul li.small:not(:first-child) {
-    visibility: hidden;
-    -webkit-transition: -webkit-transform 1.5s ease;
-    -moz-transition: -webkit-transform 1.5s ease;
-    -o-transition: -webkit-transform 1.5s ease;
-}
-
 .main__menu2 ul li:not(:first-child) {
 
 }
@@ -465,6 +458,7 @@ button {
     border: 1px solid #a3a3a3;
     position: relative;
     left: 50px;
+    top: 115px;
     bottom: 15px;
     width: 35px;
     height: 35px;
@@ -557,4 +551,8 @@ button {
 
 .add_captor input[type="submit"]:focus {
     border-color: #05a;
+}
+.active {
+
+    color: #C11111 !important;
 }

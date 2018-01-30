@@ -147,7 +147,7 @@ class UserService implements UserServiceInterface
                 throw new \LogicException("invalid field");
 
             } else {
-                $resultats=$conn->prepare("SELECT * FROM User WHERE $field = :value");
+                $resultats=$conn->prepare("SELECT * FROM `User` WHERE $field = :value");
                 $resultats->execute(array(":value"=>$value));
                 $resultats->setFetchMode(\PDO::FETCH_ASSOC);
                 $datas = $resultats->fetchAll();

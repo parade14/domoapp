@@ -101,6 +101,28 @@ public static function getName()
         
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
+            
+            $sql = "DELETE FROM `datasensor` WHERE sensor_id IN (SELECT id from `sensor` where room_id IN (SELECT id from `room` where accommodation_id=:id))";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $sql = "DELETE FROM `sensor` WHERE room_id IN (SELECT id from `room` where accommodation_id=:id)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);
+            $stmt->execute();
+
+            
+            $sql = "DELETE FROM `Room` WHERE accommodation_id=:id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
+            $stmt->execute();
+            
+            $sql = "DELETE FROM `GroupAccommodation` WHERE accommodation_id=:id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
+            $stmt->execute();
+            
             $sql = "DELETE FROM Accommodation WHERE id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  

@@ -15,17 +15,20 @@ $last_name = $_POST["last_name"];
 $first_name = $_POST["first_name"];
 $phone = $_POST["phone"];
 $email = $_POST["email"];
+$id = $_POST["id"];
 
-$userTab = $userService->getUserBy('id',1);
-if(sizeOf($userTab)==1){
+$userTab = $userService->getUserBy('id',$id);
+if(sizeOf($userTab)>0){
     $user = $userTab[0];
     $user->setFirstName($first_name);
     $user->setLastName($last_name);
     $user->setPhone($phone);
     $user->setEmail($email);
+    $user->setEmail($email);
+    $userService->updateUser($user);
 }
 
-$userService->updateUser($user);
+
 
 header('Location: ../../web/modifierProfil/');
 
