@@ -24,11 +24,11 @@ class ServiceClientController extends BaseController
         $sessionService = $this->get("session.manager");
         $databaseService->connect($dataBase);
 
-//        $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
-//        if($var){
+        $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
+        if($var && $this->get('session.manager')->getCurrentUser()->getProfileType()==2){
             return $this->get("template.service")->parse("serviceClient/accueilServiceClient.php", array());
-//        }else{
-//            throw new AccessDeniedException();
-//        }
+        }else{
+            throw new AccessDeniedException();
+        }
     }
 }

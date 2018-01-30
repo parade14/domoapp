@@ -33,7 +33,7 @@ class GroupController extends BaseController
         $groupService->setServiceConnect($databaseService);
         $groupService->setDataBaseObject($dataBase);
         
-        $groups = $groupService->getGroupsByAdminId(3);// TODO GET THE CURRENT ID
+        $groups = $groupService->getGroupsByAdminId($this->get('session.manager')->getCurrentUser()->getId());
 
         
         foreach($groups as $group) {
@@ -41,11 +41,11 @@ class GroupController extends BaseController
             ${'accommodations_'.$id} = $groupService->getAccommodationsByGroup($group);
 
         }
-        //$var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
-        //if($var){
+        $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
+        if($var && $this->get('session.manager')->getCurrentUser()->getProfileType()==3){
             return $this->get("template.service")->parse("gestionnaire/gestionGroupes.php", array("groups" => $groups, "groupService"=>$groupService));
-        //}else{
-         //   throw new AccessDeniedException();
-        //}
+        } else {
+           throw new AccessDeniedException();
+        }
     }
 }
