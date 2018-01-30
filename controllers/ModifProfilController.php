@@ -22,7 +22,6 @@ class ModifProfilController extends BaseController
         
         $kernel = $this->kernel;
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $sessionService = $kernel->get("session.manager");
@@ -30,7 +29,7 @@ class ModifProfilController extends BaseController
         $userService->setServiceConnect($databaseService);
         $userService->setDataBaseObject($dataBase);
         $databaseService->connect($dataBase);
-        $user = $userService->getUserBy("id", 1);//$this->get('session.manager')->getCurrentUser()->getId());
+        $user = $userService->getUserBy("id", $this->get('session.manager')->getCurrentUser()->getId());
        
 
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");

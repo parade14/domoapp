@@ -30,3 +30,17 @@ function searchUser() {
     });
     $('#formSearchUser')[0].reset();
 }
+function addUser() {
+    $( "#dialog-add-user" ).dialog({
+      autoOpen: true,
+      height: 650,
+      width: 300,
+      modal: true,
+      buttons: {
+        Annuler: function() {
+             $(this).dialog( "close" );
+        }
+      }
+    });
+    $('#formAddUser')[0].reset();
+}

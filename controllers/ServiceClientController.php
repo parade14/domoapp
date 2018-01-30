@@ -20,7 +20,7 @@ class ServiceClientController extends BaseController
 
         //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $this->get("database.object");
-        $databaseService = $kthis->get("database.service");
+        $databaseService = $this->get("database.service");
         $sessionService = $this->get("session.manager");
         $databaseService->connect($dataBase);
 

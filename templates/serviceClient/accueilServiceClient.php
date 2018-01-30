@@ -26,7 +26,7 @@
                     <div class=icon>
                         <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
                     </div>
-                    <a href="#"><span>Ajouter un nouveau client</span></a>
+                    <a href="" onclick="addUser();return false;"><span>Ajouter un nouveau client</span></a>
                 </div>
             </li>
             <li class="var_nav">
@@ -54,6 +54,29 @@
         <br/>            
         <div id="listResults">
 
+        </div>
+    </form>
+</div>
+        
+<div id="dialog-add-user" title="Ajouter un profil client" style="display:none">
+    <form id="formAddUser" method="POST" action="../../templates/serviceClient/createUser.php">
+        <span>Nom : </span><input name="lastName" type="text"/>
+        <br/>      
+        <span>Prénom : </span><input name="firstName" type="text"/>
+        <br/> 
+        <span>Email : </span><input name="email" type="email"/>
+        <br/> 
+        <span>Téléphone : </span><input name="phone" type="number"/>
+        <br/> 
+        <span>Mot de passe : </span><input name="password" type="password"/>
+        <br/><br/>    
+        <span>Type de profil : </span><input name="profileType" type="number"/>
+        <br/>
+        <i>(1) Utilisateur</i><br/>
+        <i>(2) Service Client</i><br/>
+        <i>(3) Gestionnaire</i><br/>
+        <br/>  
+        <input type="submit" value="Créer"/>
         </div>
     </form>
 </div>
