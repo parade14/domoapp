@@ -11,7 +11,7 @@ use Entities\User;
 class GroupController extends BaseController
 {
     public static function getName(){
-        return "gestionnaire.controller";
+        return "group.controller";
     }
 
     /**

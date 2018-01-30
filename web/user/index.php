@@ -11,5 +11,12 @@ require('../../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
-echo $controller = $kernel->get("user.controller")->index();
+$user = $kernel->get('session.manager')->getCurrentUser();
 
+if($user->getProfileType() == 1){
+    echo $controller = $kernel->get("user.controller")->index();
+} else if($user->getProfileType() == 2){
+    echo $controller = $kernel->get("serviceClient.controller")->index();
+} else if($user->getProfileType() == 3){
+    echo $controller = $kernel->get("group.controller")->index();
+}
