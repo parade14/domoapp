@@ -21,8 +21,6 @@ class GroupController extends BaseController
     public function index(){
         
         $kernel = $this->kernel;
-
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $sessionService = $kernel->get("session.manager");
