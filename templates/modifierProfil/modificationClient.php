@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <?php
     require 'modificationClientController.php';
@@ -21,11 +26,11 @@
             <form class="form" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
                                 
                 <div class="form_group">
-                    <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $last_name ?>"/>
+                    <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?=$user->getLastName()?>"/>
                 </div>
                 
                 <div class="form_group">
-                    <input type="text" placeholder="Prénom" name="first_name" class="form_input" value="<?php echo $first_name ?>"/>
+                    <input type="text" placeholder="Prénom" name="first_name" class="form_input" value="<?=$user->getFirstName()?>"/>
                 </div>
                 
                 <!--<div class="form_group">
@@ -33,11 +38,11 @@
                 </div>-->
                                
                 <div class="form_group">
-                    <input type="text" placeholder="Numéro de Téléphone" name="phone" class="form_input" value="<?php echo $phone ?>"/>
+                    <input type="text" placeholder="Numéro de Téléphone" name="phone" class="form_input" value="<?=$user->getPhone()?>"/>
                 </div>
                 
                 <div class="form_group">
-                    <input type="email" placeholder="Email" class="form_input" name="email" value="<?php echo $email ?>" />
+                    <input type="email" placeholder="Email" class="form_input" name="email" value="<?=$user->getEmail()?>" />
                 </div>
                 
                 <!--<div class="form_group">
