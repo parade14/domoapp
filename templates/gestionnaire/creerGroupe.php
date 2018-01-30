@@ -1,6 +1,6 @@
 <?php
 
-require('../../../utilities/autoload.php');
+require('../../utilities/autoload.php');
 use Entities\Group;
 $kernel = new \kernel\Kernel();
 //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
@@ -29,10 +29,7 @@ if(isset($_POST['nomGroupe'])){
     foreach ($apparts as $appart) {
         $groupService->createGroupAccommodation($group->getId(), $appart);
     }
-    
-                
-                
-                
+           
 // CHARGEMENT DE LA LISTE D'APPARTS POOUR POPUP                
 } else {
 

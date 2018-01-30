@@ -17,7 +17,7 @@ $('.validerGroupBtn').hide();
                     }
                 });
                 $.ajax({
-                    url: 'creerGroupe.php',
+                    url: '../../templates/gestionnaire/creerGroupe.php',
                     type: 'POST',
                     data: {nomGroupe: nomGroupe, apparts: apparts},
                     success: function(data){
@@ -64,7 +64,7 @@ function modifierGroupe(){
 function creerGroupe(){
     $('#listAppartPopup').html("");
     $.ajax({
-        url: "creerGroupe.php",
+        url: "../../templates/gestionnaire/creerGroupe.php",
         success: function(data){
             jsonObj = JSON.parse(data);
             for (var i=0;i<jsonObj.length;i++){     
@@ -87,7 +87,7 @@ function supprimerGroupe(idGroup){
              "Confirm" : function() {
                  $(this).dialog("close");
                     $.ajax({
-                    url: "supprimerGroupe.php?id="+idGroup,
+                    url: "../../templates/gestionnaire/supprimerGroupe.php?id="+idGroup,
                     success: function(data){
                         console.log(data);
                         alert("Le groupe a bien été supprimé");

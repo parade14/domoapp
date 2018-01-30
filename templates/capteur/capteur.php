@@ -34,21 +34,26 @@
 
            <form action="" class="captor-container">
                <p><select id="select-captor">
-                       <option value="1">captor_name_1</option>
-                       <option value="2">captor_name_2</option>
-                       <option value="3">captor_name_3</option>
+                       <option value="temperature">température</option>
+                       <option value="pression">pression</option>
+                       <option value="lumiere">lumière</option>
+                       <option value="humidite">humidité</option>
+                       <option value="mouvement">mouvement</option>
                    </select>
                </p>
                <p><select id="select-room">
-                       <option value="1">room_name_1</option>
-                       <option value="2">room_name_2</option>
-                       <option value="new_room">new_room</option>
+                       
+                       <?php 
+                       foreach($rooms as $room){
+                           echo '<option value="1">'.$room->getName().'</option>';
+                       }?>
+                       
                    </select>
                </p>
                <p><input type="submit" value="CREER"></p>
            </form>
        </div>
-       <div class="main-wrapper">
+       <!--<div class="main-wrapper">
            <div class="icon-effect-1 icon-effect-1a">
                <a href="#" class="icon"><i class="fa fa-lightbulb-o"></i></a>
                <a href="#" class="icon"><i class="fa fa-thermometer-three-quarters"></i></a>
@@ -59,7 +64,7 @@
                <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
                <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
            </div>
-       </div>
+       </div>-->
 
        <div class="main__menu2">
             <ul>
@@ -85,18 +90,8 @@
                     foreach($sensors as $sensor){
                         echo '<div style="color:white">'.$sensor->getType().'</div>';
                     }
-            
-                    
-                    
-                    echo '
-                    <!--<ul class="hidden">
-                        <li>Lorem ipsum dolor</li>
-                        <li>Set amet consecuter</li>
-                        <li>Lorem ipsum dolor</li>
-                        <li>Set amet consecuter</li>
-                    </ul>-->
-                    <!--<a class="expand"><span>17</span></a>-->
-                </div>';
+
+                    echo '</div>';
        }?>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
