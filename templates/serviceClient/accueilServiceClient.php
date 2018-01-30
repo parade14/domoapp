@@ -70,7 +70,7 @@
         <br/> 
         <span>Mot de passe : </span><input name="password" type="password"/>
         <br/><br/>    
-        <span>Type de profil : </span><input name="profileType" type="number"/>
+        <span>Type de profil : </span><input min="1" max="3" name="profileType" type="number"/>
         <br/>
         <i>(1) Utilisateur</i><br/>
         <i>(2) Service Client</i><br/>
