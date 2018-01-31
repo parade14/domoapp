@@ -46,6 +46,11 @@ class RolesManager implements RolesManagerInterface
         return $needed === $role or in_array($role, $this->roles[$needed]);
     }
 
+    /**
+     * @param User $user
+     * @param array|string $role
+     * @return User
+     */
     public function addRole(User $user, $role){
         if(is_string($role) and array_key_exists($role, $this->roles)) {
             $user->addRoles($this->roles[$role]);
@@ -54,7 +59,7 @@ class RolesManager implements RolesManagerInterface
         elseif(is_array($role)) foreach ($role as $roleUnited) $this->addRole($user, $roleUnited);
         elseif(is_string($role) and !array_key_exists($role, $this->roles)) throw new \LogicException("unknow role $role");
 
-        return $this;
+        return $user;
     }
 
     public static function getName()

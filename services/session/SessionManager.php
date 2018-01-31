@@ -135,4 +135,13 @@ class SessionManager implements SessionManagerInterface
         }
         return false;
     }
+
+    /**
+     * @return $this
+     */
+    public function disconnectCurrentUser(){
+        session_destroy();
+        $this->setCurrentUser($this->rolesManager->addRole(new User(),"ANONYMOUS_USER"));
+        return $this;
+    }
 }

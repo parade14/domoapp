@@ -29,7 +29,7 @@ class ModifProfilController extends BaseController
         $userService->setServiceConnect($databaseService);
         $userService->setDataBaseObject($dataBase);
         $databaseService->connect($dataBase);
-        $user = $userService->getUserBy("id", $this->get('session.manager')->getCurrentUser()->getId());
+        $user = $this->get('session.manager')->getCurrentUser();
        
 
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
