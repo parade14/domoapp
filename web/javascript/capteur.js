@@ -4,6 +4,7 @@ $(document).ready(function() {
     
     if(idAcc[1] == undefined){
         $('#mesApparts').toggleClass('active');
+        $('#btnAjoutCapteur').hide();
 
     } else {
         $('#appart_'+idAcc[1]).toggleClass('active');
@@ -105,7 +106,7 @@ $(document).ready(function() {
 
     var Count = 1;
 
-    $(document).on('submit', '.captor-container', function() {
+    /*$(document).on('submit', '.captor-container', function() {
         var form_content = '<div class="box first">' +
             '                <span class="icon-cont"><i class="fa fa-bed"></i></span>' +
             '                <h3>'+$("#select-room option:selected" ).text()+'</h3>' +
@@ -121,7 +122,7 @@ $(document).ready(function() {
 
         return false;
 
-    });
+    });*/
 
     var room_input = $('<input name="room" class="room" type="text" placeholder="Nom de la nouvelle pièce" />');
 
@@ -146,3 +147,19 @@ $(document).ready(function() {
     });
 
 });
+
+
+
+
+    function supprimerCapteur(id){
+        
+        var r = confirm("Confirmez la suppression ? Ceci entraînera la suppression des relevés du capteur.");
+        if (r == true) {
+            $.ajax({
+                    url: "../../templates/capteur/supprimerCapteur.php?id="+id,
+                    success: function(data){
+                            location.reload();
+                        }
+           });
+        }      
+    }

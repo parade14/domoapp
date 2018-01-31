@@ -47,6 +47,7 @@
 
             <main>
                 <div class="larg" id="containerAccommodations">
+                    <div class="larg-w" style="display:none"></div>
                     <?php    
                     foreach($accomodations as $item) {
                     echo '

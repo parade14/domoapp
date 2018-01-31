@@ -8,6 +8,8 @@ namespace Services\Sensor;
 
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
+use Entities\Sensor;
+use PDO;
 
 
 class SensorService implements SensorServiceInterface
@@ -30,8 +32,23 @@ class SensorService implements SensorServiceInterface
      */
     protected $databaseObject;
 
+    function getServiceConnect(){
+        return $this->serviceConnect;
+    }
 
-    /**
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+        /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
      * @var $databaseObject DatabaseObjectInterface*
@@ -49,23 +66,16 @@ class SensorService implements SensorServiceInterface
         
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "INSERT INTO sensor(type, name, room_id) VALUES (:type, :name, :room_id)";
+            $sql = "INSERT INTO `Sensor`(type, name, room_id) VALUES (:type, :name, :room_id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':type', $type, PDO::PARAM_STR);    
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);    
             $stmt->bindParam(':room_id', $room_id, PDO::PARAM_INT);    
-            $stmt->execute();
-          
-            // on récupère l'id qu'on a inséré
-            if ($conn->query($sql) === TRUE) {
-                $last_id = $conn->insert_id;
-                // on construit l'objet inséré
-                $sensorInserted = new Sensor();
-                $sensorInserted->setId($last_id);
-                $sensorInserted->setName($name);
-                $sensorInserted->setRoomId($room_id);
-                $sensorInserted->setType($type);
-            }
+            $stmt->execute();            // on construit l'objet inséré
+            $sensorInserted = new Sensor();
+            $sensorInserted->setName($name);
+            $sensorInserted->setRoomId($room_id);
+            $sensorInserted->setType($type);
             
         } catch (LogicException $e) {
             throw $e;
@@ -83,7 +93,8 @@ class SensorService implements SensorServiceInterface
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM sensor WHERE id=:idSensor";
+            $sql = "DELETE FROM `DataSensor` WHERE id=:idSensor";
+            $sql = "DELETE FROM `Sensor` WHERE id=:idSensor";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idSensor', $idSensor, PDO::PARAM_INT);    
             $stmt->execute();
@@ -105,7 +116,7 @@ class SensorService implements SensorServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "UPDATE sensor SET type=:type, name=:name, room_id=:room_id WHERE id=:id";
+            $sql = "UPDATE `Sensor` SET type=:type, name=:name, room_id=:room_id WHERE id=:id";
 
             $stmt = $conn->prepare($sql);                                  
             $stmt->bindParam(':type', $sensor->getType(), \PDO::PARAM_STR);
@@ -124,10 +135,33 @@ class SensorService implements SensorServiceInterface
      * Search sensor(s) by the field in parameter
      * @param string $field id_room|id|type
      * @param string $value
-     * @return array of SensorInterface|\LogicException
+     * @return array of Sensor|\LogicException
      */
     public function getSensorBy($field, $value){
-        //TODO:: ??
+                $conn = $this->serviceConnect->connect($this->databaseObject);
+        try {
+            if($field != "id" && $field != "type" && $field != "room_id" ){
+                throw new LogicException("invalid field");
+            } else {
+                $resultats=$conn->prepare("SELECT * FROM `Sensor` WHERE $field = :value");
+                $resultats->execute(array(":value"=>$value));
+                $resultats->setFetchMode(PDO::FETCH_ASSOC);
+                $datas = $resultats->fetchAll();
+                $return = array();
+                foreach ($datas as $data) {
+                    $room = new Sensor();
+                    $room->setId($data['id']);
+                    $room->setRoomId($data['room_id']);
+                    $room->setName($data['name']);
+                    $room->setType($data['type']);
+                    array_push($return, $room);
+                } 
+                $resultats->closeCursor();
+            }
+        } catch (LogicException $e){
+                throw $e;
+        }
+        return $return;
     }
 
 

@@ -12,6 +12,7 @@
             <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
             <li><a class="menu_effect btn-connect" href="../modifierProfil/"> Mon profil </a> </li>
             <li><a class="menu_effect" href="#"> Langue </a> </li>
+            <li><a class="menu_effect" href="../../controllers/DeconnectController.php"> Me déconnecter </a> </li>
         </ul>
     </nav>  
 </div>

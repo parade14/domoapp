@@ -66,23 +66,21 @@ class UserService implements UserServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $sql = "INSERT INTO user(first_name, last_name, phone, email, password, profile_type) VALUES (:firstName, :lastName,:phone,:email, :password, :profileType)";
+            $sql = "INSERT INTO `User` (first_name, last_name, phone, email, password, profile_type) VALUES (:firstName, :lastName,:phone,:email, :password, :profileType)";
             $stmt = $conn->prepare($sql);
             $stmt->execute(array(
                 ':firstName'=>$user->getFirstName(),
-                ':lastName'=>$user->getPhone(),
+                ':lastName'=>$user->getLastName(),
                 ':email'=>$user->getEmail(),
                 ':password'=>$user->getPassword(),
                 ':profileType'=>$user->getProfileType(),
                 ':phone'=>$user->getPhone(),
             ));
+            $last_id = $conn->lastInsertId();
+            // on construit l'objet inséré
+            $user->setId($last_id);
 
-
-                $last_id = $conn->lastInsertId();
-                // on construit l'objet inséré
-                $user->setId($last_id);
-
-                return $user;
+            return $user;
             
         } catch (\LogicException $e){
             throw $e;

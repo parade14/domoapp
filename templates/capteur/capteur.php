@@ -1,6 +1,15 @@
 <?php
+    $kernel = new \kernel\Kernel();
+    $dataBase = $kernel->get("database.object");
+    $databaseService = $kernel->get("database.service");
+    $databaseService->connect($dataBase);
+    $capteurService = $kernel->get("sensor.service");
+    $capteurService->setServiceConnect($databaseService);
+    $capteurService->setDataBaseObject($dataBase);
+    
     $accommodations;
     $rooms;
+    $idAcc;
 
 ?>
 
@@ -11,6 +20,7 @@
         <meta charset="utf-8" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../../web/css/capteur-style.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
         <title>Capteurs</title>
     </head>
@@ -24,24 +34,30 @@
                <i class="fa fa-times login-cross"></i>
            </div>
 
-           <form action="" class="captor-container">
-               <p><select id="select-captor">
-                       <option value="1">captor_name_1</option>
-                       <option value="2">captor_name_2</option>
-                       <option value="3">captor_name_3</option>
+           <form method="POST" action="../../templates/capteur/creerCapteur.php" class="captor-container">
+               <input type="hidden" name="idAcc" value="<?php echo $idAcc; ?>"/>
+               <p><span>Nom du capteur : </span><input type="text" name="name"/></p>
+               <p><select id="select-captor"  name="sensor">
+                       <option value="temperature">température</option>
+                       <option value="pression">pression</option>
+                       <option value="lumiere">lumière</option>
+                       <option value="humidite">humidité</option>
+                       <option value="mouvement">mouvement</option>
                    </select>
                </p>
-               <p><select id="select-room">
-                       <option value="1">room_name_1</option>
-                       <option value="2">room_name_2</option>
-                       <option value="new_room">new_room</option>
+               <p><select id="select-room" name="room">
+                       
+                       <?php 
+                       foreach($rooms as $room){
+                           echo '<option value="'.$room->getId().'">'.$room->getName().'</option>';
+                       }?>
+                       
                    </select>
                </p>
                <p><input type="submit" value="CREER"></p>
            </form>
        </div>
-
-       <div class="main-wrapper">
+       <!--<div class="main-wrapper">
            <div class="icon-effect-1 icon-effect-1a">
                <a href="#" class="icon"><i class="fa fa-lightbulb-o"></i></a>
                <a href="#" class="icon"><i class="fa fa-thermometer-three-quarters"></i></a>
@@ -52,7 +68,7 @@
                <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
                <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
            </div>
-       </div>
+       </div>-->
 
        <div class="main__menu2">
             <ul>
@@ -64,28 +80,27 @@
             </ul>
        </div>
 
-       <button id="btnAjoutCapteur" class="add popup-with-form btn-connect" href="#test-form">Ajouter un capteur<i class="ionicons ion-plus-round"></i></button>
+       <button id="btnAjoutCapteur" class="add popup-with-form btn-connect" href="#test-form">Ajouter un capteur</button>
        <div class="container-boxes">
        
         <?php foreach($rooms as $room){
-            
+            $sensors = $capteurService->getSensorBy('room_id', $room->getId());            
             echo '
                 <div class="box first">
-                    <span class="icon-cont"><i class="fa fa-bed"></i></span>
+                    <!--<span class="icon-cont"><i class="fa fa-bed"></i></span>-->
 
-                    <h3>'.$room->getName().'</h3>
+                    <h3>'.$room->getName().'</h3>';
+                    
+                    foreach($sensors as $sensor){
+                        echo '<div style="color:white"><span>('.$sensor->getType().') </span> '
+                               .$sensor->getName(). '<span onClick="supprimerCapteur('.$sensor->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span></div>';
+                    }
 
-                    <!--<ul class="hidden">
-                        <li>Lorem ipsum dolor</li>
-                        <li>Set amet consecuter</li>
-                        <li>Lorem ipsum dolor</li>
-                        <li>Set amet consecuter</li>
-                    </ul>-->
-                    <a class="expand"><span>17</span></a>
-                </div>';
+                    echo '</div>';
        }?>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="../../web/javascript/capteur.js"></script>
 
     </body>

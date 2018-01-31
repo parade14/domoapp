@@ -102,12 +102,12 @@ public static function getName()
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             
-            $sql = "DELETE FROM `datasensor` WHERE sensor_id IN (SELECT id from `sensor` where room_id IN (SELECT id from `room` where accommodation_id=:id))";
+            $sql = "DELETE FROM `DataSensor` WHERE sensor_id IN (SELECT id from `Sensor` where room_id IN (SELECT id from `Room` where accommodation_id=:id))";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);
             $stmt->execute();
             
-            $sql = "DELETE FROM `sensor` WHERE room_id IN (SELECT id from `room` where accommodation_id=:id)";
+            $sql = "DELETE FROM `Sensor` WHERE room_id IN (SELECT id from `Room` where accommodation_id=:id)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);
             $stmt->execute();
@@ -123,7 +123,7 @@ public static function getName()
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
             $stmt->execute();
             
-            $sql = "DELETE FROM Accommodation WHERE id=:id";
+            $sql = "DELETE FROM `Accommodation` WHERE id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
             $stmt->execute();
@@ -150,7 +150,7 @@ public static function getName()
             $id = $accommodation->getId();
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "UPDATE Accommodation SET street=:street, street_number=:street_number, city=:city, postal_code=:postal_code, area=:area, inhabitant_number=:inhabitant_number, user_id=:owner_id WHERE id=:id";
+            $sql = "UPDATE `Accommodation` SET street=:street, street_number=:street_number, city=:city, postal_code=:postal_code, area=:area, inhabitant_number=:inhabitant_number, user_id=:owner_id WHERE id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':street', $street, PDO::PARAM_STR);       
             $stmt->bindParam(':street_number', $streetNumber, PDO::PARAM_STR);    
@@ -178,7 +178,7 @@ public static function getName()
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM Accommodation WHERE id='$idAccommodation'");
+            $resultats=$conn->query("SELECT * FROM `Accommodation` WHERE id='$idAccommodation'");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
             $return = array();  
@@ -211,7 +211,7 @@ public static function getName()
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM Accommodation WHERE user_id='$idUser'");
+            $resultats=$conn->query("SELECT * FROM `Accommodation` WHERE user_id='$idUser'");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
             $return = array();
@@ -241,7 +241,7 @@ public static function getName()
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM Accommodation");
+            $resultats=$conn->query("SELECT * FROM `Accommodation`");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
             $return = array();

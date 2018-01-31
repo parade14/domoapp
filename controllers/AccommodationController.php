@@ -36,7 +36,9 @@ class AccommodationController extends BaseController
         if($var){
             return $this->get("template.service")->parse("appartements/modifierAppartement.php", array("user"=>$this->get('session.manager')->getCurrentUser(), "accomodations" =>$accomodations, "roomService" => $roomService));
         }else{
+            header('Location: ../');
             throw new AccessDeniedException();
+            
         }
     }
 

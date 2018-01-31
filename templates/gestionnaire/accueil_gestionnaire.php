@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Accueil Gestionnaire</title>
 
-    <!-- Insertion lien utile -->
     <link rel="stylesheet" type="text/css" href="../../../web/css/accueil_gestionnaire.css" />
 
     <link rel="stylesheet" href="../design/css/font-awesome/css/font-awesome.min.css">
@@ -15,9 +14,6 @@
 </head>
 <body>
 
-<?php include '../../headers/headerGestConnected.php';?>
-
-<!-- CONTENU -->
 <div class="part_actualites">
     <article class="actualites">
         <h2>Actualités</h2>
@@ -80,7 +76,6 @@
     </article>
 </div>
 
-<!-- FOOTER-->
 <footer>
     <div id="coordonnees">
         <p> Nascop - Région Parisienne </br> +33 6 43 52 09 38 </br> mail@nascop.com</p>
@@ -98,4 +93,4 @@
 
 
 </body>
-</html>
+</html>-->

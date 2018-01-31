@@ -22,7 +22,6 @@ class CapteursController extends BaseController
         
         $kernel = $this->kernel;
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $databaseService->connect($dataBase);
@@ -35,8 +34,8 @@ class CapteursController extends BaseController
         
         
         $capteurService = $kernel->get("sensor.service");
-        $accommodationService->setServiceConnect($databaseService);
-        $accommodationService->setDataBaseObject($dataBase);
+        $capteurService->setServiceConnect($databaseService);
+        $capteurService->setDataBaseObject($dataBase);
         
         $roomService = $kernel->get("room.service");
         $roomService->setServiceConnect($databaseService);
@@ -45,14 +44,25 @@ class CapteursController extends BaseController
         $accommodations = $accommodationService->getAccommodationByUserId($this->get('session.manager')->getCurrentUser()->getId());
         
         $rooms = [];
+        $sensors = [];
+        $idAcc;
         
         if(isset($_GET['idAcc'])){
             $rooms = $roomService->getRoomBy("accommodation_id", $_GET['idAcc']);
+            $idAcc = $_GET['idAcc'];
         }
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
         if($var){
-            return $this->get("template.service")->parse("capteur/capteur.php", array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms));
+            if(isset($idAcc)){
+                $array = array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms, "idAcc" => $idAcc);
+            } else {
+               $array = array("user"=>$this->get('session.manager')->getCurrentUser(), "accommodations" => $accommodations, "rooms" => $rooms);
+
+            }
+            
+            return $this->get("template.service")->parse("capteur/capteur.php", $array);
         } else {
+            header('Location: ../');
             throw new AccessDeniedException();
         }
     }

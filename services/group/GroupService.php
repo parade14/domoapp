@@ -85,7 +85,7 @@ class GroupService {
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             
-            $sql = "DELETE FROM `groupaccommodation` WHERE group_id=:id";
+            $sql = "DELETE FROM `GroupAccommodation` WHERE group_id=:id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idGroup, PDO::PARAM_INT); 
             $stmt->execute();
@@ -156,8 +156,8 @@ class GroupService {
             $conn = $this->serviceConnect->connect($this->databaseObject);
             
             $id = $group->getId();
-            $resultats=$conn->query("select accommodation.* from `accommodation`, `groupaccommodation`, `group` "
-                    . "where groupAccommodation.group_id=group.id and "
+            $resultats=$conn->query("select Accommodation.* from `Accommodation`, `GroupAccommodation`, `Group` "
+                    . "where GroupAccommodation.group_id=Group.id and "
                     . "Accommodation.id = GroupAccommodation.accommodation_id and "
                     . "GroupAccommodation.group_id='$id';");
             
