@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../../web/css/appartement-style.css" />
          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-        <title>Titre</title>
+        <title>Mes Appartements</title>
     </head>
 
     <body>
