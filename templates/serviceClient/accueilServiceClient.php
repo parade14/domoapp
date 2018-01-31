@@ -61,17 +61,17 @@
         
 <div id="dialog-add-user" title="Ajouter un profil client" style="display:none">
     <form id="formAddUser" method="POST" action="../../templates/serviceClient/createUser.php">
-        <span>Nom : </span><input name="lastName" type="text"/>
+        <span>Nom : </span><input required name="lastName" type="text"/>
         <br/><br/>         
-        <span>Prénom : </span><input name="firstName" type="text"/>
+        <span>Prénom : </span><input required name="firstName" type="text"/>
         <br/> <br/>   
-        <span>Email : </span><input name="email" type="email"/>
+        <span>Email : </span><input required name="email" type="email"/>
         <br/> <br/>   
-        <span>Téléphone : </span><input name="phone" type="number"/>
+        <span>Téléphone : </span><input required name="phone" type="number"/>
         <br/> <br/>   
-        <span>Mot de passe : </span><input name="password" type="password"/>
+        <span>Mot de passe : </span><input required name="password" type="password"/>
         <br/><br/>   <br/>    
-        <span>Type de profil : </span><input min="1" max="3" name="profileType" type="number"/>
+        <span>Type de profil : </span><input required min="1" max="3" name="profileType" type="number"/>
         <br/><br/>   
         <i>(1) Utilisateur</i><br/>
         <i>(2) Service Client</i><br/>

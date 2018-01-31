@@ -30,7 +30,7 @@
                 <h1 class="user_title">Modification d'un compte client</h1>
             </header>
             
-            <form class="form" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
+            <form class="form" onsubmit="validate()" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
                                 
                 <div class="form_group">
                     <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $user->getLastName(); ?>"/>
@@ -39,10 +39,6 @@
                 <div class="form_group">
                     <input type="text" placeholder="Prénom" name="first_name" class="form_input" value="<?php echo $user->getFirstName(); ?>"/>
                 </div>
-                
-                <!--<div class="form_group">
-                    <input type="text" placeholder="JJ/MM/AAAA" class="form_input" value=""/>
-                </div>-->
                                
                 <div class="form_group">
                     <input type="text" placeholder="Numéro de Téléphone" name="phone" class="form_input" value="<?php echo $user->getPhone(); ?>"/>
@@ -52,10 +48,15 @@
                     <input type="email" placeholder="Email" class="form_input" name="email" value="<?php echo $user->getEmail(); ?>" />
                 </div>
                 <input style="display:none" name="id" value="<?php echo $user->getId(); ?>" />
+                
+                <button class="btn" id="modifierMdpBtn" onclick="modifierMdp()" type="button">Modifier mon mot de passe</button> 
 
-                <!--<div class="form_group">
-                    <input type="password" placeholder="Password" class="form_input" value=""/>
-                </div>-->
+                <div class="modifMdp" style="display:none" class="form_group">
+                    <input id="password" name="password" type="password" placeholder="Nouveau mot de passe" class="form_input" value=""/>
+                </div>
+                <div class="modifMdp" style="display:none" class="form_group">
+                    <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirmer nouveau mot de passe" class="form_input" value=""/>
+                </div>
                 
                 <button class="btn" id="modifierBtn" onclick="modifierProfil()" type="button">Modifier</button>
                 <input type="submit" class="btn" id="enregistrerBtn" value="Enregistrer" />
