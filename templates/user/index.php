@@ -11,12 +11,12 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../web/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../web/css/ionicons/css/ionicons.min.css">
-        <link rel="stylesheet" href="../../web/css/user-home-style.css" />
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../css/user-home-style.css" />
 
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <script src="javascript/profile.js"></script>
+        <script src="../javascript/profile.js"></script>
 
         <title>User Home</title>
     </head>

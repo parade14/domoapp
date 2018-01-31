@@ -6,8 +6,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-    <link rel="stylesheet" href="../../web/css/AjoutNouveauClient.css" />
-        <link rel="stylesheet" href="../../web/css/user-home-style.css" />
+    <link rel="stylesheet" href="../css/AjoutNouveauClient.css" />
+        <link rel="stylesheet" href="../css/user-home-style.css" />
         <title>Modification d'un compte client</title>
     </head>
     <body>
@@ -54,5 +54,5 @@
 
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script src="../../web/javascript/modifierClient.js"></script>
+    <script src="../javascript/modifierClient.js"></script>
 </html>

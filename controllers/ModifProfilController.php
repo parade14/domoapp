@@ -35,7 +35,7 @@ class ModifProfilController extends BaseController
 
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");
         if($var){
-            return $this->get("template.service")->parse("modifierProfil/modificationClient.php", array("user"=>$user[0]));
+            return $this->get("template.service")->parse("modifierProfil/modificationClient.php", array("user"=>$user));
         }else{
             throw new AccessDeniedException();
         }
