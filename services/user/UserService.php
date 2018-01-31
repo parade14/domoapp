@@ -119,14 +119,20 @@ class UserService implements UserServiceInterface
             $password = $user->getPassword();
             $profile_type = $user->getProfileType();
             
-            $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
-            $stmt = $conn->prepare($sql);
+            if($password == md5(NULL)){
+                $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, profile_type=:profile_type WHERE id=:id";
+                $stmt = $conn->prepare($sql);
+            } else {
+                $sql = "UPDATE User SET first_name=:first_name, last_name=:last_name, phone=:phone, email=:email, password=:password, profile_type=:profile_type WHERE id=:id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':password', $password, \PDO::PARAM_STR);
+            }
             $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
             $stmt->bindParam(':first_name', $first_name, \PDO::PARAM_STR);
             $stmt->bindParam(':last_name', $last_name, \PDO::PARAM_STR);
             $stmt->bindParam(':phone', $phone, \PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
-            $stmt->bindParam(':password', $password, \PDO::PARAM_STR);
+            
             $stmt->bindParam(':profile_type', $profile_type, \PDO::PARAM_STR);
             $stmt->execute();
         } catch (\LogicException $e){

@@ -24,7 +24,15 @@ if(sizeOf($userTab)>0){
     $user->setLastName($last_name);
     $user->setPhone($phone);
     $user->setEmail($email);
-    $user->setEmail($email);
+      
+    if(isset($_POST['password']) && $_POST['password'] != ""){
+        $user->setPassword($_POST['password']);
+    } else {
+        $user->setPassword(NULL);
+    }
+    
+    echo $user->getPassword();
+    echo is_null($user->getPassword());
     $userService->updateUser($user);
 }
 
