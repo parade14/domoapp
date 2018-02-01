@@ -93,7 +93,7 @@ class DataSensorService implements DataSensorServiceInterface
      * @param string $sensorId
      * @param \DateTime $startDate 
      * @param \DateTime $endDate 
-     * @return array of DataSensorInterface||\LogicException
+     * @return DataSensorInterface[]
      */
     public function getValuesBetween($sensorId, $startDate, $endDate) {
         

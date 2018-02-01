@@ -7,8 +7,9 @@
 namespace Services\DataSensor;
 
 use Entities\DataSensor;
+use services\stats\IsHistorisableInterface;
 
-interface DataSensorInterface
+interface DataSensorInterface extends IsHistorisableInterface
 {
  
     /**

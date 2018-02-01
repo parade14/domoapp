@@ -7,7 +7,9 @@
 namespace Entities;
 
 
-class DataSensor
+use Services\DataSensor\DataSensorInterface;
+
+class DataSensor implements DataSensorInterface
 {
 
     /**
@@ -103,6 +105,6 @@ class DataSensor
         return $this;
     }
 
-  
+
 
 }
