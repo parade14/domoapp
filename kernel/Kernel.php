@@ -15,6 +15,7 @@ use controllers\CapteursController;
 use controllers\ServiceClientController;
 use controllers\AccommodationController;
 use controllers\GroupController;
+use controllers\DeconnectController;
 use Kernel\ServiceHandler\ServiceHandler;
 use Kernel\ServiceHandler\ServiceInterface;
 use Services\Accomodation\AccommodationService;
@@ -66,6 +67,7 @@ final class Kernel implements ServiceInterface
             ->addService(CapteursController::class)
             ->addService(ServiceClientController::class)
             ->addService(GroupController::class)
+            ->addService(DeconnectController::class)
         ;
     }
 

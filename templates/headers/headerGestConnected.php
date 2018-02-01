@@ -9,7 +9,7 @@
                 <li><a class="menu_effect" href="../gestionnaire/"> Mes groupes </a> </li>
                 <li><a class="menu_effect menu-right" href="../modifierProfil/"> Mon profil </a> </li>
                 <li><a class="menu_effect  menu-right" href="#"> Langue </a> </li>
-                <li><a class="menu_effect" href="../../controllers/DeconnectController.php"> Me déconnecter </a> </li>
+                <li><a class="menu_effect" href="../deconnect/"> Me déconnecter </a> </li>
             </ul>
         </nav>
     </div>
