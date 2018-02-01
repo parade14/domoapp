@@ -6,6 +6,9 @@
     $capteurService = $kernel->get("sensor.service");
     $capteurService->setServiceConnect($databaseService);
     $capteurService->setDataBaseObject($dataBase);
+    $dataSensorService = $kernel->get("datasensor.service");
+    $dataSensorService->setServiceConnect($databaseService);
+    $dataSensorService->setDataBaseObject($dataBase);
     
     $accommodations;
     $rooms;
@@ -57,18 +60,6 @@
                <p><input type="submit" value="CREER"></p>
            </form>
        </div>
-       <!--<div class="main-wrapper">
-           <div class="icon-effect-1 icon-effect-1a">
-               <a href="#" class="icon"><i class="fa fa-lightbulb-o"></i></a>
-               <a href="#" class="icon"><i class="fa fa-thermometer-three-quarters"></i></a>
-               <a href="#" class="icon"><i class="ionicons ion-waterdrop"></i></a>
-               <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
-               <a href="#" class="icon"><i class="fa fa-tachometer" aria-hidden="true"></i></a>
-               <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
-               <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
-               <a href="#" class="icon"><i class="ionicons ion-android-walk"></i></a>
-           </div>
-       </div>-->
 
        <div class="main__menu2">
             <ul>
@@ -109,9 +100,10 @@
                                 $captorIcon = '<i class="icon ionicons ion-waterdrop"></i>';
                                 break;
                         }
+                        $lastValue = $dataSensorService->getLastValue($sensor->getId());
 
                         echo '<div class="captors"><div class="right-captor-box"><span>'.$captorIcon.' </span> 
-                               <span>'.$sensor->getName().'</span></div><div class="left-captor-box"><span class="expand"></span><span class="switch-button open">
+                               <span>'.$sensor->getName().'</span></div><div class="left-captor-box"><span class="expand">'.$lastValue->getValue().'</span><span class="switch-button open">
                                <i class="switch"></i></span><span onClick="supprimerCapteur('.$sensor->getId().')"<i class="fa fa-trash-o fa-lg"></i></span></div></div>';
                     }
 
