@@ -127,7 +127,7 @@ class AccommodationService implements ServiceInterface
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idAccommodation, PDO::PARAM_INT);  
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return true;
@@ -162,7 +162,7 @@ class AccommodationService implements ServiceInterface
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);  
             $stmt->execute();
                         
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $accommodation;
@@ -196,7 +196,7 @@ class AccommodationService implements ServiceInterface
             } 
             $resultats->closeCursor();
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;
@@ -229,7 +229,7 @@ class AccommodationService implements ServiceInterface
             } 
             $resultats->closeCursor();
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;
@@ -259,7 +259,7 @@ class AccommodationService implements ServiceInterface
             } 
             $resultats->closeCursor();
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;
