@@ -1,4 +1,5 @@
-<DirectoryMatch "^/web"> # again no $, see comment
+Deny from all
+<DirectoryMatch "^/web">
 Order Deny,Allow
 Allow From All
 </DirectoryMatch>
