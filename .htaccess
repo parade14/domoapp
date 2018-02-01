@@ -1,4 +1,4 @@
-<DirectoryMatch "^/var/www/(.+?)/(.+)/"> # again no $, see comment
+<DirectoryMatch "^/web"> # again no $, see comment
 Order Deny,Allow
 Allow From All
 </DirectoryMatch>
