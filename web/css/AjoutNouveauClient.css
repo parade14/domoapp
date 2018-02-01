@@ -31,6 +31,8 @@ html {
 
 *, *:before, *:after {
     box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -44,12 +46,20 @@ body {
 .user {
   width: 90%;
   max-width: 340px;
-  margin: 10vh auto;
+  margin: 21vh auto;
 }
 
 .user_header {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1.6rem;
+  position: relative;
+    border-radius: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  top: 20px;
   text-align: center;
-  opacity: 0;
+  background-color: #ebebe4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
   -webkit-transform: translate3d(0, 500px, 0);
           transform: translate3d(0, 500px, 0);
   -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
@@ -60,7 +70,6 @@ body {
   font-size: 30px;
   margin-bottom: -10px;
   font-weight: 500;
-  color: white;
 
 }
 
@@ -87,7 +96,6 @@ body {
   display: block;
   width: 100%;
   padding: 20px;
-  font-family: "Roboto";
   -webkit-appearance: none;
   border: 0;
   outline: 0;
@@ -100,9 +108,8 @@ body {
 
 .btn {
   display: block;
-  width: 100%;
+  width: 90%;
   padding: 20px;
-  font-family: "Roboto";
   -webkit-appearance: none;
   outline: 0;
   border: 0;
@@ -112,21 +119,21 @@ body {
   transition: 0.3s;
 }
 .btn:hover {
-  background: #a09486;
+    opacity: 0.8;
 }
 
 
 #annulerBtn{
-    background: #F7819F;
+    background: #377a7f;
 }
 #annulerBtn:hover{
-    background: #FA5882;
+    opacity: 0.8;
 }
 #enregistrerBtn{
-    background: #81F781;
+    background: #5ecebd;
 }
 #enregistrerBtn:hover{
-    background: #58FA58;
+    opacity: 0.8;
 }
 
 
