@@ -60,10 +60,9 @@ nav ul li a
 {
     width: 100px;
     margin-left: 50px;
-
     width: 100px;
     position: fixed;
-    top: 20px;
+    top: 15px;
     left: -40px;
 
 }
