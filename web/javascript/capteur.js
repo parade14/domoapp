@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     $.fn.inlineEdit = function(replaceWith) {
 
-        $("body").on("click", "a.expand", function() {
+        $(document).on("click", ".expand", function() {
 
             var elem = $(this);
 
@@ -39,9 +39,9 @@ $(document).ready(function() {
         });
     };
 
-    var replaceWith = $('<input name="temp" class="temp" type="text" />');
+    var replaceWith = $('<input name="expand" class="expand" type="text" />');
 
-    $('a.expand').inlineEdit(replaceWith);
+    $('.expand').inlineEdit(replaceWith);
 
     $('.btn-connect').click(function(){
         if ($('div.add_captor').hasClass('hidden'))
@@ -144,6 +144,12 @@ $(document).ready(function() {
                 $('#select-room').show();
             });
         }
+    });
+
+
+    $('.switch-button').on('click', function(e) {
+        e.preventDefault();
+        $(this).toggleClass('open');
     });
 
 });
