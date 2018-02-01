@@ -21,14 +21,22 @@
 				</div>
 			</div>
 
-			<footer>
+			<footer class="home-footer">
 				<div id="coordonnees">
-					<p> Nascop <br /> Région Parisienne <br /> +33 6 43 52 09 38 <br /> mail@nascop.com
-</p>
+                    <div class="footer-address">
+                        <i class="fa fa-map-marker"></i>
+                        <span> 10 Rue de Vanves </span> Issy-les-Moulineaux, France
+                    </div>
+                    <div class="footer-address">
+                        <i class="fa fa-phone"></i>
+                        <span> +33 6 43 52 09 38 </span>
+                    </div>
+                    <div class="footer-address">
+                        <i class="fa fa-envelope"></i>
+                        <span> mail@nascop.com </span>
+                    </div>
+                </div>
 
-				<div class="bottom-bar">
-Tous droits Réservés © 2017 | Nascop
-</div>
 				<div id="copyright">
 					<p> Tous droits réservés 2017 - © NASCOP - Solution Domotique </p>
 				</div>

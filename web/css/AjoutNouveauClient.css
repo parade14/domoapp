@@ -58,12 +58,8 @@ body {
   text-transform: uppercase;
   top: 20px;
   text-align: center;
-  background-color: #ebebe4;
+  background-color: #e3e3e3;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
-  -webkit-transform: translate3d(0, 500px, 0);
-          transform: translate3d(0, 500px, 0);
-  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
-          animation: arrive 500ms ease-in-out 0.7s forwards;
 }
 
 .user_title {
@@ -76,6 +72,7 @@ body {
 .form {
   margin-top: 40px;
   border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
   overflow: hidden;
   opacity: 0;
   -webkit-transform: translate3d(0, 500px, 0);

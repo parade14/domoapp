@@ -74,6 +74,9 @@ body
     box-sizing: content-box;
 }
 
+.small {
+    cursor: default;
+}
 
 /* Effect */
 .icon-effect-1 .icon {

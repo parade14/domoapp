@@ -29,7 +29,7 @@
                 <nav>
                     <ul>
                         <li><a class="menu_effect" href="#"> Accueil </a> </li>
-                        <li><a class="menu_effect" href="#"> Notre offre </a> </li>
+                        <li><a class="menu_effect" href="#offre"> Notre offre </a> </li>
                         <li><a class="menu_effect" href="#contact"> Contact </a> </li>
                         <li><a class="menu_effect btn-connect" href="#" > Connexion </a> </li>
                         <li><a class="menu_effect" href="#"> Langue </a> </li>
@@ -51,13 +51,18 @@
                 <article class="nascop_description articles">
                     <h2> Qui sommes-nous ?  </h2>
 
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec sagittis massa. Nulla facilisi. Cras id arcu lorem, et semper purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel enim mi, in lobortis sem. Vestibulum luctus elit eu libero ultrices id fermentum sem sagittis. Nulla imperdiet mauris sed sapien dignissim id aliquam est aliquam. Maecenas non odio ipsum, a elementum nisi. Mauris non erat eu erat placerat convallis. Mauris in pretium urna. Cras laoreet molestie odio, consequat consequat velit commodo eu. Integer vitae lectus ac nunc posuere pellentesque non at eros. Suspendisse non lectus lorem.</p>
+                    <p> Créée en 2017, Nascop est une start-up spécialisée dans la domotique. Elle résulte de la volonté de 6 ingénieurs passionnés à optimiser et à faciliter le contrôle des maisons qui sont de plus en plus connectées. Nascop apporte aux foyers français et internationaux son expertise et son support technique. Elle offre une solution haute gamme, flexible dynamique et à l’écoute de ses clients.
+                        <br/>Nascop c’est :
+                        la sécurité assurée pour votre foyer,
+                        la gestion de vos pièces afin d’optimiser votre consommation,
+                        la réduction de vos factures,
+                        la simplicité d’utilisation depuis votre canapé.</p>
 
                 </article>
 
             </article>
 
-            <article class="offer_description articles">
+            <article class="offer_description articles" id="offre">
 
                 <h2> Notre offre </h2>
 
