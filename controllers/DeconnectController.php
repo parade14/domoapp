@@ -23,6 +23,3 @@ class DeconnectController extends BaseController
         header('Location: ../');
     }
 }
-
-
-

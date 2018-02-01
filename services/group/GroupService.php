@@ -123,10 +123,6 @@ class GroupService {
         return $group;
         
     }
-
-    public function getGroup($idGroup){
-        
-    }
     
     public function getGroupsByAdminId($idUser){
          try {

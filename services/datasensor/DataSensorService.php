@@ -8,6 +8,9 @@ namespace Services\DataSensor;
 
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
+use Entities\DataSensor;
+use PDO;
+use DateTime;
 
 
 class DataSensorService implements DataSensorServiceInterface
@@ -29,7 +32,23 @@ class DataSensorService implements DataSensorServiceInterface
      */
     protected $databaseObject;
 
+    function getServiceConnect() {
+        return $this->serviceConnect;
+    }
 
+    function getDatabaseObject() {
+        return $this->databaseObject;
+    }
+
+    function setServiceConnect($serviceConnect) {
+        $this->serviceConnect = $serviceConnect;
+    }
+
+    function setDatabaseObject($databaseObject) {
+        $this->databaseObject = $databaseObject;
+    }
+
+    
     /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
@@ -53,7 +72,7 @@ class DataSensorService implements DataSensorServiceInterface
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM DataSensor WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM DataSensor WHERE sensor_id='$sensorId') ");
+            $resultats=$conn->query("SELECT * FROM `DataSensor` WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM `DataSensor` WHERE sensor_id='$sensorId') ");
             $resultats->setFetchMode(PDO::FETCH_ASSOC);
             $data = $resultats->fetch();
             $dataSensor = new DataSensor();
