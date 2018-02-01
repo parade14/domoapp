@@ -68,32 +68,32 @@
                                    
                                <div class="input">
                                     <label>N° </label>
-                                    <input class="text-field" type="number" name="numero" value="'.$item->getStreetNumber().'" />
+                                    <input class="text-field" required type="number" name="numero" value="'.$item->getStreetNumber().'" />
                                 </div>
                                 
                                 <div class="input">
                                     <label>Adresse </label>
-                                    <input class="text-field" type="text" name="adresse" value="'.$item->getStreet().'" />
+                                    <input class="text-field" required type="text" name="adresse" value="'.$item->getStreet().'" />
                                 </div>
                                 
                                 <div class="input">
                                     <label>Code Postal </label>
-                                    <input class="text-field" type="number" name="codePostal" value="'.$item->getPostalCode().'" />
+                                    <input class="text-field" required type="number" name="codePostal" value="'.$item->getPostalCode().'" />
                                 </div>
                                 
                                 <div class="input">
                                     <label>Ville </label>
-                                    <input class="text-field" type="text" name="ville" value="'.$item->getCity().'" />
+                                    <input class="text-field" required type="text" name="ville" value="'.$item->getCity().'" />
                                 </div>
 
                                 <div class="input">
                                     <label>Superficie </label>
-                                    <input class="text-field" type="number" name="superficie" value="'.$item->getArea().'"  />
+                                    <input class="text-field" required type="number" name="superficie" value="'.$item->getArea().'"  />
                                 </div>
 
                                 <div class="input">
                                     <label>Nombre d\'habitants </label>
-                                    <input class="text-field" type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
+                                    <input class="text-field" required type="number" name="nbHabitants" value="'.$item->getInhabitantNumber().'" />
                                 </div>
                                 
                                 <div class="input" style="display:none">

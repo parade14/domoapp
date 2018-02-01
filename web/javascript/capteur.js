@@ -8,11 +8,17 @@ $(document).ready(function() {
 
     } else {
         $('#appart_'+idAcc[1]).toggleClass('active');
+        var nbRoom = $('#nbRoom').val();
+        if(nbRoom==0){
+            alert("Aucune pièce présente. Veuillez créer une pièce.");
+            window.location.href = "../appartements/";    
+        }
     }
     var nbAcc = $('#nbAcc').val();
     
+    
     if(nbAcc==0){
-        alert("Aucun appartement présent. Veuillez créer un appartement et des pièces.");
+        alert("Aucun appartement présent. Veuillez créer un appartement.");
         window.location.href = "../appartements/";    
     }
 

@@ -31,6 +31,7 @@
     <body>
        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
         <input type="hidden" id="nbAcc" value="<?=sizeOf($accommodations )?>"/>
+        <input type="hidden" id="nbRoom" value="<?=sizeOf($rooms)?>"/>
 
        <div class="add_captor hidden">
            <div class="login-header">

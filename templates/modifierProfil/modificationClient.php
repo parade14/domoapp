@@ -22,7 +22,6 @@
             include(dirname(__FILE__).'/../headers/headerGestConnected.php');
         }
         
-        
         ?>
 
         <div class="user">
