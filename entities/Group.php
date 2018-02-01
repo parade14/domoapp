@@ -7,7 +7,6 @@
 namespace Entities;
 
 
-use services\database\EntityHasOwnerInterface;
 
 class Group
 {

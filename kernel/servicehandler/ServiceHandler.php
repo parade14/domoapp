@@ -29,11 +29,18 @@ class ServiceHandler
     protected $loaded = array();
 
 
+    /**
+     * @return string
+     */
     public static function getName()
     {
       return "service.handler";
     }
 
+    /**
+     * ServiceHandler constructor.
+     * @param Kernel $kernel
+     */
     public function __construct(Kernel $kernel)
     {
         $this->loaded[$kernel::getName()] = $kernel;
@@ -80,6 +87,10 @@ class ServiceHandler
 
     }
 
+    /**
+     * @param $serviceName
+     * @return bool
+     */
     public function hasService($serviceName)
     {
         return array_key_exists($serviceName, $this->servicesReferencedByName) ? true : false ;

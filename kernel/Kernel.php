@@ -35,6 +35,9 @@ final class Kernel implements ServiceInterface
 {
     protected $serviceHandler;
 
+    /**
+     * Kernel constructor.
+     */
     public function __construct()
     {
         $this->serviceHandler = new ServiceHandler($this);
@@ -82,6 +85,9 @@ final class Kernel implements ServiceInterface
         return ($serviceName == "kernel") ? $this : $this->serviceHandler->get($serviceName);
     }
 
+    /**
+     * @return string
+     */
     public static function getName()
     {
         return "kernel";

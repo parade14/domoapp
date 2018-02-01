@@ -10,7 +10,6 @@ namespace Entities;
 
 
 use services\database\EntityHasOwnerInterface;
-use Services\Security\AccessGranterInterface;
 
 class Message implements EntityHasOwnerInterface
 {
