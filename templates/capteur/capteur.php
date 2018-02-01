@@ -41,7 +41,7 @@
 
            <form method="POST" action="../../templates/capteur/creerCapteur.php" class="captor-popup">
                <input type="hidden" name="idAcc" value="<?php echo $idAcc; ?>"/>
-               <p><span>Nom du capteur : </span><input type="text" name="name"/></p>
+               <p><span>Nom du capteur : </span><input required type="text" name="name"/></p>
                <p><select id="select-captor"  name="sensor">
                        <option value="temperature">température</option>
                        <option value="pression">pression</option>
