@@ -8,7 +8,7 @@
         <meta charset="utf-8">
     <link rel="stylesheet" href="../css/AjoutNouveauClient.css" />
         <link rel="stylesheet" href="../css/user-home-style.css" />
-        <title>Modification d'un compte client</title>
+        <title>Modification de mon compte</title>
     </head>
     <body>
         
@@ -27,7 +27,7 @@
 
         <div class="user">
             <header class="user_header">
-                <h1 class="user_title">Modification d'un compte client</h1>
+                <h1 class="user_title">Modification de mon compte</h1>
             </header>
             
             <form class="form" onsubmit="validate()" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
