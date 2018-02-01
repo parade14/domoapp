@@ -50,10 +50,10 @@ class AccommodationService implements ServiceInterface
         $this->databaseObject = $databaseObject;
     }
 
-public static function getName()
-{
-  return "accommodation.service";
-}
+    public static function getName()
+    {
+      return "accommodation.service";
+    }
 
     /**
      * Add an accomodation in database
