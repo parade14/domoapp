@@ -97,8 +97,6 @@
 
                 </div>
 
-                <a href="#" class="button learn-more"> En savoir plus </a>
-
 
             </article>
 
