@@ -1,27 +1,46 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700");
+
+@media only screen and (max-width: 1024px) {
+    html {
+        font-size: 9.375px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 9.375px;
+    }
 }
 
 html, body {
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    padding:0;
-}
-body {
-  background-size: 200% 100% !important;
-  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
-  height: 100vh;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.875;
-  color: #676d79;
-  font-weight: 300;
+    padding: 0;
 }
 
+html {
+    font-size: 10px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.875;
+    color: #676d79;
+    background-color: #E0F7FA;
+    font-weight: 300;
+ }
 .user {
   width: 90%;
   max-width: 340px;
@@ -88,7 +107,7 @@ body {
   outline: 0;
   border: 0;
   color: white;
-  background: #ABA194;
+  background: #036C81;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }

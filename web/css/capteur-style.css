@@ -1,7 +1,8 @@
 @import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
-
+@import url('https://fonts.googleapis.com/css?family=Raleway:600');
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700");
 @import url("fonts.css");
+@import "https://fonts.googleapis.com/css?family=Roboto+Mono:300,700";
 
 html, body {
     height: 100%;
@@ -60,20 +61,7 @@ body
 }
 
 .icon {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    cursor: pointer;
-    margin: 7px 7px;
-    width: 70px;
-    height: 70px;
-    line-height: 90px;
-    border-radius: 50%;
-    text-align: center;
-
-    color: #fff;
+    font-size: 20px !important;
 }
 
 .icon:after {
@@ -181,7 +169,7 @@ button {
 }
 
 .box {
-    width: 230px;
+    width: 280px;
     height: 230px;
     margin: 0.2%;
     box-sizing: border-box;
@@ -236,14 +224,12 @@ button {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 15px;
     border-bottom: 1px solid rgba(255,255,255,0);
-
     position: absolute;
-    top: 80px;
     width: 70%;
     left: 15%;
     z-index: 4;
+    margin: 0;
 }
 .box ul {
     font-family: 'Open Sans', Arial, sans-serif;
@@ -314,12 +300,6 @@ button {
 .box.selected ul.hidden {
     opacity: 1;
     margin-top: 110px;
-}
-
-.temp {
-    margin-top: 35px;
-    margin-left: 35px;
-    padding-left: 20px;
 }
 
 
@@ -506,7 +486,7 @@ button {
     color: black;
 }
 
-.captor-container {
+.captor-popup {
     background: #ebebeb;
     padding: 12px;
 }
@@ -555,4 +535,95 @@ button {
 .active {
 
     color: #C11111 !important;
+}
+
+.captor-container {
+    font-family: 'Roboto Mono';
+    letter-spacing: 1px;
+    border-bottom: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    padding-top: 50px;
+    overflow-y:scroll;
+}
+
+.captors {
+    color: #fafafa;
+    font-family: 'Open Sans', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.line {
+    border-top: 1px solid lightgrey;
+    width: 35%;
+    position: relative;
+    top: 38px;
+    margin: 0 auto;
+}
+
+.expand {
+    font-family: 'Raleway', sans-serif;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    box-shadow: 3px 3px 20px 3px rgba(19, 35, 47, 0.3);
+}
+
+.left-captor-box > * {
+    margin: 0 10px;
+}
+
+.left-captor-box {
+    display: flex;
+    align-items: center;
+}
+
+/* ON-OFF BUTTON */
+
+.switch-button {
+    display: inline-block;
+    height: 24px;
+    width: 48px;
+    box-shadow: inset 0 0 0 1px #ced3e1;
+    border-radius: 12px;
+    transition: all 0.2s ease-in;
+    position: relative;
+    background-color: #f2f3f7;
+    cursor: pointer;
+}
+.switch-button.open .switch {
+    background-color: #4f4f4f;
+    transform: translateX(-24px) rotate(-90deg);
+}
+
+.switch {
+    display: block;
+    background-color: yellow;
+    width: 24px;
+    height: 24px;
+    border-radius: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.4s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    backface-visibility: hidden;
+}
+.switch:before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    left: 12px;
+    top: 7px;
+    background-color: #ffffff;
 }

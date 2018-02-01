@@ -34,7 +34,7 @@
                <i class="fa fa-times login-cross"></i>
            </div>
 
-           <form method="POST" action="../../templates/capteur/creerCapteur.php" class="captor-container">
+           <form method="POST" action="../../templates/capteur/creerCapteur.php" class="captor-popup">
                <input type="hidden" name="idAcc" value="<?php echo $idAcc; ?>"/>
                <p><span>Nom du capteur : </span><input type="text" name="name"/></p>
                <p><select id="select-captor"  name="sensor">
@@ -89,14 +89,33 @@
                 <div class="box first">
                     <!--<span class="icon-cont"><i class="fa fa-bed"></i></span>-->
 
-                    <h3>'.$room->getName().'</h3>';
-                    
+                    <h3>'.$room->getName(). '</h3>
+                    <div class="line"></div>
+                    <div class="captor-container">';
+
                     foreach($sensors as $sensor){
-                        echo '<div style="color:white"><span>('.$sensor->getType().') </span> '
-                               .$sensor->getName(). '<span onClick="supprimerCapteur('.$sensor->getId().')"><i style="color:red" class="fa fa-trash-o fa-lg"></i></span></div>';
+                        switch ($sensor->getType()) {
+                            case "temperature":
+                                $captorIcon = '<i class="icon fa fa-thermometer-three-quarters"></i>';
+                                $typeInput = 1;
+                                break;
+                            case "lumiere":
+                                $captorIcon = '<i class="icon fa fa-lightbulb-o"></i>';
+                                break;
+                            case "pression":
+                                $captorIcon = '<i class="icon fa fa-tachometer" aria-hidden="true"></i>';
+                                break;
+                            case "humidite":
+                                $captorIcon = '<i class="icon ionicons ion-waterdrop"></i>';
+                                break;
+                        }
+
+                        echo '<div class="captors"><div class="right-captor-box"><span>'.$captorIcon.' </span> 
+                               <span>'.$sensor->getName().'</span></div><div class="left-captor-box"><span class="expand"></span><span class="switch-button open">
+                               <i class="switch"></i></span><span onClick="supprimerCapteur('.$sensor->getId().')"<i class="fa fa-trash-o fa-lg"></i></span></div></div>';
                     }
 
-                    echo '</div>';
+                    echo '</div> </div>';
        }?>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
