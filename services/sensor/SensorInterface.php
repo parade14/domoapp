@@ -16,7 +16,7 @@ interface SensorInterface
 
     /**
      * @param int $id
-     * @return Sensor
+     * @return SensorInterface
      */
     public function setId($id);
 
@@ -27,7 +27,7 @@ interface SensorInterface
 
     /**
      * @param string $name
-     * @return Sensor
+     * @return SensorInterface
      */
     public function setName($name);
 
@@ -38,7 +38,7 @@ interface SensorInterface
 
     /**
      * @param string $type
-     * @return Sensor
+     * @return SensorInterface
      */
     public function setType($type);
 
@@ -49,7 +49,7 @@ interface SensorInterface
 
     /**
      * @param int $roomId
-     * @return Sensor
+     * @return SensorInterface
      */
     public function setRoomId($roomId);
 

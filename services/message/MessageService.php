@@ -85,15 +85,15 @@ class MessageService implements ServiceInterface
     }
 
     /**
-     * @param $userId
+     * @param $userId int
      * @param bool $order
-     * @return Message[]
+     * @return array|Message[]
      */
     public function getMessagesByUser($userId, $order=true){
         $req = $this->connect()->prepare('SELECT * FROM `message` WHERE author_id=:id'.($order ? 'ORDER BY id' : ''));
         $req->execute(array('id'=>$userId));
         while($message = $req->fetchObject(Message::class)) $messages[]=$message;
-        return $messages;
+        return (!empty($messages) and isset($messages)) ? $messages : array();
     }
 
 

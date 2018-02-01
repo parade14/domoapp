@@ -15,6 +15,9 @@ use Services\Session\SessionManagerInterface;
 
 class AccessGranter implements AccessGranterInterface
 {
+    /**
+     * @return string
+     */
     public static function getName(){
         return "access.granter";
     }
@@ -29,6 +32,11 @@ class AccessGranter implements AccessGranterInterface
      */
     protected $rolesManager;
 
+    /**
+     * AccessGranter constructor.
+     * @param SessionManagerInterface $sessionManager
+     * @param RolesManagerInterface $rolesManager
+     */
     public function __construct(SessionManagerInterface $sessionManager, RolesManagerInterface $rolesManager)
     {
         $this->sessionManager = $sessionManager;
@@ -36,17 +44,28 @@ class AccessGranter implements AccessGranterInterface
     }
 
 
-
+    /**
+     * @param string $role
+     * @param null $object
+     * @return bool|AccessDeniedException|true
+     */
     public function isGranted($role, $object = null)
     {
          return $this->grantedByRole($role) || $this->grantedByOwner($object);
     }
 
-
+    /**
+     * @param $role
+     * @return bool
+     */
     protected function grantedByRole($role){
-        return ($this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getRoles())) ? true : false;
+        return $this->rolesManager->compareRoles($role, $this->sessionManager->getCurrentUser()->getRoles());
     }
 
+    /**
+     * @param $object
+     * @return bool
+     */
     protected function grantedByOwner($object){
 
         if(is_object($object)) if($object instanceof EntityHasOwnerInterface) return ($this->sessionManager->getCurrentUser()->getId() === $object->getOwnerId()) ? true : false;

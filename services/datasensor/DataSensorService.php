@@ -6,11 +6,10 @@
 
 namespace Services\DataSensor;
 
+use Entities\DataSensor;
 use Services\database\DatabaseServiceInterface;
 use Services\database\DatabaseObjectInterface;
-use Entities\DataSensor;
-use PDO;
-use DateTime;
+
 
 
 class DataSensorService implements DataSensorServiceInterface
@@ -48,7 +47,7 @@ class DataSensorService implements DataSensorServiceInterface
         $this->databaseObject = $databaseObject;
     }
 
-    
+
     /**
      * constructor
      * @var $serviceConnect DatabaseServiceInterface
@@ -65,23 +64,23 @@ class DataSensorService implements DataSensorServiceInterface
     /**
      * get the most recent value of a sensor
      * @param string $sensorId
-     * @return DataSensorInterface|\LogicException
+     * @return DataSensor|\LogicException
      */
     public function getLastValue($sensorId) {
 
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
 
-            $resultats=$conn->query("SELECT * FROM `DataSensor` WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM `DataSensor` WHERE sensor_id='$sensorId') ");
-            $resultats->setFetchMode(PDO::FETCH_ASSOC);
+            $resultats=$conn->query("SELECT * FROM DataSensor WHERE sensor_id='$sensorId' AND date = (SELECT MAX(date) FROM DataSensor WHERE sensor_id='$sensorId') ");
+            $resultats->setFetchMode(\PDO::FETCH_ASSOC);
             $data = $resultats->fetch();
             $dataSensor = new DataSensor();
             $dataSensor->setId($data['id']);
             $dataSensor->setSensorId($data['sensor_id']);
-            $dataSensor->setDate(new DateTime($data['date']));
+            $dataSensor->setDate(new \DateTime($data['date']));
             $dataSensor->setValue($data['value']);
             $resultats->closeCursor();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $dataSensor;
@@ -102,12 +101,12 @@ class DataSensorService implements DataSensorServiceInterface
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
             $resultats=$conn->query("SELECT * FROM DataSensor WHERE sensor_id='$sensorId' AND '$startDate' <= date <= '$endDate'");
-            $resultats->setFetchMode(PDO::FETCH_ASSOC);
+            $resultats->setFetchMode(\PDO::FETCH_ASSOC);
             $datas = $resultats->fetchAll();
             $return = array();
             
             foreach ($datas as $data) {
-                $dataSensor = new \DataSensor();
+                $dataSensor = new DataSensor();
                 $dataSensor->setId($data['id']);
                 $dataSensor->setSensorId($data['sensor_id']);
                 $dataSensor->setDate(new \DateTime($data['date']));

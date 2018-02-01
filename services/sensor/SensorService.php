@@ -15,12 +15,14 @@ use PDO;
 class SensorService implements SensorServiceInterface
 {
 
+    /**
+     * @return string
+     */
     public static function getName(){
         return "sensor.service";
     }
 
     /**
-     * TODO: what ?
      * The database connection
      * @var DatabaseServiceInterface
      */
@@ -32,21 +34,43 @@ class SensorService implements SensorServiceInterface
      */
     protected $databaseObject;
 
-    function getServiceConnect(){
+    /**
+     * @return DatabaseServiceInterface
+     */
+    public function getServiceConnect()
+    {
         return $this->serviceConnect;
     }
 
-    function getDatabaseObject() {
+    /**
+     * @param DatabaseServiceInterface $serviceConnect
+     * @return SensorService
+     */
+    public function setServiceConnect(DatabaseServiceInterface $serviceConnect)
+    {
+        $this->serviceConnect = $serviceConnect;
+        return $this;
+    }
+
+    /**
+     * @return DatabaseObjectInterface
+     */
+    public function getDatabaseObject()
+    {
         return $this->databaseObject;
     }
 
-    function setServiceConnect($serviceConnect) {
-        $this->serviceConnect = $serviceConnect;
+    /**
+     * @param DatabaseObjectInterface $databaseObject
+     * @return SensorService
+     */
+    public function setDatabaseObject(DatabaseObjectInterface $databaseObject)
+    {
+        $this->databaseObject = $databaseObject;
+        return $this;
     }
 
-    function setDatabaseObject($databaseObject) {
-        $this->databaseObject = $databaseObject;
-    }
+
 
         /**
      * constructor
@@ -77,29 +101,35 @@ class SensorService implements SensorServiceInterface
             $sensorInserted->setRoomId($room_id);
             $sensorInserted->setType($type);
             
-        } catch (LogicException $e) {
+        } catch (\LogicException $e) {
             throw $e;
         }
         return $sensorInserted;
     }
 
     /**
-     * delete a sensor 
-     * @param string $idSensor the sensor to delete
-     * @return boolean|\LogicException
+     * @param string $idSensor
+     * @return bool|\LogicException
      */
     public function deleteSensor($idSensor) {
         
         try {
 
             $conn = $this->serviceConnect->connect($this->databaseObject);
-            $sql = "DELETE FROM `DataSensor` WHERE id=:idSensor";
             $sql = "DELETE FROM `Sensor` WHERE id=:idSensor";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':idSensor', $idSensor, PDO::PARAM_INT);    
             $stmt->execute();
-            
-        } catch (LogicException $e) {
+            $stmt->closeCursor();
+
+            $sql = "DELETE FROM `DataSensor` WHERE id=:idSensor";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':idSensor', $idSensor, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt->closeCursor();
+
+
+        } catch (\LogicException $e) {
             throw $e;
         }
         return true;
@@ -130,18 +160,17 @@ class SensorService implements SensorServiceInterface
         return $sensor;
 
     }
-    
+
     /**
-     * Search sensor(s) by the field in parameter
-     * @param string $field id_room|id|type
+     * @param string $field
      * @param string $value
-     * @return array of Sensor|\LogicException
+     * @return array
      */
     public function getSensorBy($field, $value){
                 $conn = $this->serviceConnect->connect($this->databaseObject);
         try {
             if($field != "id" && $field != "type" && $field != "room_id" ){
-                throw new LogicException("invalid field");
+                throw new \LogicException("invalid field");
             } else {
                 $resultats=$conn->prepare("SELECT * FROM `Sensor` WHERE $field = :value");
                 $resultats->execute(array(":value"=>$value));
@@ -158,7 +187,7 @@ class SensorService implements SensorServiceInterface
                 } 
                 $resultats->closeCursor();
             }
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
                 throw $e;
         }
         return $return;

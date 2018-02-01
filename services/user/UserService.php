@@ -30,21 +30,36 @@ class UserService implements UserServiceInterface
      */
     protected $databaseObject;
 
-
+    /**
+     * @return DatabaseServiceInterface
+     */
     function getServiceConnect() {
         return $this->serviceConnect;
     }
 
+    /**
+     * @return DatabaseObjectInterface
+     */
     function getDatabaseObject() {
         return $this->databaseObject;
     }
 
+    /**
+     * @param $serviceConnect
+     * @return $this
+     */
     function setServiceConnect($serviceConnect) {
         $this->serviceConnect = $serviceConnect;
+        return $this;
     }
 
+    /**
+     * @param $databaseObject
+     * @return $this
+     */
     function setDatabaseObject($databaseObject) {
         $this->databaseObject = $databaseObject;
+        return $this;
     }
 
 

@@ -8,7 +8,6 @@ namespace services\accomodation;
 
 
 use Kernel\ServiceHandler\ServiceInterface;
-use services\accommodation\AccommodationServiceInterface;
 use Services\Database\DatabaseObjectInterface;
 use Services\Database\DatabaseServiceInterface;
 use Services\Database\DatabaseService;
@@ -134,9 +133,8 @@ class AccommodationService implements ServiceInterface
     }
 
     /**
-     * Update an accomodation in database with the new value
      * @param Accommodation $accommodation
-     * @return boolean|\LogicException
+     * @return Accommodation
      */
     public function updateAccommodation(Accommodation $accommodation){
         try {
@@ -169,9 +167,8 @@ class AccommodationService implements ServiceInterface
     }
 
     /**
-     * Search accomodation by id
-     * @param string $idAccommodation
-     * @return Accommodation|\LogicException
+     * @param $idAccommodation
+     * @return array
      */
     public function getAccommodationById($idAccommodation){
         
@@ -201,10 +198,10 @@ class AccommodationService implements ServiceInterface
         }
         return $return;
     }
-    
+
     /**
-     * Search accomodation by id
-     * @return Accommodation|\LogicException
+     * @param $idUser
+     * @return array
      */
     public function getAccommodationByUserId($idUser){
         
@@ -236,6 +233,9 @@ class AccommodationService implements ServiceInterface
     }
 
 
+    /**
+     * @return array
+     */
     public function getAllAccommodations(){
         
         try {

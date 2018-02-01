@@ -15,11 +15,10 @@ class DeconnectController extends BaseController
     }
 
     /**
-     * @return mixed
      * @throws \Exception
      */
     public function index(){
         $this->get("session.manager")->disconnectCurrentUser();
-        header('Location: ../');
+        $this->redirect('/');
     }
 }

@@ -15,16 +15,6 @@ use Kernel\ServiceHandler\ServiceInterface;
  */
 class TemplateService implements ServiceInterface
 {
-
-
-    /**
-     * TemplateObject constructor.
-     */
-    public function __construct()
-    {
-    }
-
-
     /**
      * @param $file
      * @param array $params
@@ -63,6 +53,9 @@ class TemplateService implements ServiceInterface
         return $result;
     }
 
+    /**
+     * @return string
+     */
     public static function getName()
     {
         return "template.service";

@@ -45,7 +45,7 @@ class CapteursController extends BaseController
         
         $rooms = [];
         $sensors = [];
-        $idAcc;
+
         
         if(isset($_GET['idAcc'])){
             $rooms = $roomService->getRoomBy("accommodation_id", $_GET['idAcc']);

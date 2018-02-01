@@ -11,22 +11,37 @@ namespace Services\Session;
 
 use Entities\User;
 use services\security\RolesManager;
-use Services\user\UserService;
 use Services\User\UserServiceInterface;
 
 class SessionManager implements SessionManagerInterface
 {
 
+    /**
+     * @var array
+     */
     protected $session;
+    /**
+     * @var RolesManager
+     */
     protected $rolesManager;
+    /**
+     * @var UserServiceInterface
+     */
     protected $userService;
 
+    /**
+     * @return string
+     */
     public static function getName()
     {
         return "session.manager";
     }
 
-
+    /**
+     * SessionManager constructor.
+     * @param RolesManager $rolesManager
+     * @param UserServiceInterface $userService
+     */
     public function __construct(RolesManager $rolesManager, UserServiceInterface $userService)
     {
         if(session_id() == '') session_start();
@@ -109,13 +124,15 @@ class SessionManager implements SessionManagerInterface
             $results = $this->userService->getUserBy('email', $email);
 
             if(is_array($results)) $user = $results[0];
+
+            if($user instanceof User){
+                return ($user->getPassword() === md5(md5($password))) ? $user : false;
+            }
         }
         catch(\Exception $e){
             throw $e;
         }
-        if($user instanceof User){
-            return ($user->getPassword() === md5(md5($password))) ? $user : false;
-        }
+
         return false;
     }
 

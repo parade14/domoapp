@@ -12,6 +12,9 @@ use Entities\User;
 
 class RolesManager implements RolesManagerInterface
 {
+    /**
+     * @var array
+     */
     protected $roles;
 
     public function __construct(){
@@ -62,6 +65,9 @@ class RolesManager implements RolesManagerInterface
         return $user;
     }
 
+    /**
+     * @return string
+     */
     public static function getName()
     {
         return "roles.manager";

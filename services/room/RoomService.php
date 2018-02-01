@@ -30,18 +30,30 @@ class RoomService implements RoomServiceInterface
      */
     protected $databaseObject;
 
+    /**
+     * @return DatabaseServiceInterface
+     */
     function getServiceConnect() {
         return $this->serviceConnect;
     }
 
+    /**
+     * @return DatabaseObjectInterface
+     */
     function getDatabaseObject() {
         return $this->databaseObject;
     }
 
+    /**
+     * @param $serviceConnect
+     */
     function setServiceConnect($serviceConnect) {
         $this->serviceConnect = $serviceConnect;
     }
 
+    /**
+     * @param $databaseObject
+     */
     function setDatabaseObject($databaseObject) {
         $this->databaseObject = $databaseObject;
     }

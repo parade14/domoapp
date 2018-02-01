@@ -28,13 +28,23 @@ class GroupService {
      * @var DatabaseObjectInterface
      */
     protected $databaseObject;
-    
+
+    /**
+     * @param $serviceConnect
+     * @return $this
+     */
     public function setServiceConnect($serviceConnect) {
         $this->serviceConnect = $serviceConnect;
+        return $this;
     }
 
+    /**
+     * @param $databaseObject
+     * @return $this
+     */
     public function setDataBaseObject($databaseObject) {
         $this->databaseObject = $databaseObject;
+        return $this;
     }
 
     /**
@@ -50,8 +60,12 @@ class GroupService {
     public static function getName()
     {
       return "group.service";
-    } 
+    }
 
+    /**
+     * @param $group Group
+     * @return Group
+     */
     public function createGroup($group){
         try {
             
@@ -77,9 +91,12 @@ class GroupService {
         return $group;
         
     }
-    
-    
 
+
+    /**
+     * @param $idGroup int
+     * @return bool
+     */
     public function deleteGroup($idGroup){
                 
         try {
@@ -94,13 +111,17 @@ class GroupService {
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':id', $idGroup, PDO::PARAM_INT);  
             $stmt->execute();
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return true;
-        
     }
 
+    /**
+     * @param $group Group
+     * @return mixed
+     * @throws \Exception
+     */
     public function updateGroup($group){
              try {
             $name = $group->getName();
@@ -117,13 +138,13 @@ class GroupService {
 
             $stmt->execute();
                         
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $group;
         
     }
-    
+
     public function getGroupsByAdminId($idUser){
          try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
@@ -140,13 +161,18 @@ class GroupService {
             } 
             $resultats->closeCursor();
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;
         
     }
-    
+
+    /**
+     * @param $group Group
+     * @return Accommodation[]
+     * @throws \Exception
+     */
     public function getAccommodationsByGroup($group){
           try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
@@ -173,12 +199,16 @@ class GroupService {
             } 
             $resultats->closeCursor();
             
-        } catch (LogicException $e){
+        } catch (\LogicException $e){
             throw $e;
         }
         return $return;        
     }
-    
+
+    /**
+     * @param $idGroup
+     * @param $idAccommodation
+     */
     public function createGroupAccommodation($idGroup, $idAccommodation){
         try {
             $conn = $this->serviceConnect->connect($this->databaseObject);
@@ -186,8 +216,8 @@ class GroupService {
             $stmt = $conn->prepare($sql);
             
             $stmt->execute(array(
-            'idGroup'=>$idGroup,
-            'idAccommodation'=>$idAccommodation,
+            ':idGroup'=>$idGroup,
+            ':idAccommodation'=>$idAccommodation,
             ));            
         } catch (\LogicException $e){
             throw $e;
