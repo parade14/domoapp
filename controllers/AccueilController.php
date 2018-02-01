@@ -9,9 +9,6 @@
 namespace controllers;
 
 
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
-use Services\Session\SessionManager;
 
 class AccueilController extends BaseController
 {
@@ -23,6 +20,7 @@ class AccueilController extends BaseController
     }
 
     /**
+     * @param $post
      * @return mixed
      * @throws \Exception
      */

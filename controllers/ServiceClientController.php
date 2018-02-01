@@ -1,9 +1,6 @@
 <?php
 
 namespace controllers;
-use Entities\User;
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
 
 class ServiceClientController extends BaseController
@@ -18,10 +15,8 @@ class ServiceClientController extends BaseController
     public function index(){
 
 
-        //$dataBase = new DatabaseObject('domoapp', '' , 'localhost', 'root');
         $dataBase = $this->get("database.object");
         $databaseService = $this->get("database.service");
-        $sessionService = $this->get("session.manager");
         $databaseService->connect($dataBase);
 
         $var = $this->get('access.granter')->isGranted("AUTHENTICATED_USER");

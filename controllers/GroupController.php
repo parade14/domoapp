@@ -2,10 +2,7 @@
 
 namespace controllers;
 
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
-use Entities\User;
 
 
 class GroupController extends BaseController

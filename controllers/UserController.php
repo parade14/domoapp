@@ -8,9 +8,6 @@
 
 namespace controllers;
 
-use Entities\User;
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
 
 class UserController extends BaseController

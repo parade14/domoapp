@@ -2,10 +2,7 @@
 
 namespace controllers;
 
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
-use Entities\User;
 
 
 class CapteursController extends BaseController
@@ -26,8 +23,7 @@ class CapteursController extends BaseController
         $databaseService = $kernel->get("database.service");
         $databaseService->connect($dataBase);
         
-        $sessionService = $kernel->get("session.manager");
-        
+
         $accommodationService = $kernel->get("accommodation.service");
         $accommodationService->setServiceConnect($databaseService);
         $accommodationService->setDataBaseObject($dataBase);

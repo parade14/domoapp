@@ -2,10 +2,7 @@
 
 namespace controllers;
 
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
-use Entities\User;
 
 
 class ModifProfilController extends BaseController
@@ -24,7 +21,6 @@ class ModifProfilController extends BaseController
 
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
-        $sessionService = $kernel->get("session.manager");
         $userService = $kernel->get("user.service");
         $userService->setServiceConnect($databaseService);
         $userService->setDataBaseObject($dataBase);

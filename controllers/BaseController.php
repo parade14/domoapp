@@ -18,6 +18,10 @@ abstract class BaseController implements ServiceInterface
      */
     protected $kernel;
 
+    /**
+     * BaseController constructor.
+     * @param Kernel $kernel
+     */
     public function __construct(Kernel $kernel)
     {
         $this->kernel = $kernel;
@@ -32,6 +36,9 @@ abstract class BaseController implements ServiceInterface
         return $this->kernel->get($serviceName);
     }
 
+    /**
+     * @param $location
+     */
     public function redirect($location){
         header("Location: $location");
     }

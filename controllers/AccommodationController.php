@@ -2,9 +2,6 @@
 
 namespace controllers;
 
-use Entities\Accommodation;
-use kernel\Kernel;
-use Kernel\ServiceHandler\ServiceInterface;
 use Services\HttpFoundation\AccessDeniedException;
 
 
@@ -24,7 +21,6 @@ class AccommodationController extends BaseController
         $dataBase = $kernel->get("database.object");
         $databaseService = $kernel->get("database.service");
         $accommodationService = $kernel->get("accommodation.service");
-        $sessionService = $kernel->get("session.manager");
         $roomService = $kernel->get("room.service");
         $accommodationService->setServiceConnect($databaseService);
         $accommodationService->setDataBaseObject($dataBase);
