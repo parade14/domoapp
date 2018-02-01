@@ -30,6 +30,7 @@
 
     <body>
        <?php include(dirname(__FILE__).'/../headers/headerUserConnected.php');?>
+        <input type="hidden" id="nbAcc" value="<?=sizeOf($accommodations )?>"/>
 
        <div class="add_captor hidden">
            <div class="login-header">
