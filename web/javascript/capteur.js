@@ -9,6 +9,12 @@ $(document).ready(function() {
     } else {
         $('#appart_'+idAcc[1]).toggleClass('active');
     }
+    var nbAcc = $('#nbAcc').val();
+    
+    if(nbAcc==0){
+        alert("Aucun appartement présent. Veuillez créer un appartement et des pièces.");
+        window.location.href = "../appartements/";    
+    }
 
     /*$('.box').click(function() {
         $(this).toggleClass('selected');
