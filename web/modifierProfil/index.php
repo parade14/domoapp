@@ -4,4 +4,4 @@ require('../../utilities/autoload.php');
 
 $kernel = new \kernel\Kernel();
 
-echo $controller = $kernel->get("modifProfil.controller")->index();
+echo $controller = $kernel->get("modifProfil.controller")->index($_POST);

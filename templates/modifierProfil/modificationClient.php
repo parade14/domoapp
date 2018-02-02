@@ -29,7 +29,7 @@
                 <h1 class="user_title">Modification de mon compte</h1>
             </header>
             
-            <form class="form" onsubmit="validate()" action="../../templates/modifierProfil/validerModifProfil.php" method="POST">
+            <form class="form" onsubmit="validate()" action="#" method="POST">
                                 
                 <div class="form_group">
                     <input type="text" placeholder="Nom" name="last_name" class="form_input" value="<?php echo $user->getLastName(); ?>"/>

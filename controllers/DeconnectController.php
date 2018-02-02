@@ -19,6 +19,6 @@ class DeconnectController extends BaseController
      */
     public function index(){
         $this->get("session.manager")->disconnectCurrentUser();
-        $this->redirect('/');
+        $this->redirect('/domoapp/web');
     }
 }
