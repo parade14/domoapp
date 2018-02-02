@@ -5,7 +5,7 @@
     </div>
     <nav>
         <ul>
-            <li><a class="menu_effect" href="../serviceClient/"> Accueil </a> </li>
+            <li><a class="menu_effect" href="../user/"> Accueil </a> </li>
             <li><a class="menu_effect" href="../modifierProfil/"> Mon profil </a> </li>
             <li><a class="menu_effect" href="#"> Langue </a> </li>
             <li><a class="menu_effect" href="../deconnect/"> Me déconnecter </a> </li>
