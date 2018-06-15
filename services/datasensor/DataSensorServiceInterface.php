@@ -26,6 +26,15 @@ interface DataSensorServiceInterface extends ServiceInterface
      * @return array of DataSensorInterface||\LogicException
      */
     public function getValuesBetween($sensorId, $startDate, $endDate);
+    
+        /**
+     * get the values of a sensor between start date et end date.
+     * @param string $sensorId
+     * @param \DateTime $startDate 
+     * @param \DateTime $endDate 
+     * @return array of DataSensorInterface||\LogicException
+     */
+    public function insertValue($value, $date, $sensorId);
 
 
 

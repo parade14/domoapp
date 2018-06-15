@@ -121,5 +121,22 @@ class DataSensorService implements DataSensorServiceInterface
         }
         return $return;
     }
+    
+    public function insertValue($value, $date, $sensorId){
+        try {
+            
+            $lastDataSensor = $this->getLastValue($sensorId);          
+            
+            print_r($date);
+            print_r($lastDataSensor->getDate()->format('Y-m-d H:i:s'));
+            
+            if($lastDataSensor->getDate()->format('Y-m-d H:i:s') != $date){
+                $conn = $this->serviceConnect->connect($this->databaseObject);
+                $conn->query("INSERT INTO DataSensor(value, date, sensor_id) VALUES ('$value','$date','$sensorId')")->execute();
+            }
+        } catch (\LogicException $e){
+            throw $e;
+        }
+    }
 
 }

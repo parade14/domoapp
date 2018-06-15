@@ -13,6 +13,27 @@
     $accommodations;
     $rooms;
     $idAcc;
+    
+     // LECTURE SERVEUR, INSERTION DERNIERE VALEUR EN BDD
+    $ch = curl_init();
+    curl_setopt(
+    $ch,
+    CURLOPT_URL,
+    "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=002C");
+    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    $data_tab = str_split($data,33);
+    $trame = $data_tab[count($data_tab)-2];
+    // décodage avec des substring
+    $t = substr($trame,0,1);
+    $o = substr($trame,1,4);
+    // décodage avec sscanf
+    list($t, $o, $r, $cg, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
+    sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
+    $date = $year.'-'.$month.'-'.$day.' '.$hour.':'.$min.':'.$sec;
+    $dataSensorService->insertValue($v, $date, $n);
 
 ?>
 
@@ -102,6 +123,7 @@
                                 $captorIcon = '<i class="icon ionicons ion-waterdrop"></i>';
                                 break;
                         }
+                        // lecture derniere valeur insérée
                         $lastValue = $dataSensorService->getLastValue($sensor->getId());
 
                         echo '<div class="captors"><div class="right-captor-box"><span>'.$captorIcon.' </span> 
