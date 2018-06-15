@@ -6,7 +6,7 @@
     <nav>
         <ul>
             <li><a class="menu_effect" href="../user/"> Accueil </a> </li>
-            <li><a class="menu_effect" href="#"> Statistiques </a> </li>
+            <li><a class="menu_effect" href="../statistique/"> Statistiques </a> </li>
             <li><a class="menu_effect" href="../appartements/"> Appartements </a> </li>
             <li><a class="menu_effect" href="../capteurs/"> Capteurs </a> </li>
             <li><a class="menu_effect menu-right" href="#"> Nous contacter </a> </li>
